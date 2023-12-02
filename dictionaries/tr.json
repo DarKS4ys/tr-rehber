@@ -1,0 +1,92 @@
+{
+    "page": {
+      "header": {
+        "welcome": "Trabzon'a",
+        "city": "Hoşgeldiniz!",
+        "description": "Yapay zeka destekli aracımızla Trabzon'da gezilecek yerler ve yapılabilecekleri keşfedin"
+      },
+
+      "navbar": {
+        "switcher": {
+        "dark": "Karanlık",
+        "light": "Aydınlık",
+        "system": "Sistem"
+      },
+  
+      "langswitcher": {
+        "turkish": "Türkçe",
+        "english": "İngilizce"
+      },
+
+      "options": {
+        "explore": "Keşfet",
+        "contact": "İletişim",
+        "homepage": "Anasayfa"
+      }
+      },
+      "middle": {
+        "explore": {
+          "title": "Keşfetmeye hemen başla!",
+          "buttonLabel": "Keşfet",
+          "description": "açıklama"
+        }
+      },
+      "contact": {
+        "title": "İletişime Geç",
+        "descriptionpart1": "Lütfen bizimle direkt olarak bu adresten:",
+        "descriptionpart2": "veya aşağıdaki formdan iletişime geçin.",
+  
+        "inputplaceholder": "Email adresinizi buraya girin...",
+        "textareaplaceholder": "Mesajınızı buraya girin...",
+        "buttonLabel": "Gönder",
+
+        "succesfullySent": "Email başarıyla gönderildi!"
+      },
+      "footer": {
+        "title": "TRABZON REHBERİM",
+        "legal": "2023 © Trabzon Rehberim, Tüm hakları saklıdır.",
+        "navigation": {
+          "title": "Navigasyon",
+          "options": {
+            "homepage": "Anasayfa",
+            "explore": "Keşfet",
+            "contact": "İletişim"
+          }
+        },
+        "socials": {
+          "title": "Sosyal",
+          "options": {
+            "instagram": "Instagram",
+            "youtube": "YouTube",
+            "tiktok": "TikTok"
+          }
+        }
+      },
+      "marqueeLocal": {
+        "title": "Trabzon'u Keşfet",
+
+        "marquee": {
+          "shopping": "Alışveriş",
+          "history": "Tarih",
+          "entertainment": "Eğlence",
+          "beaches": "Sahiller",
+          "foodanddrink": "Yiyecek & İçecek",
+          "art": "Sanat",
+          "nature": "Doğa"
+        }
+      }
+    },
+    "explore": {
+      "main": {
+        "title": "Keşfet",
+        "search": "Yapılabilecekleri keşfet",
+        "notFound": "Bulunamadı"
+      }
+    },
+    "place": {
+      "go": "Hemen buraya git",
+      "error": "Yer hakkında bilgi toplanırken hata meydana geldi...",
+      "activityError": "Aktivite verileri toplanırken hata meydana geldi..."
+    }
+  }
+  

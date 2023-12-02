@@ -1,0 +1,90 @@
+{
+  "page": {
+    "header": {
+      "welcome": "Welcome to",
+      "city": "Trabzon!",
+      "description": "Discover places to explore and things to do with our AI powered tool"
+    },
+    "navbar": {
+      "switcher": {
+        "dark": "Dark",
+        "light": "Light",
+        "system": "System"
+      },
+
+      "langswitcher": {
+        "turkish": "Turkish",
+        "english": "English"
+      },
+
+      "options": {
+        "explore": "Explore",
+        "contact": "Contact",
+        "homepage": "Homepage"
+      }
+    },
+    "middle": {
+      "explore": {
+        "title": "Explore places now!",
+        "buttonLabel": "Explore",
+        "description": "description"
+      }
+    },
+    "contact": {
+      "title": "Contact Us",
+      "descriptionpart1": "Please contact us directly at",
+      "descriptionpart2": "or through this form",
+
+      "inputplaceholder": "Type your email adress...",
+      "textareaplaceholder": "Type your message here...",
+      "buttonLabel": "Submit",
+
+      "succesfullySent": "Email sent successfully!"
+    },
+    "footer": {
+      "title": "TRABZON REHBERIM",
+      "legal": "2023 © Trabzon Rehberim, All rights reserved.",
+      "navigation": {
+        "title": "Navigation",
+        "options": {
+          "homepage": "Homepage",
+          "explore": "Explore",
+          "contact": "Contact"
+        }
+      },
+      "socials": {
+        "title": "Socials",
+        "options": {
+          "instagram": "Instagram",
+          "youtube": "YouTube",
+          "tiktok": "TikTok"
+        }
+      }
+    },
+    "marqueeLocal": {
+      "title": "Discover Trabzon",
+
+      "marquee": {
+        "shopping": "Shopping",
+        "history": "History",
+        "entertainment": "Entertainment",
+        "beaches": "Beaches",
+        "foodanddrink": "Food & Drink",
+        "art": "Art",
+        "nature": "Nature"
+      }
+    }
+  },
+  "explore": {
+    "main": {
+      "title": "Explore",
+      "search": "Search places",
+      "notFound": "Not found"
+    }
+  },
+  "place": {
+    "go": "Go there now",
+    "error": "An error occured while fetching content",
+    "activityError": "Error occured while fetching activities"
+  }
+}
