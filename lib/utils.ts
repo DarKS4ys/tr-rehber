@@ -1,5 +1,7 @@
 import { type ClassValue, clsx } from "clsx"
+import { getServerSession } from "next-auth"
 import { twMerge } from "tailwind-merge"
+import { authOptions } from "./auth"
  
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -39,3 +41,13 @@ export const truncateText = (text: string | null | undefined, chars: number): st
     return 'Loading...'
   }
 };
+
+/* export const isAuthenticated = async () => {
+  try {
+    const session = await getServerSession(authOptions);
+    return session?.user?.status === 'Admin';
+  } catch (error) {
+    console.error('Error fetching session:', error);
+    return false;
+  }
+}; */

@@ -52,7 +52,8 @@ export const sendEmail = async (formData: FormData) => {
 export async function createPlace(
   placeData: Record<Locale, { name: string; description: string }>,
   user: any,
-  imageUrl: string
+  imageUrl: string,
+
 ) {
 
 
@@ -102,7 +103,13 @@ export async function createPlace(
 
     placeCreateData.data.imageUrl = imageUrl;
 
-    await prisma.place.create(placeCreateData);
+    const createdPlace = await prisma.place.create(placeCreateData);
+
+    await prisma.placeSnippet.create({
+      data: {
+        place: { connect: { id: createdPlace.id } },
+      },
+    });
 
     console.log('Place created');
 

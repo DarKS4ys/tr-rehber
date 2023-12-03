@@ -9,6 +9,9 @@ import { Button } from "../ui/button"
 import { truncateText } from "@/lib/utils"
 import { FiSettings } from "react-icons/fi"
 import Link from "next/link"
+import { FaScrewdriverWrench } from "react-icons/fa6";
+import { MdPlace } from "react-icons/md";
+
 
 interface UserMenuButtonProps {
     session: Session | null
@@ -44,12 +47,29 @@ export default function UserMenuButton({session}: UserMenuButtonProps) {
 
                         <DropdownMenuSeparator/>
                         
-                        <DropdownMenuItem>
-                            <Link href='/settings'  className="gap-2 flex text-lg items-center cursor-pointer opacity-90 hover:opacity-100 transition">
+                        <Link href='/settings'>
+                            <DropdownMenuItem className="gap-2 flex text-lg items-center opacity-90 hover:opacity-100 transition">
                                 <FiSettings/>
                                 <h1>Settings</h1>
-                            </Link>
-                        </DropdownMenuItem>
+                            </DropdownMenuItem>
+                        </Link>
+
+                        <Link href='/saved'>
+                            <DropdownMenuItem className="gap-2 flex text-lg items-center opacity-90 hover:opacity-100 transition">
+                                <MdPlace />
+                                <h1>Saved Places</h1>
+                            </DropdownMenuItem>
+                        </Link>
+
+
+                        {user.status == 'Admin' &&
+                        <Link href='/admin'>
+                            <DropdownMenuItem className="gap-2 flex text-lg items-center opacity-90 hover:opacity-100 transition">
+                            <FaScrewdriverWrench />
+                                <h1>Admin Dashboard</h1>
+                            </DropdownMenuItem>
+                        </Link>
+                        }
 
                         <Button className="w-full mt-1" onClick={() => signOut({callbackUrl: "/"})}>Sign Out</Button>
                          

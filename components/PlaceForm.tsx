@@ -105,6 +105,7 @@ export default function PlaceForm({
                   } else {
                     toast.error(response.error);
                   }
+                  
                 } catch (error: any) {
                   toast.error(error.message || 'Could not add place.');
                 }

@@ -77,4 +77,6 @@ model PlaceSnippet {
   id      String @id @default(auto()) @map("_id") @db.ObjectId
   placeId String @db.ObjectId
   place   Place  @relation(fields: [placeId], references: [id])
+
+  @@map("placesnippets")
 }

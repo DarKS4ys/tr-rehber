@@ -2,7 +2,7 @@
   height: 175vh;
   position: relative;
   display: flex;
-  gap: 2vw;
+  gap: 20px;
   padding: 2vw;
   box-sizing: border-box;
   overflow: hidden;
@@ -12,9 +12,11 @@
   height: 100%;
   width: 25%;
   min-width: 250px;
+  max-width: 500px;
   display: flex;
   flex-direction: column;
-  gap: 2vw;
+  margin: auto;
+  gap: 20px;
 }
 .gallery .column .imageContainer {
   height: 100%;

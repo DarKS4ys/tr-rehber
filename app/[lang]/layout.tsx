@@ -8,6 +8,7 @@ import { LanguageProvider } from './languageContext';
 import Navbar from '@/components/Navbar';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
+import { EdgeStoreProvider } from '@/lib/edgestore';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -26,14 +27,17 @@ export default async function RootLayout({
 
   const {page} = await getDictionary(params.lang)
   const session = await getServerSession(authOptions)
-
   return (
     <html lang={params.lang}>
       <body className={inter.className}>
       <Providers>
         <LanguageProvider initialLanguage={params.lang}>
-          <Navbar lang={params.lang} navbar={page.navbar} session={session || null}/>
-          {children}
+          <EdgeStoreProvider>
+            <Navbar lang={params.lang} navbar={page.navbar} session={session || null}/>
+            <div className='max-w-8xl m-auto min-w-[300px]'>
+              {children}
+            </div>
+          </EdgeStoreProvider>
         </LanguageProvider>
       </Providers>  
       </body>

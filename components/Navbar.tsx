@@ -4,10 +4,10 @@ import React, { useEffect, useState } from 'react'
 import { ModeToggle } from './ui/toggle-mode'
 import LangSwitch from './LangSwitch'
 import { Locale } from '@/i18n.config'
-import Link from 'next/link'
 import { clsx } from 'clsx';
 import UserMenuButton from './Auth/UserMenuButton'
 import type { Session } from 'next-auth'
+import Link from 'next/link';
 
 export default function Navbar({navbar, lang, session}: {navbar: any, lang: Locale, session: Session | null}) {
 
@@ -32,14 +32,14 @@ export default function Navbar({navbar, lang, session}: {navbar: any, lang: Loca
     }, []);
     
   return (
-    <div className={clsx('p-4 px-20 flex items-center justify-center sticky top-0 z-20 transition-background duration-300', color && 'bg-background/90 backdrop-blur-md ')}>
+    <div className={clsx('py-4 px-8 flex items-center justify-center sticky top-0 z-20 transition-background duration-300', color && 'bg-background/90 backdrop-blur-md ')}>
         <div className='max-w-7xl justify-between items-center flex w-full'>
-          <h1 className='text-xl font-medium'>Türkiye Rehberim</h1>
+          <Link href="/" className='text-xl font-medium'>Türkiye Rehberim</Link>
 
           <div className='flex items-center gap-3'>
             {Object.entries(options).map(([key, value]) => (
               <Link 
-              href={key}  // Check if lang is already in the path
+              href={key === '/admin/create-place' ? '/create-place' : key}
               key={key}>
                 <p className='px-3 py-2 hover:bg-highlighthover hover:scale-110 active:scale-95 hover:text-white rounded-xl transition duration-200 text-neutral-700 dark:text-neutral-300 dark:hover:text-white'>
                   {typeof value === 'string' ? value : null}

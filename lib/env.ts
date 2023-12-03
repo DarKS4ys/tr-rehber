@@ -8,6 +8,8 @@ const envSchema = z.object({
   NEXTAUTH_URL: z.string().trim().min(1),
   NEXTAUTH_SECRET: z.string().trim().min(1),
   ADMIN_EMAILS: z.string().trim().min(1),
+  EDGE_STORE_ACCESS_KEY: z.string().trim().min(1),
+  EDGE_STORE_SECRET_KEY: z.string().trim().min(1),
 });
 
 export const env = envSchema.parse(process.env);
