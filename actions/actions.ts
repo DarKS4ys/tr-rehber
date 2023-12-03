@@ -7,6 +7,7 @@ import React from 'react';
 import { prisma } from '@/lib/db/prisma';
 import type { Locale } from '@/i18n.config';
 import { z } from 'zod';
+import { revalidatePath } from 'next/cache';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -124,3 +125,17 @@ export async function createPlace(
     return { error: error.message };
   }
 }
+
+export async function saveFileToDB(fileUrl: string, downloadUrl: string, userId: string | undefined) {
+  await prisma.file.create({
+    data: {
+      fileUrl: fileUrl,
+      downloadUrl: downloadUrl,
+      user: { connect: { id: userId } },
+    }
+  })
+
+  revalidatePath('/[lang]/admin');
+}
+
+

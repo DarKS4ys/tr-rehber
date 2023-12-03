@@ -6,8 +6,13 @@ import { getDownloadUrl } from '@edgestore/react/utils';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Progress } from './ui/progress';
+import Image from 'next/image';
+import { prisma } from '@/lib/db/prisma';
+import type { Session } from 'next-auth';
+import { saveFileToDB } from '@/actions/actions';
 
-export default function Upload() {
+export default function Upload({session}: {session: Session | null}) {
+
   const [file, setFile] = React.useState<File>();
   const [progress, setProgress] = React.useState<number>()
   const [loading, setLoading] = React.useState<boolean>(false)
@@ -39,11 +44,12 @@ export default function Upload() {
                 console.log(error)
               } finally {
                 setLoading(false)
-                const DownloadUrl = getDownloadUrl(
+                const downloadUrl = getDownloadUrl(
                   res.url,
                 );
-                console.log(DownloadUrl)
-                console.log('Client Data: ' + res.url);
+                saveFileToDB(res.url, downloadUrl, session?.user.id)
+                /* console.log(DownloadUrl) */
+                /* console.log('Client Data: ' + res.url); */
               }
             }
           }}

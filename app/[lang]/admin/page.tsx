@@ -3,8 +3,16 @@ import Time from '@/components/Time';
 import Upload from '@/components/Upload';
 import { Locale } from '@/i18n.config';
 import { authOptions } from '@/lib/auth';
+import { prisma } from '@/lib/db/prisma';
 import { getServerSession } from 'next-auth';
+import Image from 'next/image';
 import React from 'react';
+import ProfileImg from '@/public/profile-pic-placeholder.png'
+import { Button } from '@/components/ui/button';
+import {BiCopy, BiDownload} from 'react-icons/bi'
+import Link from 'next/link';
+import CopyToClipboardButton from '@/components/Clipboard';
+import { Toaster } from 'sonner';
 
 export default async function page({
   params: { lang },
@@ -12,9 +20,12 @@ export default async function page({
   params: { lang: Locale };
 }) {
 
-    const session = await getServerSession(authOptions);
+  const session = await getServerSession(authOptions);
 
-    console.log(session)
+  const files = await prisma.file.findMany({
+    orderBy: {id: "desc"},
+    include: {user: true}
+  })
 
   return (
     <div className='py-12 px-8'>
@@ -36,7 +47,7 @@ export default async function page({
               title='Upload a new file'
               description='Transfer a new file to edgestore using the input below.'
               >
-                <Upload />
+                <Upload session={session} />
               </AdminCard>
 
               <AdminCard
@@ -46,6 +57,31 @@ export default async function page({
               gradient2
               />
           </div>
+
+          <h1 className="text-3xl font-semibold">Uploaded Files</h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {files.map((image) => (
+            <div key={image.id} className='flex flex-col gap-4 rounded-xl p-10 bg-primary/10 mx-auto w-full'>
+              <div className="relative group w-full h-80 overflow-hidden aspect-square rounded-lg">
+              <div className='z-20 absolute flex flex-col gap-2 top-0 left-0 rounded-lg bg-black/40 dark:bg-black/60 group-hover:backdrop-blur w-full h-full items-center justify-center opacity-0 group-hover:opacity-100 transition duration-200'>
+                <CopyToClipboardButton textToCopy={image.fileUrl} buttonText='Copy link to clipboard'/>
+              </div>
+                <Image fill className='object-cover' alt='File' src={image.fileUrl}/>
+              </div>
+              <div className='flex gap-2 items-center font-medium'>
+                <div className="relative overflow-hidden w-10 h-10 aspect-square rounded-full">
+                  <Image fill className='object-cover' alt='File' src={image.user.image || ProfileImg}/>
+                </div>
+                <h1>{image.user.name}</h1>
+                <Link className='ml-auto' href={image.downloadUrl}>
+                  <Button className='gap-2'><BiDownload/>Download</Button>
+                </Link>
+              </div>
+            </div>
+          ))}
+          </div>
+          <Toaster closeButton richColors/>
+
         </div>
     </div>
   );

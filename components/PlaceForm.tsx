@@ -119,7 +119,7 @@ export default function PlaceForm({
             <IoMdCreate />
             }
           </Button>
-          <Toaster closeButton/>
+          <Toaster richColors closeButton/>
       </>
     );
   }
