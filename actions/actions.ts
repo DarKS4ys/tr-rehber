@@ -51,7 +51,7 @@ export const sendEmail = async (formData: FormData) => {
 };
 
 export async function createPlace(
-  placeData: Record<Locale, { name: string; description: string }>,
+  placeData: Record<Locale, { name: string; description: string, videoUrl: string, info:string }>,
   user: any,
   imageUrl: string,
 
@@ -72,6 +72,8 @@ export async function createPlace(
     >) {
       const name = placeData[lang].name as string;
       const description = placeData[lang].description as string;
+      const videoUrl = placeData[lang].videoUrl as string;
+      const info = placeData[lang].info as string;
       
       if (!validateString(name, 50)) {
         return {
@@ -79,9 +81,21 @@ export async function createPlace(
         };
       }
       
-      if (!validateString(description, 500)) {
+      if (!validateString(description, 300)) {
         return {
           error: 'Invalid description',
+        };
+      }
+
+      if (!validateString(videoUrl, 300)) {
+        return {
+          error: 'Invalid video url',
+        };
+      }
+
+      if (!validateString(info, 5000)) {
+        return {
+          error: 'Invalid info',
         };
       }
       
@@ -94,9 +108,19 @@ export async function createPlace(
         ...(placeCreateData.data.description || {}),
         [lang]: description,
       };
+
+      placeCreateData.data.videoUrl = {
+        ...(placeCreateData.data.videoUrl || {}),
+        [lang]: videoUrl,
+      };
+
+      placeCreateData.data.info = {
+        ...(placeCreateData.data.info || {}),
+        [lang]: info,
+      };
     }
 
-    if (!validateString(imageUrl, 5000)) {
+    if (!validateString(imageUrl, 500)) {
       return {
         error: 'Invalid image url',
       };
@@ -106,11 +130,15 @@ export async function createPlace(
 
     const createdPlace = await prisma.place.create(placeCreateData);
 
-    await prisma.placeSnippet.create({
-      data: {
-        place: { connect: { id: createdPlace.id } },
-      },
-    });
+      
+      await prisma.placeSnippet.create({
+        data: {
+          name: placeCreateData.data.name,
+          description: placeCreateData.data.description,
+          place: { connect: { id: createdPlace.id } },
+        },
+      });
+    
 
     console.log('Place created');
 
@@ -127,15 +155,35 @@ export async function createPlace(
 }
 
 export async function saveFileToDB(fileUrl: string, downloadUrl: string, userId: string | undefined) {
-  await prisma.file.create({
-    data: {
-      fileUrl: fileUrl,
-      downloadUrl: downloadUrl,
-      user: { connect: { id: userId } },
-    }
-  })
+  try {
+    await prisma.file.create({
+      data: {
+        fileUrl: fileUrl,
+        downloadUrl: downloadUrl,
+        user: { connect: { id: userId } },
+      }
+    })
 
-  revalidatePath('/[lang]/admin');
+    revalidatePath('/[lang]/admin');
+
+    return { success: true, message: "File uploaded successfully" };
+  } catch (error) {
+    throw new Error("Something went wrong while saving file to database")
+  }
+}
+
+export async function deleteFile(fileId: string) {
+  try {
+    await prisma.file.delete({
+      where: { id: fileId }
+    })
+    
+    revalidatePath('/[lang]/admin');
+    
+    return { success: true, message: "File deleted successfully" };
+  } catch (error) {
+    throw new Error("Something went wrong while deleting the file")
+  }
 }
 
 

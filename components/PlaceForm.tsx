@@ -31,19 +31,19 @@ export default function PlaceForm({
 
     const [imageUrl, setImageUrl] = useState('')
 
-    const [formData, setFormData] = useState<Record<Locale, { name: string; description: string }>>({
-      en: { name: '', description: '' },
-      tr: { name: '', description: '' },
+    const [formData, setFormData] = useState<Record<Locale, { name: string; description: string, videoUrl: string, info: string }>>({
+      en: { name: '', description: '', videoUrl: '', info: '' },
+      tr: { name: '', description: '', videoUrl: '', info: '' },
     });
 
     const resetFormData = () => {
         setFormData({
-          en: { name: '', description: '' },
-          tr: { name: '', description: '' },
+          en: { name: '', description: '', videoUrl: '', info: '' },
+          tr: { name: '', description: '', videoUrl: '', info: '' },
         });
       };
 
-    const handleChange = (locale: Locale, field: 'name' | 'description', value: string) => {
+    const handleChange = (locale: Locale, field: 'name' | 'description' | 'videoUrl' | 'info', value: string) => {
         setFormData((formData) => ({
           ...formData,
           [locale]: {
@@ -76,6 +76,21 @@ export default function PlaceForm({
                   placeholder={`${languageNames[lang][locale]} Description`}
                   value={formData[locale].description}
                   onChange={(e) => handleChange(locale, 'description', e.target.value)}
+                />
+                <Textarea
+                  required
+                  name={`${lang}-info`}
+                  placeholder={`${languageNames[lang][locale]} Info`}
+                  value={formData[locale].info}
+                  onChange={(e) => handleChange(locale, 'info', e.target.value)}
+                />
+                <Input
+                  required
+                  name={`${lang}-videoUrl`}
+                  type='url'
+                  placeholder={`${languageNames[lang][locale]} Video Url`}
+                  value={formData[locale].videoUrl}
+                  onChange={(e) => handleChange(locale, 'videoUrl', e.target.value)}
                 />
               </AccordionContent>
             </AccordionItem>

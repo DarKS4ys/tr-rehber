@@ -7,7 +7,7 @@ import React from 'react'
 
 export default function PlaceCard({place, lang}: {place: Place, lang: Locale}) {
   return (
-    <Link href={place.id} className='group relative flex flex-col gap-4 h-[27rem] items-center text-center border border-border hover:border-primary/80 rounded-xl transition duration-200 overflow-hidden'>
+    <Link href={`explore/${place.id}`} className='group relative flex flex-col gap-4 h-[27rem] items-center text-center border border-border hover:border-primary/80 rounded-xl transition duration-200 overflow-hidden'>
       <div className="relative group-hover:scale-110 transition duration-200">
         <div className="absolute top-44 left-0 w-full h-20 bg-gradient-to-b from-transparent via-transparent to-background"/>
 

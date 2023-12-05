@@ -8,6 +8,8 @@ import { clsx } from 'clsx';
 import UserMenuButton from './Auth/UserMenuButton'
 import type { Session } from 'next-auth'
 import Link from 'next/link';
+import { useRouter } from 'next/navigation'
+
 
 export default function Navbar({navbar, lang, session}: {navbar: any, lang: Locale, session: Session | null}) {
 
@@ -16,7 +18,7 @@ export default function Navbar({navbar, lang, session}: {navbar: any, lang: Loca
     const [color,setColor] = useState(false)
 
     const changeColor = () => {
-      if (window.scrollY >= 90) {
+      if (window.scrollY >= 80) {
         setColor(true)
       } else {
         setColor(false)
@@ -32,7 +34,7 @@ export default function Navbar({navbar, lang, session}: {navbar: any, lang: Loca
     }, []);
     
   return (
-    <div className={clsx('py-4 px-8 flex items-center justify-center sticky top-0 z-20 transition-background duration-300', color && 'bg-background/90 backdrop-blur-md ')}>
+    <div className={clsx('z-50 px-8 flex items-center justify-center sticky top-0 border-b border-border bg-background/90 backdrop-blur-md transition-all duration-300', color ? 'py-2 transition-all' : 'py-4')}>
         <div className='max-w-7xl justify-between items-center flex w-full'>
           <Link href="/" className='text-xl font-medium'>Türkiye Rehberim</Link>
 

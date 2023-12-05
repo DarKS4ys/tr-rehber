@@ -68,6 +68,8 @@ model Place {
   id           String         @id @default(auto()) @map("_id") @db.ObjectId
   name         Json
   description  Json           @map("description")
+  info         Json
+  videoUrl     Json
   imageUrl     String
   PlaceSnippet PlaceSnippet[]
 
@@ -75,9 +77,11 @@ model Place {
 }
 
 model PlaceSnippet {
-  id      String @id @default(auto()) @map("_id") @db.ObjectId
-  placeId String @db.ObjectId
-  place   Place  @relation(fields: [placeId], references: [id], onDelete: Cascade)
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  name        Json
+  description Json
+  placeId     String @db.ObjectId
+  place       Place  @relation(fields: [placeId], references: [id], onDelete: Cascade)
 
   @@map("placesnippets")
 }

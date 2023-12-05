@@ -1,17 +1,17 @@
 'use client';
 
 import * as React from 'react';
-import { useEdgeStore } from '../lib/edgestore';
 import { getDownloadUrl } from '@edgestore/react/utils';
-import { Button } from './ui/button';
-import { Input } from './ui/input';
-import { Progress } from './ui/progress';
 import Image from 'next/image';
 import { prisma } from '@/lib/db/prisma';
 import type { Session } from 'next-auth';
 import { saveFileToDB } from '@/actions/actions';
 import clsx from 'clsx';
 import { toast } from 'sonner';
+import { useEdgeStore } from '@/lib/edgestore';
+import { Button } from '@/components/ui/button';
+import { Progress } from '@/components/ui/progress';
+import { Input } from '@/components/ui/input';
 
 export default function Upload({session}: {session: Session | null}) {
 
@@ -42,7 +42,25 @@ export default function Upload({session}: {session: Session | null}) {
                   onProgressChange: (progress) => {
                     setProgress(progress)
                   },
+
                   });
+
+                  if(session?.user.status == 'Admin') {
+                    const response = await fetch('/api/prepare-document', {
+                      method: 'POST',
+                      body: JSON.stringify({url: res.url})
+                    });
+                                    
+                    if (response.ok) {
+                      const data = await response.text();
+              
+                      console.log('API DATA: ' + data)
+                    } else {
+                      console.error('Failed to fetch data');
+                    }
+                  } else {
+                    throw new Error('You are not an admin');
+                  }
 
                   const downloadUrl = getDownloadUrl(
                     res.url,
