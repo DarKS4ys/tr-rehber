@@ -22,12 +22,12 @@ const CopyToClipboardButton = ({ textToCopy, buttonText = 'Copy to Clipboard' }:
 
   return (
     <button
-      className={`p-6 rounded-md flex flex-col gap-2 items-center hover:scale-110 active:scale-90 transition duration-200 ${
+      className={`p-2 rounded-md flex flex-col items-center hover:scale-110 active:scale-90 transition duration-200 ${
         isCopied ? 'text-green-500' : 'text-white'
       }`}
       onClick={handleCopyClick}
     >
-        <BiCopy size={72}/>
+        <BiCopy size={52}/>
       {isCopied ? 'Copied!' : buttonText}
     </button>
   );
