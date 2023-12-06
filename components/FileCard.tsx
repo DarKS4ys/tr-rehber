@@ -47,7 +47,7 @@ export const FileCard: React.FC<FileCardProps> = ({ session, file }) => (
       <div className="z-20 absolute flex gap-2 top-0 left-0 rounded-lg bg-black/40 dark:bg-black/60 group-hover:backdrop-blur w-full h-full items-center justify-center opacity-0 group-hover:opacity-100 transition duration-200">
         <Dialog>
           <DialogTrigger asChild>
-            <button className="p-2 flex flex-col items-center hover:scale-110 active:scale-90 transition duration-200">
+            <button className="p-2 text-white flex flex-col items-center hover:scale-110 active:scale-90 transition duration-200">
               <AiFillEye size={52} />
               View
             </button>
@@ -78,7 +78,7 @@ export const FileCard: React.FC<FileCardProps> = ({ session, file }) => (
             )}
           </DialogContent>
         </Dialog>
-        <div className="h-20 w-0.5 bg-primary" />
+        <div className="h-20 w-0.5 bg-white/50" />
         <CopyToClipboardButton
           textToCopy={file.fileUrl}
           buttonText="Copy link"

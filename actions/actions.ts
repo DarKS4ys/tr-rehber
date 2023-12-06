@@ -51,10 +51,10 @@ export const sendEmail = async (formData: FormData) => {
 };
 
 export async function createPlace(
-  placeData: Record<Locale, { name: string; description: string, videoUrl: string, info:string }>,
+  placeData: Record<Locale, { name: string; description: string, videoUrl: string, info:string, tags: string[] }>,
   user: any,
   imageUrl: string,
-
+  extraImageUrls: string[],
 ) {
 
 
@@ -74,6 +74,7 @@ export async function createPlace(
       const description = placeData[lang].description as string;
       const videoUrl = placeData[lang].videoUrl as string;
       const info = placeData[lang].info as string;
+      const tags = placeData[lang].tags as string[];
       
       if (!validateString(name, 50)) {
         return {
@@ -98,6 +99,12 @@ export async function createPlace(
           error: 'Invalid info',
         };
       }
+
+      if (tags.some(tag => !validateString(tag, 50))) {
+        return {
+          error: 'Invalid tags',
+        };
+      }
       
       placeCreateData.data.name = {
         ...(placeCreateData.data.name || {}),
@@ -118,6 +125,11 @@ export async function createPlace(
         ...(placeCreateData.data.info || {}),
         [lang]: info,
       };
+
+      placeCreateData.data.tags = [
+        ...(placeCreateData.data.tags || []),
+        { [lang]: tags },
+      ];
     }
 
     if (!validateString(imageUrl, 500)) {
@@ -126,7 +138,16 @@ export async function createPlace(
       };
     }
 
+    if (extraImageUrls.some((url) => !validateString(url, 500))) {
+      return {
+        error: 'Invalid extra image url(s)',
+      };
+    }
+
+
     placeCreateData.data.imageUrl = imageUrl;
+
+    placeCreateData.data.images = extraImageUrls;
 
     const createdPlace = await prisma.place.create(placeCreateData);
 
@@ -135,6 +156,9 @@ export async function createPlace(
         data: {
           name: placeCreateData.data.name,
           description: placeCreateData.data.description,
+          tags: placeCreateData.data.tags,
+          imageUrl: placeCreateData.data.imageUrl,
+          images: placeCreateData.data.images,
           place: { connect: { id: createdPlace.id } },
         },
       });

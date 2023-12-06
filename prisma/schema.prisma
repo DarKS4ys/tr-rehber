@@ -70,18 +70,23 @@ model Place {
   description  Json           @map("description")
   info         Json
   videoUrl     Json
+  tags         Json[]
   imageUrl     String
+  images       String[]
   PlaceSnippet PlaceSnippet[]
 
   @@map("places")
 }
 
 model PlaceSnippet {
-  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
   name        Json
   description Json
-  placeId     String @db.ObjectId
-  place       Place  @relation(fields: [placeId], references: [id], onDelete: Cascade)
+  tags        Json[]
+  images      String[]
+  imageUrl    String
+  placeId     String   @db.ObjectId
+  place       Place    @relation(fields: [placeId], references: [id], onDelete: Cascade)
 
   @@map("placesnippets")
 }

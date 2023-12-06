@@ -16,9 +16,9 @@ export default function Chat({placeName}: {placeName: string} ) {
         initialMessages,
       });
   
-    useEffect(() => {
+/*     useEffect(() => {
       setTimeout(() => scrollToBottom(containerRef), 100);
-    }, [messages]);
+    }, [messages]); */
   
       
     useEffect(() => {

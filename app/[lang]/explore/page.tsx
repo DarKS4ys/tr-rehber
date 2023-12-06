@@ -15,7 +15,7 @@ export default async function page({
   })
 
   return (
-    <div className="p-12">
+    <div className="py-10 px-4 md:p-12">
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mx-auto max-w-7xl">
         {places.map((place) => (
           <PlaceCard

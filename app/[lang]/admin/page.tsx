@@ -5,19 +5,8 @@ import { Locale } from '@/i18n.config';
 import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/db/prisma';
 import { getServerSession } from 'next-auth';
-import Image from 'next/image';
 import React from 'react';
-import ProfileImg from '@/public/profile-pic-placeholder.png';
-import { Button } from '@/components/ui/button';
-import { BiDownload, BiVideo } from 'react-icons/bi';
-import Link from 'next/link';
-import CopyToClipboardButton from '@/components/Clipboard';
 import { Toaster } from 'sonner';
-import { IoMdClose } from 'react-icons/io';
-import { Dialog, DialogClose, DialogContent, DialogTrigger } from '@/components/ui/dialog';
-import Delete from '@/components/Delete';
-import { FaFilePdf } from 'react-icons/fa';
-import { AiFillEye } from 'react-icons/ai';
 import { FileCard } from '@/components/FileCard';
 
 export default async function page({
@@ -33,7 +22,7 @@ export default async function page({
   });
 
   return (
-    <div className="p-12">
+    <div className="py-10 px-4 md:p-12">
       <div className="max-w-7xl flex flex-col gap-8 mx-auto ">
         <div className="flex flex-col gap-2">
           <h1 className="text-3xl font-medium">
