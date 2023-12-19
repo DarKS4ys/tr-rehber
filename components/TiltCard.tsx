@@ -58,7 +58,7 @@ const TiltCard = ({ title, description, color, icon }: { icon: React.ReactNode, 
           transform: 'translateZ(75px)',
           transformStyle: 'preserve-3d',
         }}
-        className="absolute inset-4 p-4 gap-4 grid place-content-center rounded-xl bg-white shadow-lg"
+        className="absolute inset-4 p-4 gap-4 grid place-content-center rounded-xl bg-primary-foreground shadow-lg"
       >
         <div
           style={{
@@ -73,7 +73,7 @@ const TiltCard = ({ title, description, color, icon }: { icon: React.ReactNode, 
           style={{
             transform: 'translateZ(50px)',
           }}
-          className="text-center text-2xl font-bold text-black flex flex-col gap-2"
+          className="text-center text-2xl font-bold text-primary flex flex-col gap-2"
         >
           {title}
 
