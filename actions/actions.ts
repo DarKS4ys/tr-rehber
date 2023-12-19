@@ -211,3 +211,59 @@ export async function deleteFile(fileId: string) {
 }
 
 
+
+const commentTextSchema = z.string().min(1).max(500);
+
+export async function sendComment(placeId: string, text: string, user: any) {
+  try {
+    // Check if the user object has a valid 'id' property
+    if (!user || !user.id) {
+      throw new Error('You have to be logged in to send a comment');
+    }
+
+    commentTextSchema.parse(text);
+
+    await prisma.comment.create({
+      data: {
+        text: text,
+        user: { connect: { id: user.id } },
+        place: { connect: { id: placeId } },
+      },
+    });
+
+    revalidatePath('/products/[id]');
+
+    return { success: true };
+  } catch (error: any) {
+    if (z.instanceof(error)) {
+      throw new Error('The comment must to be between 1 and 500 characters');
+    }
+
+    return { error: error.message };
+  }
+}
+
+export async function deleteComment(
+  commentId: string,
+  userId: string,
+  commentUserId: string
+) {
+  try {
+    if (userId !== commentUserId) {
+      throw new Error('The comment does not belong to you.');
+    }
+
+    await prisma.comment.delete({
+      where: { id: commentId },
+    });
+
+    revalidatePath('/products/[id]');
+
+    return { success: true };
+  } catch (error: any) {
+    return { error: error.message || 'Failed to delete comment' };
+  }
+}
+
+
+

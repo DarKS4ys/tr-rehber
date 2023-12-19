@@ -1,6 +1,6 @@
 import Contact from '@/components/Contact/Contact'
-import Header from '@/components/Header'
 import Middle from '@/components/Middle/Middle'
+import Header from '@/components/OldHeader'
 import { Locale } from '@/i18n.config'
 import { prisma } from '@/lib/db/prisma'
 import { getDictionary } from '@/lib/dictionary'
@@ -20,8 +20,8 @@ export default async function Home({
 
   return (
     <main>
-      <Header allPlaces={allPlaces} aleo={aleo} lang={lang}/>
-      <Contact contact={page.contact}/>
+      {/* <Header allPlaces={allPlaces} aleo={aleo} lang={lang}/> */}
+      <Header header={page.header}/>
       <Middle middle={page.middle}/>
       <Contact contact={page.contact}/>
     </main>

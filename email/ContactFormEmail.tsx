@@ -27,7 +27,7 @@ export default function ContactFormEmail({message, senderEmail}: ContactFormEmai
             <Body className='bg-neutral-100'>
                 <Container>
                     <Section className='bg-white border-border border my-10 px-10 py-4 rounded-lg'>
-                        <Heading className='leading-tight'>You received a new message from Türkiye Rehberim</Heading>
+                        <Heading className='leading-tight'>You received a new message from Trabzon Rehberim</Heading>
                         <Text>{message}</Text>
                         <Hr/>
                         <Text>The sender&apos;s email is: {senderEmail}</Text>

@@ -40,16 +40,22 @@ model Session {
   @@map("sessions")
 }
 
+enum Status {
+  Admin
+  User
+}
+
 model User {
   id            String    @id @default(auto()) @map("_id") @db.ObjectId
   name          String?
   email         String?   @unique
   emailVerified DateTime?
   image         String?
-  status        String?
+  status        Status    @default(User)
   accounts      Account[]
   sessions      Session[]
   File          File[]
+  Comment       Comment[]
 
   @@map("users")
 }
@@ -74,6 +80,7 @@ model Place {
   imageUrl     String
   images       String[]
   PlaceSnippet PlaceSnippet[]
+  comments     Comment[]
 
   @@map("places")
 }
@@ -89,6 +96,19 @@ model PlaceSnippet {
   place       Place    @relation(fields: [placeId], references: [id], onDelete: Cascade)
 
   @@map("placesnippets")
+}
+
+model Comment {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  text      String
+  placeId   String   @db.ObjectId
+  place     Place    @relation(fields: [placeId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    String   @db.ObjectId
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("comments")
 }
 
 model File {

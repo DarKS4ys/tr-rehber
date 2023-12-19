@@ -26,6 +26,7 @@
     "@react-email/tailwind": "^0.0.12",
     "@splidejs/react-splide": "^0.7.12",
     "ai": "^2.2.27",
+    "axios": "^1.6.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "dotenv": "^16.3.1",

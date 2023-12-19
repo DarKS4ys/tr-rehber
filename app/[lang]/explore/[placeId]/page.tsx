@@ -1,9 +1,13 @@
 import Chat from '@/components/Chat';
+import Comments from '@/components/Comments';
 import TextToSpeechButton from '@/components/TextToSpeechButton';
 import { Locale } from '@/i18n.config';
+import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/db/prisma';
+import { getServerSession } from 'next-auth';
 import Image from 'next/image';
 import React from 'react';
+import { Toaster } from 'sonner';
 
 export default async function page({
   params: { lang, placeId },
@@ -12,7 +16,17 @@ export default async function page({
 }) {
   const place = await prisma.place.findUnique({
     where: { id: placeId },
+    include: {
+      comments: {
+        include: {
+          user: true, // Include the user field from the comments relation
+        },
+        orderBy: { createdAt: 'desc' },
+      },
+    },
   });
+
+  const session = await getServerSession(authOptions);
 
   const sentences = (place?.info as { [key in Locale]: string })[lang].split(
     /(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s/g
@@ -50,7 +64,7 @@ export default async function page({
                         >
                           {tag}
                         </span>
-                    ))}
+                      ))}
                   </div>
                 )}
               </div>
@@ -72,7 +86,10 @@ export default async function page({
                 title="YouTube Video"
                 width="100%"
                 height="100%"
-                src={'https://youtube.com/embed/' + (place?.videoUrl as { [key in Locale]: string })[lang]} // Assuming place.videoUrl is the YouTube video URL
+                src={
+                  'https://youtube.com/embed/' +
+                  (place?.videoUrl as { [key in Locale]: string })[lang]
+                } // Assuming place.videoUrl is the YouTube video URL
                 className="rounded-xl"
                 allowFullScreen
               ></iframe>
@@ -87,8 +104,21 @@ export default async function page({
               text={(place?.info as { [key in Locale]: string })[lang]}
             />
           </div>
+
+          {place && (
+            <div className='flex flex-col gap-2 mt-8'>
+              <h1 className="text-2xl font-semibold">Comments</h1>
+              <Comments
+                comments={place.comments}
+                placeId={placeId}
+                user={session?.user}
+              />
+            </div>
+          )}
         </div>
       </div>
+
+      <Toaster closeButton richColors />
     </div>
   );
 }

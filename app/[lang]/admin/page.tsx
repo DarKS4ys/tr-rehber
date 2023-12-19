@@ -16,6 +16,10 @@ export default async function page({
 }) {
   const session = await getServerSession(authOptions);
 
+  if (session?.user.status != 'Admin') {
+    throw new Error('You need to be an admin')
+  }
+
   const files = await prisma.file.findMany({
     orderBy: { id: 'desc' },
     include: { user: true },
