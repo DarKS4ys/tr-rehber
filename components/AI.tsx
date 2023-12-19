@@ -8,7 +8,7 @@ import { IoSendSharp } from "react-icons/io5";
 const endpoint = "https://www.stack-inference.com/run_deployed_flow?flow_id=65358cc0d838608f2b331e42&org=d6673818-2528-4c51-97d7-4d9557f9ecb1";
 const apiKey = "39eada58-2eb8-4f0a-a4a9-2f099cf36d16";
 
-export default function AI() {
+export default function AI({ai}: {ai: string}) {
   const [inputText, setInputText] = useState("");
   const [apiResponse, setApiResponse] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -51,7 +51,7 @@ export default function AI() {
         <div className="bg-background border border-border drop-shadow-xl flex justify-center items-center w-96 py-4 px-6 rounded-full gap-2">
             <BsStars className="text-[#7c7c7c]" />
             <input
-                placeholder="Ask me anything"
+                placeholder={ai}
                 className="text-primary bg-transparent outline-none w-full"
                 value={inputText}
                 onChange={handleInputChange}

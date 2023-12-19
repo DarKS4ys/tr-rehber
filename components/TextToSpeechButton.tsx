@@ -5,9 +5,10 @@ import { Button } from './ui/button';
 
 interface TextToSpeechButtonProps {
   text: string;
+  placeLocal: any
 }
 
-const TextToSpeechButton: React.FC<TextToSpeechButtonProps> = ({ text }) => {
+const TextToSpeechButton: React.FC<TextToSpeechButtonProps> = ({ text, placeLocal }) => {
   const [isSpeaking, setIsSpeaking] = useState(false);
 
   const handleSpeak = () => {
@@ -34,7 +35,7 @@ const TextToSpeechButton: React.FC<TextToSpeechButtonProps> = ({ text }) => {
 
   return (
     <Button onClick={handleSpeak} key={"Text to speech button"}>
-      {isSpeaking ? 'Stop Speaking' : 'Speak Text'}
+      {isSpeaking ? placeLocal.ttsStop : placeLocal.tts}
     </Button>
   );
 };

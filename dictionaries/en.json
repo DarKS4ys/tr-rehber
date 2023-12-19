@@ -3,9 +3,11 @@
     "header": {
       "welcome": "Welcome to",
       "city": "Trabzon!",
-      "description": "Discover places to explore and things to do with our AI powered tool"
+      "description": "Discover places to explore and things to do with our AI powered tool",
+
+      "ai": "Ask me anything"
     },
-    "navbar": {
+  "navbar": {
       "switcher": {
         "dark": "Dark",
         "light": "Light",
@@ -21,6 +23,13 @@
         "explore": "Explore",
         "contact": "Contact",
         "homepage": "Homepage"
+      },
+
+      "userMenu": {
+        "settings": "Settings",
+        "saved": "Saved Places",
+        "admin": "Admin Dashboard",
+        "logout": "Sign Out"
       }
     },
     "middle": {
@@ -82,9 +91,26 @@
       "notFound": "Not found"
     }
   },
-  "place": {
-    "go": "Go there now",
-    "error": "An error occured while fetching content",
-    "activityError": "Error occured while fetching activities"
+  "placeLocal": {
+    "ai": {
+      "placeholder": "Ask questions about",
+      "button": "Send"
+    },
+    "tts": "Speak Text",
+    "ttsStop": "Stop",
+    "comments": {
+      "title": "Comments",
+      "placeholder": "Write your comment...",
+      "userError": "You have to log-in to leave a comment.",
+      "send": "Send",
+      "delete": "Delete",
+      "today": "Today at",
+
+      "errorDelete": "Could not delete the comment",
+      "successDelete": "Comment deleted",
+
+      "success": "Comment added",
+      "error": "Couldn't send the comment"
+    }
   }
 }

@@ -3,7 +3,9 @@
       "header": {
         "welcome": "Trabzon'a",
         "city": "Hoşgeldiniz!",
-        "description": "Yapay zeka destekli aracımızla Trabzon'da gezilecek yerler ve yapılabilecekleri keşfedin"
+        "description": "Yapay zeka destekli aracımızla Trabzon'da gezilecek yerler ve yapılabilecekleri keşfedin",
+
+        "ai": "İstediğini sor..."
       },
 
       "navbar": {
@@ -22,7 +24,15 @@
         "explore": "Keşfet",
         "contact": "İletişim",
         "homepage": "Anasayfa"
+      },
+
+      "userMenu": {
+        "settings": "Ayarlar",
+        "saved": "Kaydedilmiş yerler",
+        "admin": "Admin Paneli",
+        "logout": "Oturumu Kapat"
       }
+
       },
       "middle": {
         "explore": {
@@ -83,10 +93,27 @@
         "notFound": "Bulunamadı"
       }
     },
-    "place": {
-      "go": "Hemen buraya git",
-      "error": "Yer hakkında bilgi toplanırken hata meydana geldi...",
-      "activityError": "Aktivite verileri toplanırken hata meydana geldi..."
+    "placeLocal": {
+      "ai": {
+        "placeholder": "Hakkında sorular sor:",
+        "button": "Gönder"
+      },
+      "tts": "Dinle",
+      "ttsStop": "Durdur",
+      "comments": {
+        "title": "Yorumlar",
+        "placeholder": "Yorumunu yaz...",
+        "userError": "Yorum yapabilmek için giriş yapmanız gerek.",
+        "send": "Gönder",
+        "delete": "Sil",
+        "today": "Bugün",
+
+        "errorDelete": "Yorum silinemedi",
+        "successDelete": "Yorum başarıyla silinemedi",
+
+        "success": "Yorum başarıyla gönderildi",
+        "error": "Yorum gönderilemedi"
+      }
     }
   }
   

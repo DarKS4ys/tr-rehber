@@ -10,27 +10,28 @@ interface DeleteCommentButtonProps {
   commentId: string;
   commentUserId: string;
   userId: string;
+  placeLocal: any
 }
 
-export default function DeleteCommentButton({ commentUserId, userId, commentId, deleteComment }: DeleteCommentButtonProps) {
+export default function DeleteCommentButton({ commentUserId, userId, commentId, deleteComment, placeLocal }: DeleteCommentButtonProps) {
   const handleDeleteComment = async () => {
     try {
       const response: any = await deleteComment(commentId, userId, commentUserId);
 
       if (response.success) {
-        toast.success('Comment deleted.');
+        toast.success(placeLocal.comments.successDelete);
       } else {
         toast.error(response.error);
       }
     } catch (error: any) {
-      toast.error(error.message || 'Could not delete the comment.');
+      toast.error(error.message || placeLocal.comments.errorDelete);
     }
   };
 
   return (
     <Button
     variant={'destructive'}
-      className="text-lg fond-bold flex items-center gap-2"
+      className="text-lg fond-bold flex items-center gap-2 w-full"
       onClick={() => {
         startTransition(() => {
           handleDeleteComment();
@@ -38,7 +39,7 @@ export default function DeleteCommentButton({ commentUserId, userId, commentId, 
       }}
     >
       <BsTrash />
-      <p>Delete</p>
+      <p>{placeLocal.comments.delete}</p>
     </Button>
   );
 }

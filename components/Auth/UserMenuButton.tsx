@@ -15,9 +15,10 @@ import { MdPlace } from "react-icons/md";
 
 interface UserMenuButtonProps {
     session: Session | null
+    userMenu: any
 }
 
-export default function UserMenuButton({session}: UserMenuButtonProps) {
+export default function UserMenuButton({session, userMenu}: UserMenuButtonProps) {
     const user = session?.user
 
   return (
@@ -50,14 +51,14 @@ export default function UserMenuButton({session}: UserMenuButtonProps) {
                         <Link href='/settings'>
                             <DropdownMenuItem className="gap-2 flex text-lg items-center opacity-90 hover:opacity-100 transition">
                                 <FiSettings/>
-                                <h1>Settings</h1>
+                                <h1>{userMenu.settings}</h1>
                             </DropdownMenuItem>
                         </Link>
 
                         <Link href='/saved'>
                             <DropdownMenuItem className="gap-2 flex text-lg items-center opacity-90 hover:opacity-100 transition">
                                 <MdPlace />
-                                <h1>Saved Places</h1>
+                                <h1>{userMenu.saved}</h1>
                             </DropdownMenuItem>
                         </Link>
 
@@ -66,12 +67,12 @@ export default function UserMenuButton({session}: UserMenuButtonProps) {
                         <Link href='/admin'>
                             <DropdownMenuItem className="gap-2 flex text-lg items-center opacity-90 hover:opacity-100 transition">
                             <FaScrewdriverWrench />
-                                <h1>Admin Dashboard</h1>
+                                <h1>{userMenu.admin}</h1>
                             </DropdownMenuItem>
                         </Link>
                         }
 
-                        <Button className="w-full mt-1" onClick={() => signOut({callbackUrl: "/"})}>Sign Out</Button>
+                        <Button className="w-full mt-1" onClick={() => signOut({callbackUrl: "/"})}>{userMenu.logout}</Button>
                          
                     </DropdownMenuContent>
                 </DropdownMenu>

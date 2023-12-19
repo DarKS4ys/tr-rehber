@@ -7,7 +7,7 @@ import { initialMessages } from './../lib/utils';
 import { Button } from './ui/button';
 import { ChatLine } from './ChatLine';
 
-export default function Chat({placeName}: {placeName: string} ) {
+export default function Chat({placeName,placeLocal}: {placeLocal: any, placeName: string} ) {
     const containerRef = useRef<HTMLDivElement | null>(null);
     const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   
@@ -63,12 +63,12 @@ export default function Chat({placeName}: {placeName: string} ) {
                 value={input}
                 disabled={isLoading}
                 onChange={handleInputChange}
-                placeholder={`Ask questions about ${placeName}!`}
+                placeholder={`${placeLocal.ai.placeholder} ${placeName}!`}
                 rows={1}
               />
 
         <Button type="submit" className="w-24" disabled={isLoading}>
-          {isLoading ? <FaSpinner className="animate-spin"/> : "Ask"}
+          {isLoading ? <FaSpinner className="animate-spin"/> : placeLocal.ai.button}
         </Button>
       </form>
       </div>

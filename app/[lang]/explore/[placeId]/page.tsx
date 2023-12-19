@@ -4,6 +4,7 @@ import TextToSpeechButton from '@/components/TextToSpeechButton';
 import { Locale } from '@/i18n.config';
 import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/db/prisma';
+import { getDictionary } from '@/lib/dictionary';
 import { getServerSession } from 'next-auth';
 import Image from 'next/image';
 import React from 'react';
@@ -25,6 +26,8 @@ export default async function page({
       },
     },
   });
+
+  const { placeLocal } = await getDictionary(lang)
 
   const session = await getServerSession(authOptions);
 
@@ -98,20 +101,23 @@ export default async function page({
           <div className="flex flex-col gap-8">
             <h1>{remainingText}</h1>
             <Chat
+            placeLocal={placeLocal}
               placeName={(place?.name as { [key in Locale]: string })[lang]}
             />
             <TextToSpeechButton
               text={(place?.info as { [key in Locale]: string })[lang]}
+              placeLocal={placeLocal}
             />
           </div>
 
           {place && (
             <div className='flex flex-col gap-2 mt-8'>
-              <h1 className="text-2xl font-semibold">Comments</h1>
+              <h1 className="text-2xl font-semibold">{placeLocal.comments.title}</h1>
               <Comments
                 comments={place.comments}
                 placeId={placeId}
                 user={session?.user}
+                placeLocal={placeLocal}
               />
             </div>
           )}

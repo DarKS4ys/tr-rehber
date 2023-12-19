@@ -1,4 +1,6 @@
 import Contact from '@/components/Contact/Contact'
+import Features from '@/components/Features'
+import Marquee from '@/components/Marquee'
 import Middle from '@/components/Middle/Middle'
 import Header from '@/components/OldHeader'
 import { Locale } from '@/i18n.config'
@@ -15,13 +17,13 @@ export default async function Home({
 }) {
 
   const { page } = await getDictionary(lang)
-  
-  const allPlaces = await prisma.placeSnippet.findMany({});
 
   return (
     <main>
       {/* <Header allPlaces={allPlaces} aleo={aleo} lang={lang}/> */}
       <Header header={page.header}/>
+      <Marquee/>
+      <Features/>
       <Middle middle={page.middle}/>
       <Contact contact={page.contact}/>
     </main>

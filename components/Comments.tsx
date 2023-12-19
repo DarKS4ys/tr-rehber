@@ -6,7 +6,11 @@ import { BsThreeDots } from 'react-icons/bs';
 import DeleteCommentButton from './DeleteCommentButton';
 import { deleteComment, sendComment } from '@/actions/actions';
 import type { User } from 'next-auth';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from './ui/dropdown-menu';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from './ui/dropdown-menu';
 
 interface Comment extends PrismaComment {
   user: User;
@@ -15,10 +19,16 @@ interface Comment extends PrismaComment {
 interface CommentsProps {
   comments: Comment[];
   placeId: string;
-  user: User | null | undefined
+  user: User | null | undefined;
+  placeLocal: any;
 }
 
-export default function Comments({ user, placeId, comments }: CommentsProps) {
+export default function Comments({
+  user,
+  placeId,
+  comments,
+  placeLocal,
+}: CommentsProps) {
   const CommentTimestamp = ({ createdAt }: { createdAt: Date }) => {
     const commentDate = new Date(createdAt);
     const currentDate = new Date();
@@ -32,7 +42,8 @@ export default function Comments({ user, placeId, comments }: CommentsProps) {
 
     return (
       <p className="text-xs opacity-50">
-        {isToday ? 'Today at ' + formattedTime : formattedDate}
+{isToday ? placeLocal.comments.today + ' ' + formattedTime : formattedDate}
+
       </p>
     );
   };
@@ -41,6 +52,7 @@ export default function Comments({ user, placeId, comments }: CommentsProps) {
     <div className="flex flex-col w-full gap-4">
       <AddCommentButton
         user={user}
+        placeLocal={placeLocal}
         sendComment={sendComment}
         placeId={placeId}
       />
@@ -59,22 +71,29 @@ export default function Comments({ user, placeId, comments }: CommentsProps) {
           )}
           <div className="flex flex-col w-full">
             <div className="flex gap-2 items-center w-full">
-              <p className="text-lg font-medium leading-tight">{comment.user?.name}</p>
+              <p className="text-lg font-medium leading-tight">
+                {comment.user?.name}
+              </p>
               <CommentTimestamp createdAt={comment.createdAt} />
 
-              {user && user.id == comment.user.id && 
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <button className='ml-auto'>
-                    <BsThreeDots size={20} />
-                  </button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent>
-                  <DeleteCommentButton userId={user.id} commentUserId={comment.user.id} deleteComment={deleteComment} commentId={comment.id} />
-                </DropdownMenuContent>
+              {user && user.id == comment.user.id && (
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <button className="ml-auto">
+                      <BsThreeDots size={20} />
+                    </button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent>
+                    <DeleteCommentButton
+                      userId={user.id}
+                      commentUserId={comment.user.id}
+                      deleteComment={deleteComment}
+                      commentId={comment.id}
+                      placeLocal={placeLocal}
+                    />
+                  </DropdownMenuContent>
                 </DropdownMenu>
-              }
-
+              )}
             </div>
             <p className="break-all leading-tight">{comment.text}</p>
           </div>
