@@ -1,5 +1,5 @@
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, Status } from "@prisma/client";
 import { NextAuthOptions } from "next-auth";
 import { prisma } from "./db/prisma";
 import { Adapter } from "next-auth/adapters";
@@ -27,12 +27,12 @@ export const authOptions: NextAuthOptions = {
 
                 await prisma.user.update({
                     where: { id: user.id },
-                    data: { status: session.user!.status },
+                    data: { status: session.user!.status as Status},
                 });
             } else (
                 await prisma.user.update({
                     where: { id: user.id },
-                    data: { status: session.user!.status },
+                    data: { status: session.user!.status as Status},
                 })
             )
 
