@@ -14,6 +14,7 @@ interface AdminCardProps {
   gradient?: boolean;
   gradient2?: boolean;
   children?: ReactNode;
+  adminCardLocal: any;
 }
 
 export default async function AdminCard({
@@ -23,19 +24,19 @@ export default async function AdminCard({
   gradient,
   gradient2,
   children,
+  adminCardLocal,
 }: AdminCardProps) {
-
   try {
     const isAdmin = await isAuthenticated();
-    
+
     if (isAdmin) {
-        console.log("User is an Admin");
+      console.log('User is an Admin');
     } else {
-        console.log("User is not an Admin");
+      console.log('User is not an Admin');
     }
-    } catch (error) {
-        console.error("Error checking authentication:", error);
-    }
+  } catch (error) {
+    console.error('Error checking authentication:', error);
+  }
 
   return (
     <div
@@ -54,7 +55,7 @@ export default async function AdminCard({
       {href && (
         <Link href={href}>
           <Button className="gap-2 group">
-            Take me there
+            {adminCardLocal.link}
             <BsArrowRight />
           </Button>
         </Link>

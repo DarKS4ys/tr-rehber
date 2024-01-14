@@ -1,3 +1,4 @@
+import CarouselComponent from '@/components/Carousel';
 import Chat from '@/components/Chat';
 import Comments from '@/components/Comments';
 import TextToSpeechButton from '@/components/TextToSpeechButton';
@@ -22,6 +23,7 @@ export default async function page({
         include: {
           user: true, // Include the user field from the comments relation
         },
+        where: { allowed: true },
         orderBy: { createdAt: 'desc' },
       },
     },
@@ -77,13 +79,7 @@ export default async function page({
       )}
       <div className="py-10 px-4 md:p-12">
         <div className="max-w-7xl mx-auto flex flex-col gap-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <h1>{firstText}</h1>
-            {/* <div>
-                        {place?.videoUrl &&
-                            <video src={(place?.videoUrl as { [key in Locale]: string })[lang]}/>
-                        }
-                    </div> */}
+          <div className="grid grid-cols-1 gap-8">
             {place?.videoUrl && (
               <iframe
                 title="YouTube Video"
@@ -93,20 +89,24 @@ export default async function page({
                   'https://youtube.com/embed/' +
                   (place?.videoUrl as { [key in Locale]: string })[lang]
                 } // Assuming place.videoUrl is the YouTube video URL
-                className="rounded-xl"
+                className="rounded-xl h-[60svh] min-h-[20rem] max-h-[70rem]"
                 allowFullScreen
               ></iframe>
             )}
+            <TextToSpeechButton
+              text={(place?.info as { [key in Locale]: string })[lang]}
+              placeLocal={placeLocal}
+            />
+            <h1>{firstText}</h1>
           </div>
+
+          <CarouselComponent images={place?.images}/>
+
           <div className="flex flex-col gap-8">
             <h1>{remainingText}</h1>
             <Chat
             placeLocal={placeLocal}
               placeName={(place?.name as { [key in Locale]: string })[lang]}
-            />
-            <TextToSpeechButton
-              text={(place?.info as { [key in Locale]: string })[lang]}
-              placeLocal={placeLocal}
             />
           </div>
 

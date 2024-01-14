@@ -1,11 +1,10 @@
-import type { Comment as PrismaComment } from '@prisma/client';
+import type { Comment as PrismaComment, User } from '@prisma/client';
 import AddCommentButton from './AddCommentButton';
 import Image from 'next/image';
 import defaultProfilePic from '@/public/profile-pic-placeholder.png';
 import { BsThreeDots } from 'react-icons/bs';
 import DeleteCommentButton from './DeleteCommentButton';
 import { deleteComment, sendComment } from '@/actions/actions';
-import type { User } from 'next-auth';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -42,11 +41,13 @@ export default function Comments({
 
     return (
       <p className="text-xs opacity-50">
-{isToday ? placeLocal.comments.today + ' ' + formattedTime : formattedDate}
-
+        {isToday ? placeLocal.comments.today + ' ' + formattedTime : formattedDate}
       </p>
     );
   };
+  if(user?.status == 'Admin') {
+    console.log("sex")
+  }
 
   return (
     <div className="flex flex-col w-full gap-4">
@@ -75,8 +76,7 @@ export default function Comments({
                 {comment.user?.name}
               </p>
               <CommentTimestamp createdAt={comment.createdAt} />
-
-              {user && user.id == comment.user.id && (
+              { (user?.status === 'Admin' || (user && user.id === comment.user.id)) && (
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <button className="ml-auto">
@@ -88,6 +88,7 @@ export default function Comments({
                       userId={user.id}
                       commentUserId={comment.user.id}
                       deleteComment={deleteComment}
+                      userStatus={user.status}
                       commentId={comment.id}
                       placeLocal={placeLocal}
                     />

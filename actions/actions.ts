@@ -228,10 +228,11 @@ export async function sendComment(placeId: string, text: string, user: any) {
         text: text,
         user: { connect: { id: user.id } },
         place: { connect: { id: placeId } },
+        allowed: false
       },
     });
 
-    revalidatePath('/products/[id]');
+    revalidatePath('/explore/[id]');
 
     return { success: true };
   } catch (error: any) {
@@ -243,25 +244,59 @@ export async function sendComment(placeId: string, text: string, user: any) {
   }
 }
 
+
+// ! user status check 
 export async function deleteComment(
-  commentId: string,
-  userId: string,
-  commentUserId: string
+  commentId: any,
+  userStatus: string | undefined,
+  multiple?: boolean,
+  userId?: string,
+  commentUserId?: string
 ) {
   try {
-    if (userId !== commentUserId) {
+    if (userStatus != 'Admin' && userId !== commentUserId) {
       throw new Error('The comment does not belong to you.');
     }
 
-    await prisma.comment.delete({
-      where: { id: commentId },
-    });
+    if(multiple) {
+      await prisma.comment.deleteMany({
+        where: { id: { in: commentId } },
+      });
+    } else {
+      await prisma.comment.delete({
+        where: { id: commentId },
+      });
+    }
 
-    revalidatePath('/products/[id]');
+    
+    revalidatePath('/explore/[id]');
 
     return { success: true };
   } catch (error: any) {
     return { error: error.message || 'Failed to delete comment' };
+  }
+}
+
+export async function approveComment(commentIds: string[] | undefined, userStatus: string | undefined, page: number, pageSize:number) {
+  try {
+    if(userStatus !== 'Admin') {
+      throw new Error ('You are not allowed to take this action.')
+    }
+
+    await prisma.comment.updateMany({
+      where: {
+        id: { in: commentIds }, // Use 'in' to match multiple IDs
+      },
+      data: {
+        allowed: true,
+      },
+    })
+
+    revalidatePath(`admin/comments/?page=${page}&pageSize=${pageSize}`);
+
+    return { success: true };
+  } catch (error: any) {
+    return { error: error.message || 'Failed to approve comment' };
   }
 }
 

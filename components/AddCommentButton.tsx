@@ -7,6 +7,7 @@ import type { User } from 'next-auth';
 import { Button } from '@/components/ui/button';
 import Input from './Input';
 import clsx from 'clsx';
+import {RingLoader} from 'react-spinners'
 
 interface AddCommentButton {
   placeId: string;
@@ -19,21 +20,35 @@ export default function AddCommentButton({ user, placeId, sendComment, placeLoca
   const [isPending, startTransition] = useTransition();
   const [text, setText] = useState('');
 
-  const handleKeyPress = async (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      startTransition(async () => {
-        try {
-          const response: any = await sendComment(placeId, text, user);
-          setText('')
+  console.log(isPending)
 
-          if (response.success) {
-            toast.success('Comment added.');
-          } else {
-            toast.error(response.error);
-          }
-        } catch (error: any) {
-          toast.error(error.message || 'Could not send the comment.');
-        }
+  const handleCommentSend = async () => {
+    try {
+      const response: any = await sendComment(placeId, text, user);
+      setText('');
+
+      if (response.success) {
+        toast.success(placeLocal.comments.success);
+      } else {
+        toast.error(response.error);
+      }
+    } catch (error: any) {
+      toast.error(error.message || placeLocal.comments.error);
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && !isPending) {
+      startTransition(() => {
+        handleCommentSend();
+      });
+    }
+  };
+
+  const handleButtonClick = () => {
+    if (!isPending) {
+      startTransition(() => {
+        handleCommentSend();
       });
     }
   };
@@ -51,29 +66,14 @@ export default function AddCommentButton({ user, placeId, sendComment, placeLoca
         onKeyDown={handleKeyPress}
       />
       <Button
-        className={clsx('overflow-hidden flex gap-2', !user ? 'opacity-50 cursor-not-allowed' : 'group')}
-        disabled={isPending && !user}
-        onClick={() => {
-          startTransition(async () => {
-            try {
-              const response: any = await sendComment(placeId, text, user);
-              setText('')
-
-              if (response.success) {
-                toast.success(placeLocal.comments.success);
-              } else {
-                toast.error(response.error);
-              }
-            } catch (error: any) {
-              toast.error(error.message || placeLocal.comments.error); // Display specific error message for invalid text length
-            }
-          });
-        }}
+        className={clsx('overflow-hidden flex gap-2 group', 'disabled:opacity-50 disabled:cursor-not-allowed')}
+        disabled={isPending || !user}
+        onClick={handleButtonClick}
       >
-        <h1 className='group-hover:translate-x-2.5 transition'>{placeLocal.comments.send}</h1>
-        <IoMdSend size={18} className="group-hover:translate-x-10 transition" />
+        <h1 className='group-hover:translate-x-2.5 transition'>{!isPending ? placeLocal.comments.send : <RingLoader size={32}/> }</h1>
+        {!isPending && <IoMdSend size={18} className="group-hover:translate-x-10 transition" />}
       </Button>
-      {isPending && <span className="loading loading-spinner loading-md" />}
+
     </div>
   );
 }

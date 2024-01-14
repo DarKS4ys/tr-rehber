@@ -7,7 +7,7 @@
 
       "ai": "Ask me anything"
     },
-  "navbar": {
+    "navbar": {
       "switcher": {
         "dark": "Dark",
         "light": "Light",
@@ -51,8 +51,8 @@
       "succesfullySent": "Email sent successfully!"
     },
     "footer": {
-      "title": "TRABZON REHBERIM",
-      "legal": "2023 © Trabzon Rehberim, All rights reserved.",
+      "title": "SANAL REHBERIM",
+      "legal": "2024 © Sanal Rehberim, All rights reserved.",
       "navigation": {
         "title": "Navigation",
         "options": {
@@ -82,6 +82,20 @@
         "art": "Art",
         "nature": "Nature"
       }
+    },
+    "tiltCards": {
+      "card1": {
+        "title": "All in One",
+        "description": "Discover various places of Trabzon in a single application. Your comprehensive guide for a seamless travel experience."
+      },
+      "card2": {
+        "title": "AI Integrated",
+        "description": "Utilize artificial intelligence to enrich your experience with personalized recommendations, city information, and more."
+      },
+      "card3": {
+        "title": "User-Friendly",
+        "description": "Enjoy the benefits of a thoughtfully designed seamless city guide application. Smooth interactions for easy navigation, an intuitive interface, and a delightful Trabzon experience designed with you in mind."
+      }
     }
   },
   "explore": {
@@ -109,8 +123,54 @@
       "errorDelete": "Could not delete the comment",
       "successDelete": "Comment deleted",
 
-      "success": "Comment added",
+      "success": "Your comment has been submitted for review and will be made public once it is approved.",
       "error": "Couldn't send the comment"
+    }
+  },
+  "admin": {
+    "welcome": "Welcome back",
+    "uploadedFiles": "Uploaded Files",
+    "cards": {
+      "placeCard": {
+        "title": "Create a new place",
+        "description": "Add a new place effortlessly using the intuitive UI."
+      },
+      "fileCard": {
+        "title": "Upload a new file",
+        "description": "Transfer a new file to edgestore using the input below."
+      },
+      "commentCard": {
+        "title": "Manage Comments",
+        "description": "Manage and approve/disapprove incoming comments."
+      }
+    },
+    "adminCard": {
+      "link": "Take me there"
+    },
+    "fileCard": {
+      "warn": "Are you sure you wanna delete this file?",
+      "cancel": "Cancel",
+      "view": "View",
+      "preview": "Preview",
+      "download": "Download",
+      "copyLink": "Copy link",
+      "videoError": "Your browser does not support the video tag."
+    }
+  },
+  "comment": {
+    "title": "Approve Comments",
+    "description": "Review and approve the comments which you think are safe and not misleading for the end user.",
+    "adminTable": {
+      "approveButton": "Approve Selected",
+      "deleteButton": "Delete Selected",
+      "date": "Date",
+      "commentator": "Commentator",
+      "message": "Message",
+      "place": "Place",
+      "allow": "Allow",
+      "delete": "Delete",
+      "showing": "Showing",
+      "results": "results"
     }
   }
 }

@@ -8,6 +8,8 @@ import { getServerSession } from 'next-auth';
 import React from 'react';
 import { Toaster } from 'sonner';
 import { FileCard } from '@/components/FileCard';
+import { redirect } from 'next/navigation';
+import { getDictionary } from '@/lib/dictionary';
 
 export default async function page({
   params: { lang },
@@ -15,9 +17,10 @@ export default async function page({
   params: { lang: Locale };
 }) {
   const session = await getServerSession(authOptions);
+  const { admin } = await getDictionary(lang)
 
   if (session?.user.status != 'Admin') {
-    throw new Error('You need to be an admin')
+    redirect('/');
   }
 
   const files = await prisma.file.findMany({
@@ -30,7 +33,7 @@ export default async function page({
       <div className="max-w-7xl flex flex-col gap-8 mx-auto ">
         <div className="flex flex-col gap-2">
           <h1 className="text-3xl font-medium">
-            Welcome back,{' '}
+            {admin.welcome},{' '}
             <span className="font-semibold">{session?.user.name}</span>😎
           </h1>
           <Time />
@@ -38,31 +41,34 @@ export default async function page({
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <AdminCard
-            title="Create a new place"
-            description="Add a new place effortlessly using the intuitive UI."
-            href="/admin/create-place"
+            adminCardLocal={admin.adminCard}
+            title={admin.cards.placeCard.title}
+            description={admin.cards.placeCard.description}
+            href="admin/create-place"
             gradient
           />
 
           <AdminCard
-            title="Upload a new file"
-            description="Transfer a new file to edgestore using the input below."
+            adminCardLocal={admin.adminCard}
+            title={admin.cards.fileCard.title}
+            description={admin.cards.fileCard.description}
           >
             <Upload session={session} />
           </AdminCard>
 
           <AdminCard
-            title="Configure the AI"
-            description="Shape the AI's settings to your liking using the options."
-            href="/admin/ai"
+            adminCardLocal={admin.adminCard}
+            title={admin.cards.commentCard.title}
+            description={admin.cards.commentCard.description}
+            href="admin/comments"
             gradient2
           />
         </div>
 
-        <h1 className="text-3xl font-semibold">Uploaded Files</h1>
+        <h1 className="text-3xl font-semibold">{admin.uploadedFiles}</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {files.map((file) => (
-            <FileCard session={session} file={file} key={file.id}/>
+            <FileCard fileCardLocalization={admin.fileCard} session={session} file={file} key={file.id}/>
           ))}
         </div>
         <Toaster closeButton richColors />

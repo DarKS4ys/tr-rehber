@@ -9,6 +9,7 @@ import Navbar from '@/components/Navbar';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { EdgeStoreProvider } from '@/lib/edgestore';
+import Footer from '@/components/Footer/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -37,6 +38,7 @@ export default async function RootLayout({
             <div className='max-w-8xl m-auto min-w-[300px]'>
               {children}
             </div>
+            <Footer footer={page.footer}/>
           </EdgeStoreProvider>
         </LanguageProvider>
       </Providers>  

@@ -11,12 +11,13 @@ interface DeleteCommentButtonProps {
   commentUserId: string;
   userId: string;
   placeLocal: any
+  userStatus: string
 }
 
-export default function DeleteCommentButton({ commentUserId, userId, commentId, deleteComment, placeLocal }: DeleteCommentButtonProps) {
+export default function DeleteCommentButton({ commentUserId, userStatus, userId, commentId, deleteComment, placeLocal }: DeleteCommentButtonProps) {
   const handleDeleteComment = async () => {
     try {
-      const response: any = await deleteComment(commentId, userId, commentUserId);
+      const response: any = await deleteComment(commentId, userStatus, false, userId, commentUserId);
 
       if (response.success) {
         toast.success(placeLocal.comments.successDelete);

@@ -40,7 +40,7 @@ export default function Navbar({navbar, lang, session}: {navbar: any, lang: Loca
   return (
     <div className={clsx('z-50 px-8 flex items-center justify-center sticky top-0 border-b border-border bg-background/90 backdrop-blur-md transition-all duration-300', color ? 'py-2 transition-all' : 'py-4')}>
         <div className='max-w-7xl justify-between items-center flex w-full'>
-          <Link href="/" className='text-xl font-medium md:block hidden'>Trabzon Rehberim</Link>
+          <Link href={`/${lang}`} className='text-xl font-medium md:block hidden'>Sanal Rehberim</Link>
 
           <li className='md:hidden flex'>
             <MobileSheet navbar={navbar} lang={lang} pathnameWithoutLanguage={pathnameWithoutLanguage}/>

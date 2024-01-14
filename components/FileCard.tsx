@@ -16,9 +16,10 @@ import ProfileImg from '@/public/profile-pic-placeholder.png';
 interface FileCardProps {
   session: Session | null;
   file: File & { user: User }; // Combine FileType with User type
+  fileCardLocalization: any;
 }
 
-export const FileCard: React.FC<FileCardProps> = ({ session, file }) => (
+export const FileCard: React.FC<FileCardProps> = ({ fileCardLocalization, session, file }) => (
   <div className="flex flex-col gap-4 rounded-xl p-10 bg-primary/10 mx-auto w-full">
     <div className="relative group w-full h-80 aspect-square rounded-lg">
       {session?.user.status == 'Admin' && (
@@ -28,7 +29,7 @@ export const FileCard: React.FC<FileCardProps> = ({ session, file }) => (
           </DialogTrigger>
           <DialogContent className="w-80 flex flex-col items-center justify-center gap-4 py-6">
             <h1 className="text-xl font-semibold text-center">
-              Are you sure you wanna delete this file?
+              {fileCardLocalization.warn}
             </h1>
             <div className="flex items-center gap-3">
               <Delete
@@ -38,7 +39,7 @@ export const FileCard: React.FC<FileCardProps> = ({ session, file }) => (
                 type="file"
               />
               <DialogClose>
-                <Button>Cancel</Button>
+                <Button>{fileCardLocalization.cancel}</Button>
               </DialogClose>
             </div>
           </DialogContent>
@@ -49,11 +50,11 @@ export const FileCard: React.FC<FileCardProps> = ({ session, file }) => (
           <DialogTrigger asChild>
             <button className="p-2 text-white flex flex-col items-center hover:scale-110 active:scale-90 transition duration-200">
               <AiFillEye size={52} />
-              View
+              {fileCardLocalization.view}
             </button>
           </DialogTrigger>
           <DialogContent className="uppercase w-[80vw] text-lg font-medium pb-10 items-center flex flex-col">
-            <h1>Preview</h1>
+            <h1>{fileCardLocalization.preview}</h1>
             {file.fileUrl.endsWith('.pdf') ? (
               <iframe
                 src={`https://docs.google.com/gview?url=${file.fileUrl}&embedded=true`}
@@ -64,7 +65,7 @@ export const FileCard: React.FC<FileCardProps> = ({ session, file }) => (
               file.fileUrl.endsWith('.mkv') ? (
               <video controls className="w-full h-[75vh] rounded-lg">
                 <source src={file.fileUrl} type="video/mp4" />
-                Your browser does not support the video tag.
+                {fileCardLocalization.videoError}
               </video>
             ) : (
               <div className="w-[77vw] h-[75vh] relative rounded-lg mx-auto overflow-hidden">
@@ -81,7 +82,7 @@ export const FileCard: React.FC<FileCardProps> = ({ session, file }) => (
         <div className="h-20 w-0.5 bg-white/50" />
         <CopyToClipboardButton
           textToCopy={file.fileUrl}
-          buttonText="Copy link"
+          buttonText={fileCardLocalization.copyLink}
         />
       </div>
       {file.fileUrl.endsWith('.mp4') ||
@@ -112,7 +113,7 @@ export const FileCard: React.FC<FileCardProps> = ({ session, file }) => (
       <Link className="ml-auto" href={file.downloadUrl}>
         <Button className="gap-2">
           <BiDownload />
-          Download
+          {fileCardLocalization.download}
         </Button>
       </Link>
     </div>

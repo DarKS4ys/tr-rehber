@@ -1,20 +1,20 @@
 {
-    "page": {
-      "header": {
-        "welcome": "Trabzon'a",
-        "city": "Hoşgeldiniz!",
-        "description": "Yapay zeka destekli aracımızla Trabzon'da gezilecek yerler ve yapılabilecekleri keşfedin",
+  "page": {
+    "header": {
+      "welcome": "Trabzon'a",
+      "city": "Hoşgeldiniz!",
+      "description": "Yapay zeka destekli aracımızla Trabzon'da gezilecek yerler ve yapılabilecekleri keşfedin",
 
-        "ai": "İstediğini sor..."
-      },
+      "ai": "İstediğini sor..."
+    },
 
-      "navbar": {
-        "switcher": {
+    "navbar": {
+      "switcher": {
         "dark": "Karanlık",
         "light": "Aydınlık",
         "system": "Sistem"
       },
-  
+
       "langswitcher": {
         "turkish": "Türkçe",
         "english": "İngilizce"
@@ -32,88 +32,146 @@
         "admin": "Admin Paneli",
         "logout": "Oturumu Kapat"
       }
+    },
+    "middle": {
+      "explore": {
+        "title": "Keşfetmeye hemen başla!",
+        "buttonLabel": "Keşfet",
+        "description": "açıklama"
+      }
+    },
+    "contact": {
+      "title": "İletişime Geç",
+      "descriptionpart1": "Lütfen bizimle direkt olarak bu adresten:",
+      "descriptionpart2": "veya aşağıdaki formdan iletişime geçin.",
 
-      },
-      "middle": {
-        "explore": {
-          "title": "Keşfetmeye hemen başla!",
-          "buttonLabel": "Keşfet",
-          "description": "açıklama"
+      "inputplaceholder": "Email adresinizi buraya girin...",
+      "textareaplaceholder": "Mesajınızı buraya girin...",
+      "buttonLabel": "Gönder",
+
+      "succesfullySent": "Email başarıyla gönderildi!"
+    },
+    "footer": {
+      "title": "SANAL REHBERİM",
+      "legal": "2024 © Sanal Rehberim, Tüm hakları saklıdır.",
+      "navigation": {
+        "title": "Navigasyon",
+        "options": {
+          "homepage": "Anasayfa",
+          "explore": "Keşfet",
+          "contact": "İletişim"
         }
       },
-      "contact": {
-        "title": "İletişime Geç",
-        "descriptionpart1": "Lütfen bizimle direkt olarak bu adresten:",
-        "descriptionpart2": "veya aşağıdaki formdan iletişime geçin.",
-  
-        "inputplaceholder": "Email adresinizi buraya girin...",
-        "textareaplaceholder": "Mesajınızı buraya girin...",
-        "buttonLabel": "Gönder",
-
-        "succesfullySent": "Email başarıyla gönderildi!"
-      },
-      "footer": {
-        "title": "TRABZON REHBERİM",
-        "legal": "2023 © Trabzon Rehberim, Tüm hakları saklıdır.",
-        "navigation": {
-          "title": "Navigasyon",
-          "options": {
-            "homepage": "Anasayfa",
-            "explore": "Keşfet",
-            "contact": "İletişim"
-          }
-        },
-        "socials": {
-          "title": "Sosyal",
-          "options": {
-            "instagram": "Instagram",
-            "youtube": "YouTube",
-            "tiktok": "TikTok"
-          }
-        }
-      },
-      "marqueeLocal": {
-        "title": "Trabzon'u Keşfet",
-
-        "marquee": {
-          "shopping": "Alışveriş",
-          "history": "Tarih",
-          "entertainment": "Eğlence",
-          "beaches": "Sahiller",
-          "foodanddrink": "Yiyecek & İçecek",
-          "art": "Sanat",
-          "nature": "Doğa"
+      "socials": {
+        "title": "Sosyal",
+        "options": {
+          "instagram": "Instagram",
+          "youtube": "YouTube",
+          "tiktok": "TikTok"
         }
       }
     },
-    "explore": {
-      "main": {
-        "title": "Keşfet",
-        "search": "Yapılabilecekleri keşfet",
-        "notFound": "Bulunamadı"
+    "marqueeLocal": {
+      "title": "Trabzon'u Keşfet",
+
+      "marquee": {
+        "shopping": "Alışveriş",
+        "history": "Tarih",
+        "entertainment": "Eğlence",
+        "beaches": "Sahiller",
+        "foodanddrink": "Yiyecek & İçecek",
+        "art": "Sanat",
+        "nature": "Doğa"
       }
     },
-    "placeLocal": {
-      "ai": {
-        "placeholder": "Hakkında sorular sor:",
-        "button": "Gönder"
+    "tiltCards": {
+      "card1": {
+        "title": "Her şey bir arada",
+        "description": "Trabzon'un türlü yerlerini tek bir uygulamada keşfedin. Sorunsuz bir gezi deneyimi için kapsamlı rehberiniz."
       },
-      "tts": "Dinle",
-      "ttsStop": "Durdur",
-      "comments": {
-        "title": "Yorumlar",
-        "placeholder": "Yorumunu yaz...",
-        "userError": "Yorum yapabilmek için giriş yapmanız gerek.",
-        "send": "Gönder",
-        "delete": "Sil",
-        "today": "Bugün",
-
-        "errorDelete": "Yorum silinemedi",
-        "successDelete": "Yorum başarıyla silinemedi",
-
-        "success": "Yorum başarıyla gönderildi",
-        "error": "Yorum gönderilemedi"
+      "card2": {
+        "title": "Yapay Zeka Entegreli",
+        "description": "Yapay zekadan yararlanın, Kişiselleştirilmiş öneriler, şehir hakkında bilgiler ve daha fazlası ile birlikte deneyiminizi zenginleştirin."
+      },
+      "card3": {
+        "title": "Kullanıcı Dostu",
+        "description": "Sizi düşünerek tasarlanmış sorunsuz bir şehir rehberi uygulamasının keyfini çıkarın. Kolay gezinme, sezgisel arayüz ve keyifli bir Trabzon deneyimi için sorunsuz etkileşimler."
       }
     }
+  },
+  "explore": {
+    "main": {
+      "title": "Keşfet",
+      "search": "Yapılabilecekleri keşfet",
+      "notFound": "Bulunamadı"
+    }
+  },
+  "placeLocal": {
+    "ai": {
+      "placeholder": "Hakkında sorular sor:",
+      "button": "Gönder"
+    },
+    "tts": "Dinle",
+    "ttsStop": "Durdur",
+    "comments": {
+      "title": "Yorumlar",
+      "placeholder": "Yorumunu yaz...",
+      "userError": "Yorum yapabilmek için giriş yapmanız gerek.",
+      "send": "Gönder",
+      "delete": "Sil",
+      "today": "Bugün",
+
+      "errorDelete": "Yorum silinemedi",
+      "successDelete": "Yorum başarıyla silinemedi",
+
+      "success": "Yorumunuz incelemeye alınmıştır ve onaylandığında gözükecektir.",
+      "error": "Yorum gönderilemedi"
+    }
+  },
+  "admin": {
+    "welcome": "Hoşgeldin",
+    "uploadedFiles": "Depolanmış Dosyalar",
+    "cards": {
+      "placeCard": {
+        "title": "Yeni bir yer oluştur",
+        "description": "Sezgisel kullanıcı arayüzü kullanarak kolayca yeni bir yer ekleyin."
+      },
+      "fileCard": {
+        "title": "Yeni bir dosya yükle",
+        "description": "Aşağıdaki girişi kullanarak yeni bir dosyayı edgestore'a transfer edin."
+      },
+      "commentCard": {
+        "title": "Yorumları Yönet",
+        "description": "Gelen yorumları yönetin ve onayla/onaylama işlemlerini gerçekleştirin."
+      }
+    },
+    "adminCard": {
+      "link": "Beni oraya götür"
+    },
+    "fileCard": {
+      "warn": "Bu dosyayı silmek istediğinizden emin misiniz?",
+      "cancel": "İptal",
+      "view": "Görüntüle",
+      "preview": "Önizleme",
+      "download": "İndir",
+      "copyLink": "Bağlantı Kopyala",
+      "videoError": "Tarayıcınız video etiketini desteklemiyor."
+    }
+  },
+  "comment": {
+    "title": "Yorumları Onayla",
+    "description": "Son kullanıcı için güvenli ve yanıltıcı olmayan yorumları inceleyin ve onaylayın.",
+    "adminTable": {
+      "approveButton": "Seçilenleri Onayla",
+      "deleteButton": "Seçilenleri Sil",
+      "date": "Tarih",
+      "commentator": "Yorum Yapan",
+      "message": "Mesaj",
+      "place": "Yer",
+      "allow": "İzin Ver",
+      "delete": "Sil",
+      "showing": "Gösteriliyor",
+      "results": "sonuç"
+    }
   }
-  
+}

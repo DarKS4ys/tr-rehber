@@ -21,7 +21,7 @@ export default async function Home({
     <main>
       {/* <Header allPlaces={allPlaces} aleo={aleo} lang={lang}/> */}
       <Header header={page.header}/>
-      <Features/>
+      <Features featuresLocalization={page.tiltCards}/>
       <Middle middle={page.middle}/>
       <Contact contact={page.contact}/>
     </main>
