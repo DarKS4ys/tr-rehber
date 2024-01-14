@@ -1,4 +1,4 @@
-import type { Comment as PrismaComment, User } from '@prisma/client';
+import type { Comment as PrismaComment } from '@prisma/client';
 import AddCommentButton from './AddCommentButton';
 import Image from 'next/image';
 import defaultProfilePic from '@/public/profile-pic-placeholder.png';
@@ -12,13 +12,13 @@ import {
 } from './ui/dropdown-menu';
 
 interface Comment extends PrismaComment {
-  user: User;
+  user: any;
 }
 
 interface CommentsProps {
   comments: Comment[];
   placeId: string;
-  user: User | null | undefined;
+  user: any;
   placeLocal: any;
 }
 
