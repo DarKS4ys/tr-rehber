@@ -8,7 +8,7 @@ import { clsx } from 'clsx';
 import UserMenuButton from './Auth/UserMenuButton';
 import type { Session } from 'next-auth';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import MobileSheet from './MobileSheet';
 
 export default function Navbar({

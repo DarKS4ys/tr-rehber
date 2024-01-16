@@ -49,7 +49,7 @@ const UserAuthForm = (props: Props) => {
       <Button
         onClick={loginWithGoogle}
         disabled={isLoading}
-        className="w-2/6 flex gap-2"
+        className="w-full md:w-3/6 lg:w-2/6 flex gap-2"
       >
         {isLoading ? <AiOutlineLoading className="animate-spin"/> : <FaGoogle size={20}/>}
         <h1>Google</h1>
@@ -58,7 +58,7 @@ const UserAuthForm = (props: Props) => {
       <Button
         onClick={loginWithDiscord}
         disabled={isLoadingDiscord}
-        className="w-2/6 flex gap-2"
+        className="w-full md:w-3/6 lg:w-2/6 flex gap-2"
       >
         {isLoadingDiscord ? <AiOutlineLoading className="animate-spin"/> : <FaDiscord size={20}/>}
         <h1>Discord</h1>
