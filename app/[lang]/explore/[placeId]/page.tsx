@@ -15,6 +15,7 @@ import { Toaster } from 'sonner';
 import ListenButton from '../../../../components/ListenButton';
 import SaveButton from '../../../../components/SaveButton';
 
+
 export const metadata: Metadata = {
   title: 'Sanal Rehberim',
   description: 'Yapay zeka entegreli sanal rehber uygulaması.',
@@ -94,9 +95,9 @@ export default async function page({
       <div className="py-10 px-4 md:p-12">
         <div className="max-w-7xl mx-auto flex flex-col gap-4">
           <div className="grid grid-cols-1 gap-8">
-            {place?.videoUrl && (
+{/*             {place?.videoUrl && (
               <iframe
-                title="YouTube Video"
+                title="Heygen Video"
                 width="100%"
                 height="100%"
                 src={
@@ -106,7 +107,11 @@ export default async function page({
                 className="rounded-xl h-[60svh] min-h-[20rem] max-h-[70rem]"
                 allowFullScreen
               ></iframe>
-            )}
+            )} */}
+            <iframe width="100%" height="400" src="https://app.heygen.com/embeds/3b3fbf17e0544bccb03be096454d15ad" title="HeyGen video player" allow="encrypted-media; fullscreen;" ></iframe>
+            
+            {/* <video src={'heygen.mp4'}/> */}
+            
             <ListenButton localListen={placeLocal.tts}/>
 {/*             <TextToSpeechButton
               text={(place?.info as { [key in Locale]: string })[lang]}
