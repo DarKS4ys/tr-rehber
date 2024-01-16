@@ -37,7 +37,9 @@
         "saved": "Saved Places",
         "admin": "Admin Dashboard",
         "logout": "Sign Out"
-      }
+      },
+      
+      "login": "Sign in"
     },
     "middle": {
       "explore": {
@@ -105,6 +107,7 @@
       }
     },
     "feedback": {
+      "greeting": "Hello",
       "title": "Send Feedback",
       "message": "Submit any feedback you have about the app here.",
       "appreciation": "Thank you for your feedback.",
@@ -194,5 +197,9 @@
     "message": "is now saved in your places list.",
     "messageDelete": "is now deleted from your places list.",
     "action": "Open"
+  },
+  "authLocal": {
+    "home": "Go back",
+    "title": "Login to your account"
   }
 }

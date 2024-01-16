@@ -29,6 +29,7 @@ export default async function RootLayout({
 
   const {page} = await getDictionary(params.lang)
   const session = await getServerSession(authOptions)
+
   return (
     <html lang={params.lang}>
       <body className={inter.className}>
@@ -39,7 +40,7 @@ export default async function RootLayout({
             <div className='max-w-8xl m-auto min-w-[300px]'>
               {children}
             </div>
-            <Feedback feedbackLocal={page.feedback}/>
+            <Feedback user={session?.user} feedbackLocal={page.feedback}/>
             <Footer footer={page.footer}/>
           </EdgeStoreProvider>
         </LanguageProvider>

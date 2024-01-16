@@ -5,6 +5,8 @@ const envSchema = z.object({
   DATABASE_URL: z.string().trim().min(1),
   GOOGLE_CLIENT_ID: z.string().trim().min(1),
   GOOGLE_CLIENT_SECRET: z.string().trim().min(1),
+  DISCORD_CLIENT_ID: z.string().trim().min(1),
+  DISCORD_CLIENT_SECRET: z.string().trim().min(1),
   NEXTAUTH_URL: z.string().trim().min(1),
   NEXTAUTH_SECRET: z.string().trim().min(1),
   ADMIN_EMAILS: z.string().trim().min(1),

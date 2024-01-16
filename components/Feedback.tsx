@@ -8,7 +8,13 @@ import clsx from 'clsx';
 import { sendFeedback } from '@/actions/actions';
 import { HiSparkles } from 'react-icons/hi';
 
-export default function Feedback({ feedbackLocal }: { feedbackLocal: any }) {
+export default function Feedback({
+  feedbackLocal,
+  user,
+}: {
+  feedbackLocal: any;
+  user: any;
+}) {
   const [modalOpen, setModalOpen] = React.useState(false);
   const [countdown, setCountdown] = React.useState(2);
   const [loading, setLoading] = React.useState(true);
@@ -102,10 +108,10 @@ export default function Feedback({ feedbackLocal }: { feedbackLocal: any }) {
             <div className="p-3 flex flex-col gap-4 justify-between h-[17rem]">
               <motion.div
                 initial={{ opacity: 0, height: 30 }}
-                animate={{ opacity: 1, height: loading ? 30 : 80 }}
+                animate={{ opacity: 1, height: loading ? 30 : 90 }}
                 exit={{ opacity: 0, y: 10, height: 20 }}
                 transition={{ duration: 0.3 }}
-                className="bg-primary p-2 text-sm text-primary-foreground rounded-t-lg rounded-br-lg w-[80%]"
+                className="bg-primary p-2 text-sm text-primary-foreground rounded-t-lg rounded-br-lg w-[85%]"
               >
                 {loading ? (
                   <>
@@ -127,7 +133,16 @@ export default function Feedback({ feedbackLocal }: { feedbackLocal: any }) {
                     </div>
                   </>
                 ) : (
-                  feedbackLocal.message
+                  <>
+                    {user ? (
+                      <>
+                        <p className="line-clamp-1">{feedbackLocal.greeting}, {user.name}!</p>
+                        <p>{feedbackLocal.message}</p>
+                      </>
+                    ) : (
+                      <p>{feedbackLocal.message}</p>
+                    )}
+                  </>
                 )}
               </motion.div>
 

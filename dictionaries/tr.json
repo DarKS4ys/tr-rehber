@@ -38,7 +38,9 @@
         "saved": "Kaydedilmiş yerler",
         "admin": "Admin Paneli",
         "logout": "Oturumu Kapat"
-      }
+      },
+
+      "login": "Giriş yap"
     },
     "middle": {
       "explore": {
@@ -106,8 +108,9 @@
       }
     },
     "feedback": {
+      "greeting": "Merhaba",
       "title": "Geribildirim Gönder",
-      "message": "Uygulama hakkındaki geribildirimlerinizi buraya yazın.",
+      "message": "Uygulama hakkındaki geribildirimleri buraya yazabilirsin.",
       "appreciation": "Geribildirim için teşekkür ederiz.",
       "placeholder": "Mesajını yaz..."
     }
@@ -195,5 +198,9 @@
     "message": "başarıyla yer listene kaydedilmiştir.",
     "messageDelete": "başarıyla yer listenden kaldırıldı.",
     "action": "Göster"
+  },
+  "authLocal": {
+    "home": "Geri dön",
+    "title": "Hesabına giriş yap"
   }
 }

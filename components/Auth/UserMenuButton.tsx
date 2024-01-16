@@ -17,9 +17,10 @@ interface UserMenuButtonProps {
     session: Session | null
     userMenu: any
     lang: Locale
+    local: string
 }
 
-export default function UserMenuButton({ lang, session, userMenu }: UserMenuButtonProps) {
+export default function UserMenuButton({ local, lang, session, userMenu }: UserMenuButtonProps) {
     const user = session?.user
 
   return (
@@ -80,7 +81,8 @@ export default function UserMenuButton({ lang, session, userMenu }: UserMenuButt
             </div>
         :
             <div>
-                <Button onClick={() => signIn()}>Sign In</Button> 
+                {/* <Button onClick={() => signIn()}>Sign In</Button>  */}
+                <Link href={`/${lang}/sign-in`}><Button>{local}</Button></Link>
             </div>
         }
     </div>
