@@ -56,7 +56,7 @@ const UserAuthForm = (props: Props) => {
       </Button>
 
       <Button
-        onClick={loginWithGoogle}
+        onClick={loginWithDiscord}
         disabled={isLoadingDiscord}
         className="w-2/6 flex gap-2"
       >
