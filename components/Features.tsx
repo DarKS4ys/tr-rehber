@@ -50,7 +50,7 @@ export default function Features({featuresLocalization}: {featuresLocalization: 
   ];
 
   return (
-    <motion.div className="max-w-7xl grid mx-auto grid-cols-1 lg:grid-cols-3 gap-4 w-full mb-16"
+    <motion.div className="max-w-7xl grid mx-auto grid-cols-1 lg:grid-cols-3 gap-4 w-full my-20"
     >
       {features.map((feature, i) => (
         <motion.div

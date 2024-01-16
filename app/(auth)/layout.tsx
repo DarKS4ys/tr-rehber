@@ -11,7 +11,7 @@ import Providers from '../[lang]/providers';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Sign In - Sanal Rehberim',
+  title: 'Giriş Yap | Sanal Rehberim',
   description: 'Yapay zeka entegreli sanal rehber uygulaması.',
 };
 

@@ -61,7 +61,7 @@ export default function Navbar({navbar, lang, session}: {navbar: any, lang: Loca
             <div className='flex items-center gap-4'>
               <ModeToggle switcher={navbar.switcher}/>
               <LangSwitch lang={lang}/>
-              <UserMenuButton userMenu={navbar.userMenu} session={session ?? session}/>
+              <UserMenuButton lang={lang} userMenu={navbar.userMenu} session={session ?? session}/>
             </div>
         </div>
     </div>

@@ -1,5 +1,4 @@
 
-
 import type { Session } from "next-auth"
 import Image from "next/image"
 import profilePicPlaceholder from '@/public/profile-pic-placeholder.png'
@@ -11,14 +10,16 @@ import { FiSettings } from "react-icons/fi"
 import Link from "next/link"
 import { FaScrewdriverWrench } from "react-icons/fa6";
 import { MdPlace } from "react-icons/md";
+import type { Locale } from "@/i18n.config"
 
 
 interface UserMenuButtonProps {
     session: Session | null
     userMenu: any
+    lang: Locale
 }
 
-export default function UserMenuButton({session, userMenu}: UserMenuButtonProps) {
+export default function UserMenuButton({ lang, session, userMenu }: UserMenuButtonProps) {
     const user = session?.user
 
   return (
@@ -48,14 +49,14 @@ export default function UserMenuButton({session, userMenu}: UserMenuButtonProps)
 
                         <DropdownMenuSeparator/>
                         
-                        <Link href='/settings'>
+{/*                         <Link href='/settings'>
                             <DropdownMenuItem className="gap-2 flex text-lg items-center opacity-90 hover:opacity-100 transition">
                                 <FiSettings/>
                                 <h1>{userMenu.settings}</h1>
                             </DropdownMenuItem>
-                        </Link>
+                        </Link> */}
 
-                        <Link href='/saved'>
+                        <Link href={`/${lang}/saved-places`}>
                             <DropdownMenuItem className="gap-2 flex text-lg items-center opacity-90 hover:opacity-100 transition">
                                 <MdPlace />
                                 <h1>{userMenu.saved}</h1>
@@ -64,7 +65,7 @@ export default function UserMenuButton({session, userMenu}: UserMenuButtonProps)
 
 
                         {user.status == 'Admin' &&
-                        <Link href='/admin'>
+                        <Link href={`/${lang}/admin`}>
                             <DropdownMenuItem className="gap-2 flex text-lg items-center opacity-90 hover:opacity-100 transition">
                             <FaScrewdriverWrench />
                                 <h1>{userMenu.admin}</h1>

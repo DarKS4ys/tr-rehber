@@ -8,6 +8,8 @@ import { prisma } from '@/lib/db/prisma';
 import type { Locale } from '@/i18n.config';
 import { z } from 'zod';
 import { revalidatePath } from 'next/cache';
+import type { User } from 'next-auth';
+import type { Place } from '@prisma/client';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -300,5 +302,69 @@ export async function approveComment(commentIds: string[] | undefined, userStatu
   }
 }
 
+export async function sendFeedback(feedback: string) {
+  try {
+    if (!feedback) {
+      throw new Error('No feedback provided')
+    } else if(feedback.length > 500) {
+      throw new Error('The feedback must be less than 500 characters');
+    }
 
+    await prisma.feedback.create({
+      data: {
+        feedback: feedback
+      }
+    })
 
+    return { success: true };
+  } catch (error: any) {
+    return { error: error.message || 'Failed to send feedback' };
+  }
+}
+
+export async function savePlace(user: User, place: Place) {
+  try {
+    await prisma.savedPlace.create({
+      data: {
+        user: { connect: { id: user.id } },
+        place: { connect: { id: place.id } },
+      }
+    })
+    return { success: true };
+  } catch (error: any){
+    console.log(error)
+    return { error: error.message || 'Failed to save place' };
+  }
+}
+
+export async function deleteSavedPlace(id: string | undefined, userId: string) {
+  try {
+    if (!id) {
+      throw new Error ('There was an issue with your request, try again later.')
+    }
+    const savedPlace = await prisma.savedPlace.findUnique({
+      where: { id },
+      select: { userId: true }, // Select only the userId to compare with the provided userId
+    });
+
+    if (!savedPlace) {
+      return { error: 'SavedPlace not found' };
+    }
+
+    if (savedPlace.userId !== userId) {
+      return { error: 'Unauthorized: User does not have permission to delete this SavedPlace' };
+    }
+
+    await prisma.savedPlace.delete({
+      where: {
+        id,
+      },
+    });
+
+    revalidatePath('/[lang]/saved-places')
+    return { success: true };
+  } catch (error: any) {
+    console.error(error);
+    return { error: error.message || 'Failed to delete SavedPlace' };
+  }
+}

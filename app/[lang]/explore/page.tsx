@@ -3,6 +3,16 @@ import { prisma } from '@/lib/db/prisma'
 import Image from 'next/image'
 import React from 'react'
 import PlaceCard from '../../../components/PlaceCard'
+import { Metadata } from 'next'
+import { getDictionary } from '@/lib/dictionary'
+import { getServerSession } from 'next-auth'
+import { authOptions } from '@/lib/auth'
+import { Toaster } from 'sonner'
+
+export const metadata: Metadata = {
+  title: 'Sanal Rehberim',
+  description: 'Yapay zeka entegreli sanal rehber uygulaması.',
+};
 
 export default async function page({
   params: {lang}
@@ -10,9 +20,16 @@ export default async function page({
   params: {lang: Locale}
 }) {
 
+  const session = await getServerSession(authOptions)
+
+  const {metadataLocal} = await getDictionary(lang)
+  const {savePlaceNotification} = await getDictionary(lang)
+
   const places = await prisma.place.findMany({
     orderBy: {id: "desc"}
   })
+
+  metadata.title = metadataLocal.explore + ' | Sanal Rehberim'
 
   return (
     <div className="py-10 px-4 md:p-12">
@@ -22,9 +39,13 @@ export default async function page({
           key={place.id}
           place={place}
           lang={lang}
+          savePlaceLocal={savePlaceNotification}
+          user={session?.user}
           />
         ))}
       </div>
+
+      <Toaster/>
     </div>
   )
 }

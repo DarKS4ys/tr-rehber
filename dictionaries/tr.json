@@ -1,4 +1,11 @@
 {
+  "metadataLocal": {
+    "explore": "Keşfet",
+    "admin": "Admin Paneli",
+    "comments": "Yorumlaır Yönet",
+    "createPlace": "Yer Oluştur",
+    "savedPlaces": "Kaydedilmiş Yerler"
+  },
   "page": {
     "header": {
       "welcome": "Trabzon'a",
@@ -97,6 +104,12 @@
         "title": "Kullanıcı Dostu",
         "description": "Sizi düşünerek tasarlanmış sorunsuz bir şehir rehberi uygulamasının keyfini çıkarın. Kolay gezinme, sezgisel arayüz ve keyifli bir Trabzon deneyimi için sorunsuz etkileşimler."
       }
+    },
+    "feedback": {
+      "title": "Geribildirim Gönder",
+      "message": "Uygulama hakkındaki geribildirimlerinizi buraya yazın.",
+      "appreciation": "Geribildirim için teşekkür ederiz.",
+      "placeholder": "Mesajını yaz..."
     }
   },
   "explore": {
@@ -173,5 +186,14 @@
       "showing": "Gösteriliyor",
       "results": "sonuç"
     }
+  },
+  "savedPlacesLocal": {
+    "title": "Kaydedilmiş Yerler",
+    "description": "Kaydetmiş olduğun yerleri görüntüle, incele, düzenle."
+  },
+  "savePlaceNotification": {
+    "message": "başarıyla yer listene kaydedilmiştir.",
+    "messageDelete": "başarıyla yer listenden kaldırıldı.",
+    "action": "Göster"
   }
 }

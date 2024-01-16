@@ -10,6 +10,12 @@ import { Toaster } from 'sonner';
 import { FileCard } from '@/components/FileCard';
 import { redirect } from 'next/navigation';
 import { getDictionary } from '@/lib/dictionary';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Sanal Rehberim',
+  description: 'Yapay zeka entegreli sanal rehber uygulaması.',
+};
 
 export default async function page({
   params: { lang },
@@ -18,6 +24,13 @@ export default async function page({
 }) {
   const session = await getServerSession(authOptions);
   const { admin } = await getDictionary(lang)
+  const { metadataLocal } = await getDictionary(lang)
+
+  metadata.title = metadataLocal.admin + ' | Sanal Rehberim'
+
+  if (!session) {
+    redirect('/sign-in?callbackUrl=/admin');
+  }
 
   if (session?.user.status != 'Admin') {
     redirect('/');

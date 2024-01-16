@@ -5,6 +5,13 @@ import { Locale } from '@/i18n.config';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { getDictionary } from '@/lib/dictionary';
+import { redirect } from 'next/navigation';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Sanal Rehberim',
+  description: 'Yapay zeka entegreli sanal rehber uygulaması.',
+};
 
 export default async function page({
   params: { lang },
@@ -17,8 +24,19 @@ export default async function page({
   const parsedPageSize = parseInt(pageSize, 10) || 10;
 
   const { comment } = await getDictionary(lang)
+  const { metadataLocal } = await getDictionary(lang)
+
+  metadata.title = metadataLocal.comments + ' | Sanal Rehberim'
 
   const session = await getServerSession(authOptions)
+
+  if (!session) {
+    redirect('/sign-in?callbackUrl=/comments');
+  }
+
+  if (session?.user.status != 'Admin') {
+    redirect('/');
+  }
 
   // ! IMPORTANT Explanation Right Here ↘
   //? nonAllowedComents hold the value of the first promise (findmany), the totalCount holds the value of second promise (comment.count)

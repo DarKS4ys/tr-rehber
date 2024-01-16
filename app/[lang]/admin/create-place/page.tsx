@@ -4,9 +4,12 @@ import { redirect } from 'next/navigation';
 import React from 'react';
 import { Locale } from '@/i18n.config';
 import PlaceForm from '@/components/PlaceForm';
+import { getDictionary } from '@/lib/dictionary';
+import type { Metadata } from 'next';
 
-export const metadata = {
-  title: 'Tr-Rehber - Create',
+export const metadata: Metadata = {
+  title: 'Sanal Rehberim',
+  description: 'Yapay zeka entegreli sanal rehber uygulaması.',
 };
 
 export default async function AddPlacePage({
@@ -15,9 +18,16 @@ export default async function AddPlacePage({
   params: { lang: Locale };
 }) {
   const session = await getServerSession(authOptions);
+  
+  const { metadataLocal } = await getDictionary(lang)
+  metadata.title = metadataLocal.createPlace + ' | Sanal Rehberim'
 
   if (!session) {
     redirect('/sign-in?callbackUrl=/create-place');
+  }
+
+  if (session?.user.status != 'Admin') {
+    redirect('/');
   }
 
   return (

@@ -9,9 +9,10 @@ import { AiFillEye } from 'react-icons/ai';
 import Image from 'next/image';
 import CopyToClipboardButton from './Clipboard';
 import { BiDownload, BiVideo } from 'react-icons/bi';
-import { FaFilePdf } from 'react-icons/fa';
+import { FaFileAudio, FaFilePdf } from 'react-icons/fa';
 import Link from 'next/link';
 import ProfileImg from '@/public/profile-pic-placeholder.png';
+import AudioPreview from './AudioPreview';
 
 interface FileCardProps {
   session: Session | null;
@@ -46,14 +47,21 @@ export const FileCard: React.FC<FileCardProps> = ({ fileCardLocalization, sessio
         </Dialog>
       )}
       <div className="z-20 absolute flex gap-2 top-0 left-0 rounded-lg bg-black/40 dark:bg-black/60 group-hover:backdrop-blur w-full h-full items-center justify-center opacity-0 group-hover:opacity-100 transition duration-200">
-        <Dialog>
-          <DialogTrigger asChild>
-            <button className="p-2 text-white flex flex-col items-center hover:scale-110 active:scale-90 transition duration-200">
-              <AiFillEye size={52} />
-              {fileCardLocalization.view}
-            </button>
-          </DialogTrigger>
-          <DialogContent className="uppercase w-[80vw] text-lg font-medium pb-10 items-center flex flex-col">
+          {file.fileUrl.endsWith('.mp3') || file.fileUrl.endsWith('.wav') || file.fileUrl.endsWith('.ogg') ? (
+          <div className="p-2 text-white flex flex-col items-center hover:scale-110 active:scale-90 transition duration-200">
+            <AudioPreview fileUrl={file.fileUrl} />
+          </div>
+        ) : (
+          <Dialog>
+            <DialogTrigger asChild>
+              <button className="p-2 text-white flex flex-col items-center hover:scale-110 active:scale-90 transition duration-200">
+                <>
+                  <AiFillEye size={52} />
+                  {fileCardLocalization.view}
+                </>
+              </button>
+            </DialogTrigger>
+            <DialogContent className="uppercase w-[80vw] text-lg font-medium pb-10 items-center flex flex-col">
             <h1>{fileCardLocalization.preview}</h1>
             {file.fileUrl.endsWith('.pdf') ? (
               <iframe
@@ -79,6 +87,8 @@ export const FileCard: React.FC<FileCardProps> = ({ fileCardLocalization, sessio
             )}
           </DialogContent>
         </Dialog>
+        )}
+
         <div className="h-20 w-0.5 bg-white/50" />
         <CopyToClipboardButton
           textToCopy={file.fileUrl}
@@ -86,19 +96,21 @@ export const FileCard: React.FC<FileCardProps> = ({ fileCardLocalization, sessio
         />
       </div>
       {file.fileUrl.endsWith('.mp4') ||
-      file.fileUrl.endsWith('.avi') ||
-      file.fileUrl.endsWith('.mkv') ? (
-        <BiVideo className="justify-center items-center w-full h-full flex p-2" />
-      ) : file.fileUrl.endsWith('.pdf') ? (
-        <FaFilePdf className="justify-center items-center w-full h-full flex p-8" />
-      ) : (
-        <Image
-          fill
-          className="object-cover rounded-xl"
-          alt="File"
-          src={file.fileUrl}
-        />
-      )}
+  file.fileUrl.endsWith('.avi') ||
+  file.fileUrl.endsWith('.mkv') ? (
+    <BiVideo className="justify-center items-center w-full h-full flex p-2" />
+  ) : file.fileUrl.endsWith('.pdf') ? (
+    <FaFilePdf className="justify-center items-center w-full h-full flex p-8" />
+  ) : file.fileUrl.endsWith('.mp3') || file.fileUrl.endsWith('.wav') || file.fileUrl.endsWith('.ogg') ? (
+    <FaFileAudio className="justify-center items-center w-full h-full flex p-8" />
+  ) : (
+    <Image
+      fill
+      className="object-cover rounded-xl"
+      alt="File"
+      src={file.fileUrl}
+    />
+  )}
     </div>
     <div className="flex gap-2 items-center font-medium">
       <div className="relative overflow-hidden w-10 h-10 aspect-square rounded-full">

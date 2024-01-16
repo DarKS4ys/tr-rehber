@@ -10,12 +10,13 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { EdgeStoreProvider } from '@/lib/edgestore';
 import Footer from '@/components/Footer/Footer';
+import Feedback from './../../components/Feedback';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Trabzon Rehberim',
-  description: 'Tr Rehber',
+  title: 'Sanal Rehberim',
+  description: 'Yapay zeka entegreli sanal rehber uygulaması',
 };
 
 export default async function RootLayout({
@@ -38,6 +39,7 @@ export default async function RootLayout({
             <div className='max-w-8xl m-auto min-w-[300px]'>
               {children}
             </div>
+            <Feedback feedbackLocal={page.feedback}/>
             <Footer footer={page.footer}/>
           </EdgeStoreProvider>
         </LanguageProvider>

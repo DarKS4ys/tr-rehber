@@ -1,3 +1,4 @@
+import AIPlace from '@/components/AIPlace';
 import CarouselComponent from '@/components/Carousel';
 import Chat from '@/components/Chat';
 import Comments from '@/components/Comments';
@@ -6,10 +7,18 @@ import { Locale } from '@/i18n.config';
 import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/db/prisma';
 import { getDictionary } from '@/lib/dictionary';
+import type { Metadata } from 'next';
 import { getServerSession } from 'next-auth';
 import Image from 'next/image';
 import React from 'react';
 import { Toaster } from 'sonner';
+import ListenButton from '../../../../components/ListenButton';
+import SaveButton from '../../../../components/SaveButton';
+
+export const metadata: Metadata = {
+  title: 'Sanal Rehberim',
+  description: 'Yapay zeka entegreli sanal rehber uygulaması.',
+};
 
 export default async function page({
   params: { lang, placeId },
@@ -29,7 +38,11 @@ export default async function page({
     },
   });
 
+  metadata.title = (place?.name as { [key in Locale]: string })[lang] + ' | Sanal Rehberim' || 'Sanal Rehberim';
+  metadata.description = (place?.description as { [key in Locale]: string })[lang] || 'Sanal Rehberim';
+
   const { placeLocal } = await getDictionary(lang)
+  const { savePlaceNotification } = await getDictionary(lang)
 
   const session = await getServerSession(authOptions);
 
@@ -72,6 +85,7 @@ export default async function page({
                       ))}
                   </div>
                 )}
+                <SaveButton local={savePlaceNotification} lang={lang} user={session?.user} place={place}/>
               </div>
             </div>
           </div>
@@ -93,10 +107,11 @@ export default async function page({
                 allowFullScreen
               ></iframe>
             )}
-            <TextToSpeechButton
+            <ListenButton localListen={placeLocal.tts}/>
+{/*             <TextToSpeechButton
               text={(place?.info as { [key in Locale]: string })[lang]}
               placeLocal={placeLocal}
-            />
+            /> */}
             <h1>{firstText}</h1>
           </div>
 
@@ -104,10 +119,11 @@ export default async function page({
 
           <div className="flex flex-col gap-8">
             <h1>{remainingText}</h1>
-            <Chat
+{/*             <Chat
             placeLocal={placeLocal}
               placeName={(place?.name as { [key in Locale]: string })[lang]}
-            />
+            /> */}
+            <AIPlace lang={lang} ai={placeLocal.ai} place={place}/>
           </div>
 
           {place && (

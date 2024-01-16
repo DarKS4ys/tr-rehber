@@ -1,4 +1,11 @@
 {
+  "metadataLocal": {
+    "explore": "Explore",
+    "admin": "Admin Dashboard",
+    "comments": "Manage Comments",
+    "createPlace": "Create Place",
+    "savedPlaces": "Saved Places"
+  },
   "page": {
     "header": {
       "welcome": "Welcome to",
@@ -96,6 +103,12 @@
         "title": "User-Friendly",
         "description": "Enjoy the benefits of a thoughtfully designed seamless city guide application. Smooth interactions for easy navigation, an intuitive interface, and a delightful Trabzon experience designed with you in mind."
       }
+    },
+    "feedback": {
+      "title": "Send Feedback",
+      "message": "Submit any feedback you have about the app here.",
+      "appreciation": "Thank you for your feedback.",
+      "placeholder": "Type feedback..."
     }
   },
   "explore": {
@@ -172,5 +185,14 @@
       "showing": "Showing",
       "results": "results"
     }
+  },
+  "savedPlacesLocal": {
+    "title": "Saved Places",
+    "description": "See, review and manage the places you saved."
+  },
+  "savePlaceNotification": {
+    "message": "is now saved in your places list.",
+    "messageDelete": "is now deleted from your places list.",
+    "action": "Open"
   }
 }
