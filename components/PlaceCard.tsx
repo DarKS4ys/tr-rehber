@@ -14,7 +14,7 @@ export default function PlaceCard({
   savePlaceLocal,
   savedMode,
   createdAt,
-  savedPlaceId
+  savedPlaceId,
 }: {
   place: Place | any;
   lang: Locale;
@@ -22,26 +22,28 @@ export default function PlaceCard({
   savePlaceLocal: any;
   createdAt?: Date;
   savedMode?: boolean;
-  savedPlaceId?: string; 
+  savedPlaceId?: string;
 }) {
   return (
     <div className="relative">
       <div className="z-[999] absolute left-5 top-5">
-        {savedMode ? (
-          <DeleteButton
-            lang={lang}
-            id={savedPlaceId}
-            local={savePlaceLocal}
-            place={place}
-            user={user}
-          />
-        ) : (
-          <SaveButton
-            lang={lang}
-            local={savePlaceLocal}
-            place={place}
-            user={user}
-          />
+        {user && (
+          savedMode ? (
+            <DeleteButton
+              lang={lang}
+              id={savedPlaceId}
+              local={savePlaceLocal}
+              place={place}
+              user={user}
+            />
+          ) : (
+            <SaveButton
+              lang={lang}
+              local={savePlaceLocal}
+              place={place}
+              user={user}
+            />
+          )
         )}
       </div>
       <Link
