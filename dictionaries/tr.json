@@ -110,7 +110,7 @@
     "feedback": {
       "greeting": "Merhaba",
       "title": "Geribildirim Gönder",
-      "message": "Uygulama hakkındaki geribildirimleri buraya yazabilirsin.",
+      "message": "Uygulama hakkındaki geribildirimlerini buraya gönderebilirsin:",
       "appreciation": "Geribildirim için teşekkür ederiz.",
       "placeholder": "Mesajını yaz..."
     }

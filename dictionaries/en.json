@@ -109,7 +109,7 @@
     "feedback": {
       "greeting": "Hello",
       "title": "Send Feedback",
-      "message": "Submit any feedback you have about the app here.",
+      "message": "Submit any feedback you have about the app here:",
       "appreciation": "Thank you for your feedback.",
       "placeholder": "Type feedback..."
     }

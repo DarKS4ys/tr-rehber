@@ -7,6 +7,7 @@ import { PulseLoader } from 'react-spinners';
 import clsx from 'clsx';
 import { sendFeedback } from '@/actions/actions';
 import { HiSparkles } from 'react-icons/hi';
+import Link from 'next/link';
 
 export default function Feedback({
   feedbackLocal,
@@ -91,6 +92,7 @@ export default function Feedback({
       setNotification(false);
     }, 6000);
   };
+  
 
   return (
     <div className="z-[999] bottom-10 right-10 fixed flex flex-col gap-2 items-end ">
@@ -108,7 +110,7 @@ export default function Feedback({
             <div className="p-3 flex flex-col gap-4 justify-between h-[17rem]">
               <motion.div
                 initial={{ opacity: 0, height: 30 }}
-                animate={{ opacity: 1, height: loading ? 30 : 90 }}
+                animate={{ opacity: 1, height: loading ? 30 : 135 }}
                 exit={{ opacity: 0, y: 10, height: 20 }}
                 transition={{ duration: 0.3 }}
                 className="bg-primary p-2 text-sm text-primary-foreground rounded-t-lg rounded-br-lg w-[85%]"
@@ -138,6 +140,7 @@ export default function Feedback({
                       <>
                         <p className="line-clamp-1">{feedbackLocal.greeting}, {user.name}!</p>
                         <p>{feedbackLocal.message}</p>
+                        <Link className='underline text-blue-500 break-all' href='https://forms.gle/sxWAJfub77B39edz8' target='_blank'>https://forms.gle/sxWAJfub77B39edz8</Link>
                       </>
                     ) : (
                       <p>{feedbackLocal.message}</p>
@@ -175,7 +178,7 @@ export default function Feedback({
                     onKeyUp={handleKeyPress}
                     className="disabled:cursor-not-allowed bg-transparent resize-none transition outline-none w-full"
                     rows={1}
-                    disabled={loading || isPending}
+                    disabled={true}/* {loading || isPending} */
                     placeholder={feedbackLocal.placeholder}
                   />
                 </div>
@@ -186,7 +189,7 @@ export default function Feedback({
                       handleSubmit();
                     });
                   }}
-                  disabled={loading || inputText.length == 0 || isPending}
+                  disabled={true}/* {loading || inputText.length == 0 || isPending} */
                   className="group transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-primary/80 p-2 w-11 h-11 flex items-center justify-center text-primary-foreground aspect-square bg-primary rounded-lg"
                 >
                   <Send size={20} />
