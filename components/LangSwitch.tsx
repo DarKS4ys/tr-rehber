@@ -4,12 +4,12 @@ import React, { useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from './ui/dropdown-menu';
 import { Button } from './ui/button';
-import { i18n, Locale } from '@/i18n.config';
+import { i18nExtra, Locale, LocaleExtra } from '@/i18n.config';
 import { FaCheck } from 'react-icons/fa';
 import {BsChevronDown} from 'react-icons/bs'
 import { clsx } from 'clsx';
 
-const languageNames: Record<Locale, { [key in Locale]: string }> = {
+const languageNames: any = {
   en: { en: 'English', tr: 'Turkish', es: 'Spanish', fr: 'French', de: 'German', it: 'Italian', pt: 'Portuguese', ru: 'Russian', zh: 'Chinese', ja: 'Japanese', ar: 'Arabic', ko: 'Korean', hi: 'Hindi', fa: 'Persian', nl: 'Dutch', sv: 'Swedish', no: 'Norwegian', da: 'Danish', fi: 'Finnish', el: 'Greek' },
   tr: { en: 'İngilizce', tr: 'Türkçe', es: 'İspanyolca', fr: 'Fransızca', de: 'Almanca', it: 'İtalyanca', pt: 'Portekizce', ru: 'Rusça', zh: 'Çince', ja: 'Japonca', ar: 'Arapça', ko: 'Korece', hi: 'Hintçe', fa: 'Farsça', nl: 'Hollandaca', sv: 'İsveççe', no: 'Norveçce', da: 'Danca', fi: 'Fince', el: 'Yunanca' },
   es: { en: 'Spanish', tr: 'Español', es: 'Español', fr: 'Français', de: 'Deutsch', it: 'Italiano', pt: 'Português', ru: 'Russian', zh: '中文', ja: '日本語', ar: 'العربية', ko: '한국어', hi: 'हिन्दी', fa: 'فارسی', nl: 'Nederlands', sv: 'Svenska', no: 'Norsk', da: 'Dansk', fi: 'Suomi', el: 'Ελληνικά' },
@@ -37,7 +37,7 @@ export default function LangSwitch({ lang }: { lang: Locale }) {
   const pathname = usePathname();
   const router = useRouter()
 
-  const handleLanguageChange = (newLang: Locale) => {
+  const handleLanguageChange = (newLang: any) => {
     const isHomepage = /^(\/[a-z]{2})?$/.test(pathname);
 
     if (isHomepage) {
@@ -62,7 +62,7 @@ export default function LangSwitch({ lang }: { lang: Locale }) {
 
       <DropdownMenuContent>
 
-      {i18n.locales.map(locale => (
+      {i18nExtra.locales.map(locale => (
           <DropdownMenuItem key={locale} onClick={() => handleLanguageChange(locale)}>
             <p className='flex gap-2 items-center'>{languageNames[lang][locale]} {lang === locale && <FaCheck/>}</p>
           </DropdownMenuItem>
