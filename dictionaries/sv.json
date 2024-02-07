@@ -1,0 +1,205 @@
+{
+  "metadataLocal": {
+    "explore": "Utforska",
+    "admin": "Adminpanel",
+    "comments": "Hantera kommentarer",
+    "createPlace": "Skapa plats",
+    "savedPlaces": "Sparade platser"
+  },
+  "page": {
+    "header": {
+      "welcome": "Välkommen till",
+      "city": "Trabzon!",
+      "description": "Upptäck platser att utforska och saker att göra med vårt AI-drivna verktyg",
+
+      "ai": "Fråga mig vad som helst"
+    },
+    "navbar": {
+      "switcher": {
+        "dark": "Mörk",
+        "light": "Ljus",
+        "system": "System"
+      },
+
+      "langswitcher": {
+        "turkish": "Turkiska",
+        "english": "Engelska"
+      },
+
+      "options": {
+        "explore": "Utforska",
+        "contact": "Kontakt",
+        "homepage": "Hemsida"
+      },
+
+      "userMenu": {
+        "settings": "Inställningar",
+        "saved": "Sparade Platser",
+        "admin": "Adminpanel",
+        "logout": "Logga ut"
+      },
+
+      "login": "Logga in"
+    },
+    "middle": {
+      "explore": {
+        "title": "Utforska platser nu!",
+        "buttonLabel": "Utforska",
+        "description": "beskrivning"
+      }
+    },
+    "contact": {
+      "title": "Kontakta oss",
+      "descriptionpart1": "Kontakta oss direkt på",
+      "descriptionpart2": "eller genom detta formulär",
+
+      "inputplaceholder": "Skriv din e-postadress...",
+      "textareaplaceholder": "Skriv ditt meddelande här...",
+      "buttonLabel": "Skicka",
+
+      "succesfullySent": "E-post skickad framgångsrikt!"
+    },
+    "footer": {
+      "title": "SANAL REHBERIM",
+      "legal": "2024 © Sanal Rehberim, Alla rättigheter förbehållna.",
+      "navigation": {
+        "title": "Navigation",
+        "options": {
+          "homepage": "Hemsida",
+          "explore": "Utforska",
+          "contact": "Kontakt"
+        }
+      },
+      "socials": {
+        "title": "Sociala medier",
+        "options": {
+          "instagram": "Instagram",
+          "youtube": "YouTube",
+          "tiktok": "TikTok"
+        }
+      }
+    },
+    "marqueeLocal": {
+      "title": "Upptäck Trabzon",
+
+      "marquee": {
+        "shopping": "Shopping",
+        "history": "Historia",
+        "entertainment": "Underhållning",
+        "beaches": "Stränder",
+        "foodanddrink": "Mat & Dryck",
+        "art": "Konst",
+        "nature": "Natur"
+      }
+    },
+    "tiltCards": {
+      "card1": {
+        "title": "Allt i ett",
+        "description": "Upptäck olika platser i Trabzon i en enda applikation. Din omfattande guide för en sömlös reseupplevelse."
+      },
+      "card2": {
+        "title": "AI Integrerad",
+        "description": "Använd artificiell intelligens för att berika din upplevelse med personliga rekommendationer, stadens information och mer."
+      },
+      "card3": {
+        "title": "Användarvänlig",
+        "description": "Njut av fördelarna med en genomtänkt utformad sömlös stadsguideapplikation. Smidiga interaktioner för enkel navigering, en intuitiv gränssnitt och en härlig Trabzon-upplevelse utformad med dig i åtanke."
+      }
+    },
+    "feedback": {
+      "greeting": "Hej",
+      "title": "Skicka feedback",
+      "message": "Skicka in all feedback du har om appen här:",
+      "appreciation": "Tack för din feedback.",
+      "placeholder": "Skriv feedback..."
+    }
+  },
+  "explore": {
+    "main": {
+      "title": "Utforska",
+      "search": "Sök platser",
+      "notFound": "Inte hittad"
+    }
+  },
+  "placeLocal": {
+    "ai": {
+      "placeholder": "Fråga mig om",
+      "button": "Skicka"
+    },
+    "tts": "Läs texten",
+    "ttsStop": "Stoppa",
+    "comments": {
+      "title": "Kommentarer",
+      "placeholder": "Skriv din kommentar...",
+      "userError": "Du måste logga in för att lämna en kommentar.",
+      "send": "Skicka",
+      "delete": "Ta bort",
+      "today": "Idag kl",
+
+      "errorDelete": "Kunde inte ta bort kommentaren",
+      "successDelete": "Kommentaren har tagits bort",
+
+      "success": "Din kommentar har skickats in för granskning och kommer att publiceras när den har godkänts.",
+      "error": "Kunde inte skicka kommentaren"
+    }
+  },
+  "admin": {
+    "welcome": "Välkommen tillbaka",
+    "uploadedFiles": "Uppladdade filer",
+    "cards": {
+      "placeCard": {
+        "title": "Skapa en ny plats",
+        "description": "Lägg till en ny plats enkelt med den intuitiva UI:n."
+      },
+      "fileCard": {
+        "title": "Ladda upp en ny fil",
+        "description": "Överför en ny fil till edgestore med hjälp av inmatningen nedan."
+      },
+      "commentCard": {
+        "title": "Hantera kommentarer",
+        "description": "Hantera och godkänn/avvisa inkommande kommentarer."
+      }
+    },
+    "adminCard": {
+      "link": "Ta mig dit"
+    },
+    "fileCard": {
+      "warn": "Är du säker på att du vill ta bort denna fil?",
+      "cancel": "Avbryt",
+      "view": "Visa",
+      "preview": "Förhandsgranska",
+      "download": "Ladda ner",
+      "copyLink": "Kopiera länk",
+      "videoError": "Din webbläsare stöder inte video-taggen."
+    }
+  },
+  "comment": {
+    "title": "Godkänn kommentarer",
+    "description": "Granska och godkänn kommentarer som du anser vara säkra och inte vilseledande för slutanvändaren.",
+    "adminTable": {
+      "approveButton": "Godkänn markerade",
+      "deleteButton": "Ta bort markerade",
+      "date": "Datum",
+      "commentator": "Kommentator",
+      "message": "Meddelande",
+      "place": "Plats",
+      "allow": "Tillåt",
+      "delete": "Ta bort",
+      "showing": "Visar",
+      "results": "resultat"
+    }
+  },
+  "savedPlacesLocal": {
+    "title": "Sparade Platser",
+    "description": "Se, granska och hantera de platser du har sparat."
+  },
+  "savePlaceNotification": {
+    "message": "är nu sparad i din platser lista.",
+    "messageDelete": "är nu borttagen från din platser lista.",
+    "action": "Öppna"
+  },
+  "authLocal": {
+    "home": "Gå tillbaka",
+    "title": "Logga in på ditt konto"
+  }
+}

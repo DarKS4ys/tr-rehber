@@ -1,0 +1,205 @@
+{
+  "metadataLocal": {
+    "explore": "探索",
+    "admin": "管理ダッシュボード",
+    "comments": "コメントの管理",
+    "createPlace": "場所を作成",
+    "savedPlaces": "保存した場所"
+  },
+  "page": {
+    "header": {
+      "welcome": "ようこそ",
+      "city": "トラブゾンへ！",
+      "description": "AIパワードツールで探索する場所やアクティビティを発見する",
+
+      "ai": "何でも聞いてください"
+    },
+    "navbar": {
+      "switcher": {
+        "dark": "ダーク",
+        "light": "ライト",
+        "system": "システム"
+      },
+
+      "langswitcher": {
+        "turkish": "トルコ語",
+        "english": "英語"
+      },
+
+      "options": {
+        "explore": "探索",
+        "contact": "お問い合わせ",
+        "homepage": "ホームページ"
+      },
+
+      "userMenu": {
+        "settings": "設定",
+        "saved": "保存した場所",
+        "admin": "管理ダッシュボード",
+        "logout": "ログアウト"
+      },
+
+      "login": "サインイン"
+    },
+    "middle": {
+      "explore": {
+        "title": "今すぐ場所を探索！",
+        "buttonLabel": "探索",
+        "description": "説明"
+      }
+    },
+    "contact": {
+      "title": "お問い合わせ",
+      "descriptionpart1": "直接お問い合わせください",
+      "descriptionpart2": "または、このフォームを使用して",
+
+      "inputplaceholder": "メールアドレスを入力してください...",
+      "textareaplaceholder": "ここにメッセージを入力してください...",
+      "buttonLabel": "送信",
+
+      "succesfullySent": "メールが送信されました！"
+    },
+    "footer": {
+      "title": "SANAL REHBERIM",
+      "legal": "2024 © Sanal Rehberim、全著作権所有。",
+      "navigation": {
+        "title": "ナビゲーション",
+        "options": {
+          "homepage": "ホームページ",
+          "explore": "探索",
+          "contact": "お問い合わせ"
+        }
+      },
+      "socials": {
+        "title": "ソーシャル",
+        "options": {
+          "instagram": "Instagram",
+          "youtube": "YouTube",
+          "tiktok": "TikTok"
+        }
+      }
+    },
+    "marqueeLocal": {
+      "title": "トラブゾンを発見する",
+
+      "marquee": {
+        "shopping": "ショッピング",
+        "history": "歴史",
+        "entertainment": "エンターテイメント",
+        "beaches": "ビーチ",
+        "foodanddrink": "飲食",
+        "art": "アート",
+        "nature": "自然"
+      }
+    },
+    "tiltCards": {
+      "card1": {
+        "title": "オールインワン",
+        "description": "シームレスな旅行体験のための包括的なガイドで、トラブゾンのさまざまな場所を1つのアプリケーションで発見します。"
+      },
+      "card2": {
+        "title": "AI統合",
+        "description": "個人に合わせた推奨事項、市の情報などを提供するために人工知能を活用して、体験を豊かにします。"
+      },
+      "card3": {
+        "title": "ユーザーフレンドリー",
+        "description": "考え抜かれたシームレスな都市ガイドアプリケーションの利点を享受してください。スムーズな操作、直感的なインターフェイス、あなたを考えて設計された楽しいトラブゾン体験。"
+      }
+    },
+    "feedback": {
+      "greeting": "こんにちは",
+      "title": "フィードバックを送信",
+      "message": "ここにアプリに関するフィードバックを送信してください：",
+      "appreciation": "フィードバックをいただきありがとうございます。",
+      "placeholder": "フィードバックを入力してください..."
+    }
+  },
+  "explore": {
+    "main": {
+      "title": "探索",
+      "search": "場所を検索",
+      "notFound": "見つかりませんでした"
+    }
+  },
+  "placeLocal": {
+    "ai": {
+      "placeholder": "について質問してください",
+      "button": "送信"
+    },
+    "tts": "テキストを読み上げる",
+    "ttsStop": "停止",
+    "comments": {
+      "title": "コメント",
+      "placeholder": "コメントを書く...",
+      "userError": "コメントを残すにはログインする必要があります。",
+      "send": "送信",
+      "delete": "削除",
+      "today": "今日",
+
+      "errorDelete": "コメントを削除できませんでした",
+      "successDelete": "コメントが削除されました",
+
+      "success": "コメントが送信され、承認されると公開されます。",
+      "error": "コメントを送信できませんでした"
+    }
+  },
+  "admin": {
+    "welcome": "お帰りなさい",
+    "uploadedFiles": "アップロードされたファイル",
+    "cards": {
+      "placeCard": {
+        "title": "新しい場所を作成",
+        "description": "直感的なUIを使用して新しい場所を簡単に追加します。"
+      },
+      "fileCard": {
+        "title": "新しいファイルをアップロード",
+        "description": "下の入力を使用して新しいファイルをedgestoreに転送します。"
+      },
+      "commentCard": {
+        "title": "コメントの管理",
+        "description": "受信したコメントを管理し、承認/非承認します。"
+      }
+    },
+    "adminCard": {
+      "link": "ここに行ってください"
+    },
+    "fileCard": {
+      "warn": "このファイルを削除してもよろしいですか？",
+      "cancel": "キャンセル",
+      "view": "表示",
+      "preview": "プレビュー",
+      "download": "ダウンロード",
+      "copyLink": "リンクをコピー",
+      "videoError": "お使いのブラウザはビデオタグをサポートしていません。"
+    }
+  },
+  "comment": {
+    "title": "コメントの承認",
+    "description": "エンドユーザーの安全性が保証され、誤解を招かないと考えられるコメントを確認して承認します。",
+    "adminTable": {
+      "approveButton": "選択したものを承認",
+      "deleteButton": "選択したものを削除",
+      "date": "日付",
+      "commentator": "コメント者",
+      "message": "メッセージ",
+      "place": "場所",
+      "allow": "許可",
+      "delete": "削除",
+      "showing": "表示中",
+      "results": "結果"
+    }
+  },
+  "savedPlacesLocal": {
+    "title": "保存した場所",
+    "description": "保存した場所を見て、レビューし、管理します。"
+  },
+  "savePlaceNotification": {
+    "message": "が今あなたの場所リストに保存されました。",
+    "messageDelete": "が今あなたの場所リストから削除されました。",
+    "action": "開く"
+  },
+  "authLocal": {
+    "home": "戻る",
+    "title": "アカウントにログイン"
+  }
+}

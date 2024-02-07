@@ -1,0 +1,205 @@
+{
+  "metadataLocal": {
+    "explore": "Tutki",
+    "admin": "Hallintapaneeli",
+    "comments": "Hallinnoi Kommentteja",
+    "createPlace": "Luo Paikka",
+    "savedPlaces": "Tallennetut Paikat"
+  },
+  "page": {
+    "header": {
+      "welcome": "Tervetuloa",
+      "city": "Trabzoniin!",
+      "description": "Löydä tutkittavia paikkoja ja tekemistä tekoälyämme hyödyntäen",
+
+      "ai": "Kysy minulta mitä tahansa"
+    },
+    "navbar": {
+      "switcher": {
+        "dark": "Tumma",
+        "light": "Vaalea",
+        "system": "Järjestelmä"
+      },
+
+      "langswitcher": {
+        "turkish": "Turkki",
+        "english": "Englanti"
+      },
+
+      "options": {
+        "explore": "Tutki",
+        "contact": "Ota Yhteyttä",
+        "homepage": "Kotisivu"
+      },
+
+      "userMenu": {
+        "settings": "Asetukset",
+        "saved": "Tallennetut Paikat",
+        "admin": "Hallintapaneeli",
+        "logout": "Kirjaudu Ulos"
+      },
+
+      "login": "Kirjaudu sisään"
+    },
+    "middle": {
+      "explore": {
+        "title": "Tutki paikkoja nyt!",
+        "buttonLabel": "Tutki",
+        "description": "Kuvaus"
+      }
+    },
+    "contact": {
+      "title": "Ota Yhteyttä",
+      "descriptionpart1": "Ota suoraan yhteyttä meihin osoitteeseen",
+      "descriptionpart2": "tai tämän lomakkeen kautta",
+
+      "inputplaceholder": "Kirjoita sähköpostisi...",
+      "textareaplaceholder": "Kirjoita viestisi tähän...",
+      "buttonLabel": "Lähetä",
+
+      "succesfullySent": "Sähköposti lähetetty onnistuneesti!"
+    },
+    "footer": {
+      "title": "SANAL REHBERIM",
+      "legal": "© 2024 Sanal Rehberim, Kaikki oikeudet pidätetään.",
+      "navigation": {
+        "title": "Navigointi",
+        "options": {
+          "homepage": "Kotisivu",
+          "explore": "Tutki",
+          "contact": "Ota Yhteyttä"
+        }
+      },
+      "socials": {
+        "title": "Some",
+        "options": {
+          "instagram": "Instagram",
+          "youtube": "YouTube",
+          "tiktok": "TikTok"
+        }
+      }
+    },
+    "marqueeLocal": {
+      "title": "Tutustu Trabzoniin",
+
+      "marquee": {
+        "shopping": "Ostokset",
+        "history": "Historia",
+        "entertainment": "Viihde",
+        "beaches": "Rannat",
+        "foodanddrink": "Ruoka & Juoma",
+        "art": "Taide",
+        "nature": "Luonto"
+      }
+    },
+    "tiltCards": {
+      "card1": {
+        "title": "Kaikki yhdessä",
+        "description": "Tutustu erilaisiin Trabzonin paikkoihin yhdessä sovelluksessa. Kattava opas saumattomaan matkakokemukseen."
+      },
+      "card2": {
+        "title": "Tekoäly Integroitu",
+        "description": "Hyödynnä tekoälyä rikastaaksesi kokemustasi personoiduilla suosituksilla, kaupungin tiedoilla ja muulla."
+      },
+      "card3": {
+        "title": "Käyttäjäystävällinen",
+        "description": "Nauti huolellisesti suunnitellun saumattoman kaupunkioppaan eduista. Sujuvat vuorovaikutukset helppoon navigointiin, intuitiivinen käyttöliittymä ja iloinen Trabzonin kokemus, joka on suunniteltu sinua ajatellen."
+      }
+    },
+    "feedback": {
+      "greeting": "Hei",
+      "title": "Lähetä Palaute",
+      "message": "Lähetä meille palautetta sovelluksesta täällä:",
+      "appreciation": "Kiitos palautteestasi.",
+      "placeholder": "Kirjoita palautesi..."
+    }
+  },
+  "explore": {
+    "main": {
+      "title": "Tutki",
+      "search": "Etsi paikkoja",
+      "notFound": "Ei löytynyt"
+    }
+  },
+  "placeLocal": {
+    "ai": {
+      "placeholder": "Kysy kysymyksiä",
+      "button": "Lähetä"
+    },
+    "tts": "Puhu teksti",
+    "ttsStop": "Pysäytä",
+    "comments": {
+      "title": "Kommentit",
+      "placeholder": "Kirjoita kommenttisi...",
+      "userError": "Sinun on kirjauduttava sisään jättääksesi kommentin.",
+      "send": "Lähetä",
+      "delete": "Poista",
+      "today": "Tänään",
+
+      "errorDelete": "Kommentin poistaminen ei onnistunut",
+      "successDelete": "Kommentti poistettu",
+
+      "success": "Kommenttisi on lähetetty tarkistettavaksi ja se julkaistaan, kun se on hyväksytty.",
+      "error": "Kommentin lähettäminen ei onnistunut"
+    }
+  },
+  "admin": {
+    "welcome": "Tervetuloa takaisin",
+    "uploadedFiles": "Ladatut Tiedostot",
+    "cards": {
+      "placeCard": {
+        "title": "Luo uusi paikka",
+        "description": "Lisää uusi paikka vaivattomasti intuitiivisen käyttöliittymän avulla."
+      },
+      "fileCard": {
+        "title": "Lataa uusi tiedosto",
+        "description": "Siirrä uusi tiedosto edgestoreen käyttämällä alla olevaa syöttökenttää."
+      },
+      "commentCard": {
+        "title": "Hallitse Kommentteja",
+        "description": "Hallinnoi ja hyväksy/hylkää saapuvat kommentit."
+      }
+    },
+    "adminCard": {
+      "link": "Vie minut sinne"
+    },
+    "fileCard": {
+      "warn": "Oletko varma, että haluat poistaa tämän tiedoston?",
+      "cancel": "Peruuta",
+      "view": "Näytä",
+      "preview": "Esikatselu",
+      "download": "Lataa",
+      "copyLink": "Kopioi linkki",
+      "videoError": "Selaimesi ei tue videon tagia."
+    }
+  },
+  "comment": {
+    "title": "Hyväksy Kommentit",
+    "description": "Tarkista ja hyväksy kommentit, jotka mielestäsi ovat turvallisia ja eivät johda harhaan loppukäyttäjää.",
+    "adminTable": {
+      "approveButton": "Hyväksy Valitut",
+      "deleteButton": "Poista Valitut",
+      "date": "Päivämäärä",
+      "commentator": "Kommentoija",
+      "message": "Viesti",
+      "place": "Paikka",
+      "allow": "Salli",
+      "delete": "Poista",
+      "showing": "Näyttää",
+      "results": "tulokset"
+    }
+  },
+  "savedPlacesLocal": {
+    "title": "Tallennetut Paikat",
+    "description": "Näe, arvioi ja hallitse tallennettuja paikkojasi."
+  },
+  "savePlaceNotification": {
+    "message": "on nyt tallennettu paikkojesi luetteloon.",
+    "messageDelete": "on nyt poistettu paikkojesi luettelosta.",
+    "action": "Avaa"
+  },
+  "authLocal": {
+    "home": "Palaa",
+    "title": "Kirjaudu sisään tilillesi"
+  }
+}

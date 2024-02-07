@@ -45,9 +45,6 @@ export default function Comments({
       </p>
     );
   };
-  if(user?.status == 'Admin') {
-    console.log("sex")
-  }
 
   return (
     <div className="flex flex-col w-full gap-4">

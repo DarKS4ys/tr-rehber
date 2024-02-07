@@ -1,0 +1,205 @@
+{
+  "metadataLocal": {
+    "explore": "Esplora",
+    "admin": "Dashboard amministrativo",
+    "comments": "Gestisci commenti",
+    "createPlace": "Crea luogo",
+    "savedPlaces": "Luoghi salvati"
+  },
+  "page": {
+    "header": {
+      "welcome": "Benvenuti a",
+      "city": "Trabzon!",
+      "description": "Scopri luoghi da esplorare e cose da fare con il nostro strumento alimentato da intelligenza artificiale",
+
+      "ai": "Chiedimi qualsiasi cosa"
+    },
+    "navbar": {
+      "switcher": {
+        "dark": "Scuro",
+        "light": "Chiaro",
+        "system": "Sistema"
+      },
+
+      "langswitcher": {
+        "turkish": "Turco",
+        "english": "Inglese"
+      },
+
+      "options": {
+        "explore": "Esplora",
+        "contact": "Contatto",
+        "homepage": "Homepage"
+      },
+
+      "userMenu": {
+        "settings": "Impostazioni",
+        "saved": "Luoghi salvati",
+        "admin": "Dashboard amministrativo",
+        "logout": "Esci"
+      },
+
+      "login": "Accedi"
+    },
+    "middle": {
+      "explore": {
+        "title": "Esplora luoghi ora!",
+        "buttonLabel": "Esplora",
+        "description": "Descrizione"
+      }
+    },
+    "contact": {
+      "title": "Contattaci",
+      "descriptionpart1": "Si prega di contattarci direttamente a",
+      "descriptionpart2": "o tramite questo modulo",
+
+      "inputplaceholder": "Inserisci il tuo indirizzo email...",
+      "textareaplaceholder": "Inserisci qui il tuo messaggio...",
+      "buttonLabel": "Invia",
+
+      "succesfullySent": "Email inviata con successo!"
+    },
+    "footer": {
+      "title": "SANAL REHBERIM",
+      "legal": "2024 © Sanal Rehberim, Tutti i diritti riservati.",
+      "navigation": {
+        "title": "Navigazione",
+        "options": {
+          "homepage": "Homepage",
+          "explore": "Esplora",
+          "contact": "Contatto"
+        }
+      },
+      "socials": {
+        "title": "Social",
+        "options": {
+          "instagram": "Instagram",
+          "youtube": "YouTube",
+          "tiktok": "TikTok"
+        }
+      }
+    },
+    "marqueeLocal": {
+      "title": "Scopri Trabzon",
+
+      "marquee": {
+        "shopping": "Shopping",
+        "history": "Storia",
+        "entertainment": "Intrattenimento",
+        "beaches": "Spiagge",
+        "foodanddrink": "Cibo e Bevande",
+        "art": "Arte",
+        "nature": "Natura"
+      }
+    },
+    "tiltCards": {
+      "card1": {
+        "title": "Tutto in Uno",
+        "description": "Scopri vari luoghi di Trabzon in un'unica applicazione. La tua guida completa per un'esperienza di viaggio senza intoppi."
+      },
+      "card2": {
+        "title": "Integrato con l'IA",
+        "description": "Utilizza l'intelligenza artificiale per arricchire la tua esperienza con raccomandazioni personalizzate, informazioni sulla città e altro ancora."
+      },
+      "card3": {
+        "title": "Facile da Usare",
+        "description": "Goditi i vantaggi di un'applicazione di guida cittadina pensata per te. Interazioni fluide per una navigazione facile, un'interfaccia intuitiva e un'esperienza Trabzon deliziosa progettata con te in mente."
+      }
+    },
+    "feedback": {
+      "greeting": "Ciao",
+      "title": "Invia Feedback",
+      "message": "Invia qui qualsiasi feedback sull'applicazione:",
+      "appreciation": "Grazie per il tuo feedback.",
+      "placeholder": "Digita il feedback..."
+    }
+  },
+  "explore": {
+    "main": {
+      "title": "Esplora",
+      "search": "Cerca luoghi",
+      "notFound": "Non trovato"
+    }
+  },
+  "placeLocal": {
+    "ai": {
+      "placeholder": "Fai domande su",
+      "button": "Invia"
+    },
+    "tts": "Parla Testo",
+    "ttsStop": "Arresta",
+    "comments": {
+      "title": "Commenti",
+      "placeholder": "Scrivi il tuo commento...",
+      "userError": "Devi accedere per lasciare un commento.",
+      "send": "Invia",
+      "delete": "Elimina",
+      "today": "Oggi alle",
+
+      "errorDelete": "Impossibile eliminare il commento",
+      "successDelete": "Commento eliminato",
+
+      "success": "Il tuo commento è stato inviato per la revisione e sarà reso pubblico una volta approvato.",
+      "error": "Impossibile inviare il commento"
+    }
+  },
+  "admin": {
+    "welcome": "Benvenuto di nuovo",
+    "uploadedFiles": "File caricati",
+    "cards": {
+      "placeCard": {
+        "title": "Crea un nuovo luogo",
+        "description": "Aggiungi un nuovo luogo senza sforzo utilizzando l'interfaccia intuitiva."
+      },
+      "fileCard": {
+        "title": "Carica un nuovo file",
+        "description": "Trasferisci un nuovo file su edgestore utilizzando l'input sottostante."
+      },
+      "commentCard": {
+        "title": "Gestisci Commenti",
+        "description": "Gestisci e approva/disapprova i commenti in arrivo."
+      }
+    },
+    "adminCard": {
+      "link": "Portami lì"
+    },
+    "fileCard": {
+      "warn": "Sei sicuro di voler eliminare questo file?",
+      "cancel": "Annulla",
+      "view": "Visualizza",
+      "preview": "Anteprima",
+      "download": "Scarica",
+      "copyLink": "Copia link",
+      "videoError": "Il tuo browser non supporta la tag video."
+    }
+  },
+  "comment": {
+    "title": "Approva Commenti",
+    "description": "Revisiona e approva i commenti che ritieni sicuri e non fuorvianti per l'utente finale.",
+    "adminTable": {
+      "approveButton": "Approva Selezionati",
+      "deleteButton": "Elimina Selezionati",
+      "date": "Data",
+      "commentator": "Commentatore",
+      "message": "Messaggio",
+      "place": "Luogo",
+      "allow": "Consenti",
+      "delete": "Elimina",
+      "showing": "Visualizzazione",
+      "results": "risultati"
+    }
+  },
+  "savedPlacesLocal": {
+    "title": "Luoghi Salvati",
+    "description": "Visualizza, recensisci e gestisci i luoghi che hai salvato."
+  },
+  "savePlaceNotification": {
+    "message": "è ora salvato nella tua lista dei luoghi.",
+    "messageDelete": "è ora eliminato dalla tua lista dei luoghi.",
+    "action": "Apri"
+  },
+  "authLocal": {
+    "home": "Torna indietro",
+    "title": "Accedi al tuo account"
+  }
+}

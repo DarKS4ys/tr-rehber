@@ -39,6 +39,8 @@ export default async function page({
     },
   });
 
+  console.log(place)
+
   metadata.title = (place?.name as { [key in Locale]: string })[lang] + ' | Sanal Rehberim' || 'Sanal Rehberim';
   metadata.description = (place?.description as { [key in Locale]: string })[lang] || 'Sanal Rehberim';
 
@@ -108,11 +110,9 @@ export default async function page({
                 allowFullScreen
               ></iframe>
             )} */}
-            <iframe width="100%" height="400" src="https://app.heygen.com/embeds/3b3fbf17e0544bccb03be096454d15ad" title="HeyGen video player" allow="encrypted-media; fullscreen;" ></iframe>
-            
-            {/* <video src={'heygen.mp4'}/> */}
-            
-            <ListenButton localListen={placeLocal.tts}/>
+            <iframe className="object-cover w-[50%] rounded-lg mx-auto" width="100%" height="400" src={(place?.videoUrl as { [key in Locale]: string })[lang]} title="AI video player" allow="encrypted-media; fullscreen;" ></iframe>
+
+            <ListenButton audioLink={(place?.audioUrl as { [key in Locale]: string })[lang]} localListen={placeLocal.tts}/>
 {/*             <TextToSpeechButton
               text={(place?.info as { [key in Locale]: string })[lang]}
               placeLocal={placeLocal}

@@ -1,0 +1,205 @@
+{
+  "metadataLocal": {
+    "explore": "Explorar",
+    "admin": "Painel de Administração",
+    "comments": "Gerenciar Comentários",
+    "createPlace": "Criar Local",
+    "savedPlaces": "Locais Salvos"
+  },
+  "page": {
+    "header": {
+      "welcome": "Bem-vindo(a) a",
+      "city": "Trabzon!",
+      "description": "Descubra lugares para explorar e coisas para fazer com nossa ferramenta alimentada por IA",
+
+      "ai": "Me pergunte qualquer coisa"
+    },
+    "navbar": {
+      "switcher": {
+        "dark": "Escuro",
+        "light": "Claro",
+        "system": "Sistema"
+      },
+
+      "langswitcher": {
+        "turkish": "Turco",
+        "english": "Inglês"
+      },
+
+      "options": {
+        "explore": "Explorar",
+        "contact": "Contato",
+        "homepage": "Página Inicial"
+      },
+
+      "userMenu": {
+        "settings": "Configurações",
+        "saved": "Locais Salvos",
+        "admin": "Painel de Administração",
+        "logout": "Sair"
+      },
+
+      "login": "Entrar"
+    },
+    "middle": {
+      "explore": {
+        "title": "Explore lugares agora!",
+        "buttonLabel": "Explorar",
+        "description": "Descrição"
+      }
+    },
+    "contact": {
+      "title": "Contate-nos",
+      "descriptionpart1": "Entre em contato conosco diretamente em",
+      "descriptionpart2": "ou através deste formulário",
+
+      "inputplaceholder": "Digite seu endereço de e-mail...",
+      "textareaplaceholder": "Digite sua mensagem aqui...",
+      "buttonLabel": "Enviar",
+
+      "succesfullySent": "E-mail enviado com sucesso!"
+    },
+    "footer": {
+      "title": "SANAL REHBERIM",
+      "legal": "2024 © Sanal Rehberim, Todos os direitos reservados.",
+      "navigation": {
+        "title": "Navegação",
+        "options": {
+          "homepage": "Página Inicial",
+          "explore": "Explorar",
+          "contact": "Contato"
+        }
+      },
+      "socials": {
+        "title": "Redes Sociais",
+        "options": {
+          "instagram": "Instagram",
+          "youtube": "YouTube",
+          "tiktok": "TikTok"
+        }
+      }
+    },
+    "marqueeLocal": {
+      "title": "Descubra Trabzon",
+
+      "marquee": {
+        "shopping": "Compras",
+        "history": "História",
+        "entertainment": "Entretenimento",
+        "beaches": "Praias",
+        "foodanddrink": "Comida & Bebida",
+        "art": "Arte",
+        "nature": "Natureza"
+      }
+    },
+    "tiltCards": {
+      "card1": {
+        "title": "Tudo em Um",
+        "description": "Descubra vários lugares de Trabzon em um único aplicativo. Seu guia abrangente para uma experiência de viagem sem problemas."
+      },
+      "card2": {
+        "title": "Integrado com IA",
+        "description": "Utilize inteligência artificial para enriquecer sua experiência com recomendações personalizadas, informações da cidade e muito mais."
+      },
+      "card3": {
+        "title": "Amigável ao Usuário",
+        "description": "Desfrute dos benefícios de um aplicativo de guia da cidade cuidadosamente projetado. Interações suaves para navegação fácil, uma interface intuitiva e uma experiência deliciosa em Trabzon projetada com você em mente."
+      }
+    },
+    "feedback": {
+      "greeting": "Olá",
+      "title": "Enviar Feedback",
+      "message": "Envie qualquer feedback que você tenha sobre o aplicativo aqui:",
+      "appreciation": "Obrigado pelo seu feedback.",
+      "placeholder": "Digite o feedback..."
+    }
+  },
+  "explore": {
+    "main": {
+      "title": "Explorar",
+      "search": "Buscar lugares",
+      "notFound": "Não encontrado"
+    }
+  },
+  "placeLocal": {
+    "ai": {
+      "placeholder": "Faça perguntas sobre",
+      "button": "Enviar"
+    },
+    "tts": "Falar Texto",
+    "ttsStop": "Parar",
+    "comments": {
+      "title": "Comentários",
+      "placeholder": "Escreva seu comentário...",
+      "userError": "Você precisa estar logado para deixar um comentário.",
+      "send": "Enviar",
+      "delete": "Excluir",
+      "today": "Hoje às",
+
+      "errorDelete": "Não foi possível excluir o comentário",
+      "successDelete": "Comentário excluído",
+
+      "success": "Seu comentário foi enviado para revisão e será tornada pública assim que for aprovada.",
+      "error": "Não foi possível enviar o comentário"
+    }
+  },
+  "admin": {
+    "welcome": "Bem-vindo de volta",
+    "uploadedFiles": "Arquivos Carregados",
+    "cards": {
+      "placeCard": {
+        "title": "Criar um novo local",
+        "description": "Adicione um novo local sem esforço usando a interface intuitiva."
+      },
+      "fileCard": {
+        "title": "Enviar um novo arquivo",
+        "description": "Transfira um novo arquivo para edgestore usando a entrada abaixo."
+      },
+      "commentCard": {
+        "title": "Gerenciar Comentários",
+        "description": "Gerencie e aprove/desaprove os comentários recebidos."
+      }
+    },
+    "adminCard": {
+      "link": "Me leva lá"
+    },
+    "fileCard": {
+      "warn": "Tem certeza de que deseja excluir este arquivo?",
+      "cancel": "Cancelar",
+      "view": "Ver",
+      "preview": "Visualização",
+      "download": "Baixar",
+      "copyLink": "Copiar link",
+      "videoError": "Seu navegador não suporta a tag de vídeo."
+    }
+  },
+  "comment": {
+    "title": "Aprovar Comentários",
+    "description": "Revise e aprove os comentários que você considera seguros e não enganosos para o usuário final.",
+    "adminTable": {
+      "approveButton": "Aprovar Selecionados",
+      "deleteButton": "Excluir Selecionados",
+      "date": "Data",
+      "commentator": "Comentarista",
+      "message": "Mensagem",
+      "place": "Local",
+      "allow": "Permitir",
+      "delete": "Excluir",
+      "showing": "Exibindo",
+      "results": "resultados"
+    }
+  },
+  "savedPlacesLocal": {
+    "title": "Locais Salvos",
+    "description": "Veja, revise e gerencie os locais que você salvou."
+  },
+  "savePlaceNotification": {
+    "message": "agora está salvo na sua lista de locais.",
+    "messageDelete": "foi excluído da sua lista de locais.",
+    "action": "Abrir"
+  },
+  "authLocal": {
+    "home": "Voltar",
+    "title": "Faça login na sua conta"
+  }
+}

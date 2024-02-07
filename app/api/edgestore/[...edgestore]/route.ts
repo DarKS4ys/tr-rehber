@@ -8,7 +8,7 @@ const es = initEdgeStore.create();
  */
 const edgeStoreRouter = es.router({
   publicFiles: es.fileBucket({
-    maxSize: 1024 * 1024 * 20,
+    maxSize: 1024 * 1024 * 200,
     accept: ['image/*', 'video/*', 'application/pdf', 'audio/*'],
   }),
 });

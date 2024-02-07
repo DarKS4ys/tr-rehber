@@ -77,6 +77,7 @@ model Place {
   description  Json           @map("description")
   info         Json
   videoUrl     Json
+  audioUrl     Json
   tags         Json[]
   imageUrl     String
   images       String[]
@@ -132,12 +133,12 @@ model Feedback {
 }
 
 model SavedPlace {
-  id      String @id @default(auto()) @map("_id") @db.ObjectId
-  placeId String @db.ObjectId
-  userId  String @db.ObjectId
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  placeId   String   @db.ObjectId
+  userId    String   @db.ObjectId
   createdAt DateTime @default(now())
-  place   Place  @relation(fields: [placeId], references: [id], onDelete: Cascade)
-  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  place     Place    @relation(fields: [placeId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("saved-places")
 }

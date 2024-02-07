@@ -53,7 +53,7 @@ export const sendEmail = async (formData: FormData) => {
 };
 
 export async function createPlace(
-  placeData: Record<Locale, { name: string; description: string, videoUrl: string, info:string, tags: string[] }>,
+  placeData: Record<Locale, { name: string; description: string, videoUrl: string, info:string, tags: string[], audioUrl: string }>,
   user: any,
   imageUrl: string,
   extraImageUrls: string[],
@@ -75,6 +75,7 @@ export async function createPlace(
       const name = placeData[lang].name as string;
       const description = placeData[lang].description as string;
       const videoUrl = placeData[lang].videoUrl as string;
+      const audioUrl = placeData[lang].audioUrl as string;
       const info = placeData[lang].info as string;
       const tags = placeData[lang].tags as string[];
       
@@ -102,6 +103,12 @@ export async function createPlace(
         };
       }
 
+      if (!validateString(audioUrl, 5000)) {
+        return {
+          error: 'Invalid audio url',
+        };
+      }
+
       if (tags.some(tag => !validateString(tag, 50))) {
         return {
           error: 'Invalid tags',
@@ -121,6 +128,11 @@ export async function createPlace(
       placeCreateData.data.videoUrl = {
         ...(placeCreateData.data.videoUrl || {}),
         [lang]: videoUrl,
+      };
+
+      placeCreateData.data.audioUrl = {
+        ...(placeCreateData.data.audioUrl || {}),
+        [lang]: audioUrl,
       };
 
       placeCreateData.data.info = {

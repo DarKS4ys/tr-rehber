@@ -1,0 +1,205 @@
+{
+  "metadataLocal": {
+    "explore": "Erkunden",
+    "admin": "Administrationsdashboard",
+    "comments": "Kommentare verwalten",
+    "createPlace": "Ort erstellen",
+    "savedPlaces": "Gespeicherte Orte"
+  },
+  "page": {
+    "header": {
+      "welcome": "Willkommen zu",
+      "city": "Trabzon!",
+      "description": "Entdecken Sie Orte zum Erkunden und Dinge zum Tun mit unserem KI-gesteuerten Tool",
+
+      "ai": "Frag mich etwas"
+    },
+    "navbar": {
+      "switcher": {
+        "dark": "Dunkel",
+        "light": "Licht",
+        "system": "System"
+      },
+
+      "langswitcher": {
+        "turkish": "Türkisch",
+        "english": "Englisch"
+      },
+
+      "options": {
+        "explore": "Erkunden",
+        "contact": "Kontakt",
+        "homepage": "Startseite"
+      },
+
+      "userMenu": {
+        "settings": "Einstellungen",
+        "saved": "Gespeicherte Orte",
+        "admin": "Administrationsdashboard",
+        "logout": "Abmelden"
+      },
+
+      "login": "Anmelden"
+    },
+    "middle": {
+      "explore": {
+        "title": "Jetzt Orte erkunden!",
+        "buttonLabel": "Erkunden",
+        "description": "Beschreibung"
+      }
+    },
+    "contact": {
+      "title": "Kontaktiere uns",
+      "descriptionpart1": "Bitte kontaktieren Sie uns direkt unter",
+      "descriptionpart2": "oder über dieses Formular",
+
+      "inputplaceholder": "Geben Sie Ihre E-Mail-Adresse ein...",
+      "textareaplaceholder": "Geben Sie hier Ihre Nachricht ein...",
+      "buttonLabel": "Senden",
+
+      "succesfullySent": "E-Mail erfolgreich gesendet!"
+    },
+    "footer": {
+      "title": "SANAL REHBERIM",
+      "legal": "2024 © Sanal Rehberim, Alle Rechte vorbehalten.",
+      "navigation": {
+        "title": "Navigation",
+        "options": {
+          "homepage": "Startseite",
+          "explore": "Erkunden",
+          "contact": "Kontakt"
+        }
+      },
+      "socials": {
+        "title": "Soziales",
+        "options": {
+          "instagram": "Instagram",
+          "youtube": "YouTube",
+          "tiktok": "TikTok"
+        }
+      }
+    },
+    "marqueeLocal": {
+      "title": "Entdecken Sie Trabzon",
+
+      "marquee": {
+        "shopping": "Einkaufen",
+        "history": "Geschichte",
+        "entertainment": "Unterhaltung",
+        "beaches": "Strände",
+        "foodanddrink": "Essen & Trinken",
+        "art": "Kunst",
+        "nature": "Natur"
+      }
+    },
+    "tiltCards": {
+      "card1": {
+        "title": "Alles in einem",
+        "description": "Entdecken Sie verschiedene Orte von Trabzon in einer einzigen Anwendung. Ihr umfassender Leitfaden für ein nahtloses Reiseerlebnis."
+      },
+      "card2": {
+        "title": "KI-Integriert",
+        "description": "Nutzen Sie künstliche Intelligenz, um Ihre Erfahrung mit personalisierten Empfehlungen, Stadtinformationen und mehr zu bereichern."
+      },
+      "card3": {
+        "title": "Benutzerfreundlich",
+        "description": "Genießen Sie die Vorteile einer durchdacht gestalteten nahtlosen Stadtführeranwendung. Reibungslose Interaktionen für einfache Navigation, eine intuitive Benutzeroberfläche und ein angenehmes Trabzon-Erlebnis, das mit Ihnen im Kopf entworfen wurde."
+      }
+    },
+    "feedback": {
+      "greeting": "Hallo",
+      "title": "Feedback senden",
+      "message": "Senden Sie hier Ihr Feedback zur App:",
+      "appreciation": "Vielen Dank für Ihr Feedback.",
+      "placeholder": "Geben Sie Feedback ein..."
+    }
+  },
+  "explore": {
+    "main": {
+      "title": "Erkunden",
+      "search": "Orte suchen",
+      "notFound": "Nicht gefunden"
+    }
+  },
+  "placeLocal": {
+    "ai": {
+      "placeholder": "Fragen Sie nach",
+      "button": "Senden"
+    },
+    "tts": "Text sprechen",
+    "ttsStop": "Stoppen",
+    "comments": {
+      "title": "Kommentare",
+      "placeholder": "Schreiben Sie Ihren Kommentar...",
+      "userError": "Sie müssen angemeldet sein, um einen Kommentar zu hinterlassen.",
+      "send": "Senden",
+      "delete": "Löschen",
+      "today": "Heute um",
+
+      "errorDelete": "Kommentar konnte nicht gelöscht werden",
+      "successDelete": "Kommentar gelöscht",
+
+      "success": "Ihr Kommentar wurde zur Überprüfung eingereicht und wird öffentlich gemacht, sobald er genehmigt wurde.",
+      "error": "Kommentar konnte nicht gesendet werden"
+    }
+  },
+  "admin": {
+    "welcome": "Willkommen zurück",
+    "uploadedFiles": "Hochgeladene Dateien",
+    "cards": {
+      "placeCard": {
+        "title": "Neuen Ort erstellen",
+        "description": "Fügen Sie mühelos einen neuen Ort mit der intuitiven Benutzeroberfläche hinzu."
+      },
+      "fileCard": {
+        "title": "Neue Datei hochladen",
+        "description": "Übertragen Sie eine neue Datei zu Edgestore mit der unten stehenden Eingabe."
+      },
+      "commentCard": {
+        "title": "Kommentare verwalten",
+        "description": "Verwalten und genehmigen/ablehnen eingehender Kommentare."
+      }
+    },
+    "adminCard": {
+      "link": "Dorthin gehen"
+    },
+    "fileCard": {
+      "warn": "Sind Sie sicher, dass Sie diese Datei löschen möchten?",
+      "cancel": "Abbrechen",
+      "view": "Ansehen",
+      "preview": "Vorschau",
+      "download": "Herunterladen",
+      "copyLink": "Link kopieren",
+      "videoError": "Ihr Browser unterstützt das Video-Tag nicht."
+    }
+  },
+  "comment": {
+    "title": "Kommentare genehmigen",
+    "description": "Überprüfen und genehmigen Sie die Kommentare, die Sie für sicher und nicht irreführend für den Endbenutzer halten.",
+    "adminTable": {
+      "approveButton": "Ausgewählte genehmigen",
+      "deleteButton": "Ausgewählte löschen",
+      "date": "Datum",
+      "commentator": "Kommentator",
+      "message": "Nachricht",
+      "place": "Ort",
+      "allow": "Zulassen",
+      "delete": "Löschen",
+      "showing": "Anzeigen",
+      "results": "Ergebnisse"
+    }
+  },
+  "savedPlacesLocal": {
+    "title": "Gespeicherte Orte",
+    "description": "Sehen Sie sich die gespeicherten Orte an, überprüfen Sie sie und verwalten Sie sie."
+  },
+  "savePlaceNotification": {
+    "message": "ist jetzt in Ihrer Liste der Orte gespeichert.",
+    "messageDelete": "wurde jetzt aus Ihrer Liste der Orte gelöscht.",
+    "action": "Öffnen"
+  },
+  "authLocal": {
+    "home": "Zurück",
+    "title": "Melden Sie sich bei Ihrem Konto an"
+  }
+}

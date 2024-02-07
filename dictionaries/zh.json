@@ -1,0 +1,205 @@
+{
+  "metadataLocal": {
+    "explore": "探索",
+    "admin": "管理面板",
+    "comments": "管理评论",
+    "createPlace": "创建地点",
+    "savedPlaces": "已保存地点"
+  },
+  "page": {
+    "header": {
+      "welcome": "欢迎来到",
+      "city": "特拉布宗！",
+      "description": "使用我们的人工智能工具发现探索的地方和事物",
+
+      "ai": "问我任何事"
+    },
+    "navbar": {
+      "switcher": {
+        "dark": "暗",
+        "light": "亮",
+        "system": "系统"
+      },
+
+      "langswitcher": {
+        "turkish": "土耳其语",
+        "english": "英语"
+      },
+
+      "options": {
+        "explore": "探索",
+        "contact": "联系",
+        "homepage": "主页"
+      },
+
+      "userMenu": {
+        "settings": "设置",
+        "saved": "已保存地点",
+        "admin": "管理面板",
+        "logout": "退出"
+      },
+
+      "login": "登录"
+    },
+    "middle": {
+      "explore": {
+        "title": "现在探索地点！",
+        "buttonLabel": "探索",
+        "description": "描述"
+      }
+    },
+    "contact": {
+      "title": "联系我们",
+      "descriptionpart1": "请直接联系我们",
+      "descriptionpart2": "或通过此表格",
+
+      "inputplaceholder": "输入您的电子邮件地址...",
+      "textareaplaceholder": "在此处输入您的消息...",
+      "buttonLabel": "提交",
+
+      "succesfullySent": "邮件发送成功！"
+    },
+    "footer": {
+      "title": "SANAL REHBERIM",
+      "legal": "2024 © Sanal Rehberim，保留所有权利。",
+      "navigation": {
+        "title": "导航",
+        "options": {
+          "homepage": "主页",
+          "explore": "探索",
+          "contact": "联系"
+        }
+      },
+      "socials": {
+        "title": "社交媒体",
+        "options": {
+          "instagram": "Instagram",
+          "youtube": "YouTube",
+          "tiktok": "TikTok"
+        }
+      }
+    },
+    "marqueeLocal": {
+      "title": "发现特拉布宗",
+
+      "marquee": {
+        "shopping": "购物",
+        "history": "历史",
+        "entertainment": "娱乐",
+        "beaches": "海滩",
+        "foodanddrink": "美食与饮品",
+        "art": "艺术",
+        "nature": "自然"
+      }
+    },
+    "tiltCards": {
+      "card1": {
+        "title": "一站式",
+        "description": "在一个应用程序中发现特拉布宗的各种地方。无缝旅行体验的全面指南。"
+      },
+      "card2": {
+        "title": "人工智能集成",
+        "description": "利用人工智能丰富您的体验，提供个性化建议、城市信息等。"
+      },
+      "card3": {
+        "title": "用户友好",
+        "description": "享受精心设计的无缝城市指南应用程序的好处。流畅的交互，易于导航的直观界面，为您量身定制的令人愉快的特拉布宗体验。"
+      }
+    },
+    "feedback": {
+      "greeting": "你好",
+      "title": "发送反馈",
+      "message": "在此处提交您对应用程序的任何反馈：",
+      "appreciation": "感谢您的反馈。",
+      "placeholder": "输入反馈..."
+    }
+  },
+  "explore": {
+    "main": {
+      "title": "探索",
+      "search": "搜索地点",
+      "notFound": "未找到"
+    }
+  },
+  "placeLocal": {
+    "ai": {
+      "placeholder": "询问关于",
+      "button": "发送"
+    },
+    "tts": "朗读文本",
+    "ttsStop": "停止",
+    "comments": {
+      "title": "评论",
+      "placeholder": "写下您的评论...",
+      "userError": "您必须登录才能发表评论。",
+      "send": "发送",
+      "delete": "删除",
+      "today": "今天",
+
+      "errorDelete": "无法删除评论",
+      "successDelete": "评论已删除",
+
+      "success": "您的评论已提交审核，一经批准即可公开。",
+      "error": "无法发送评论"
+    }
+  },
+  "admin": {
+    "welcome": "欢迎回来",
+    "uploadedFiles": "已上传文件",
+    "cards": {
+      "placeCard": {
+        "title": "创建新地点",
+        "description": "使用直观的用户界面轻松添加新地点。"
+      },
+      "fileCard": {
+        "title": "上传新文件",
+        "description": "使用下面的输入将新文件传输到edgestore。"
+      },
+      "commentCard": {
+        "title": "管理评论",
+        "description": "管理和批准/不批准收到的评论。"
+      }
+    },
+    "adminCard": {
+      "link": "带我去那里"
+    },
+    "fileCard": {
+      "warn": "您确定要删除此文件吗？",
+      "cancel": "取消",
+      "view": "查看",
+      "preview": "预览",
+      "download": "下载",
+      "copyLink": "复制链接",
+      "videoError": "您的浏览器不支持视频标签。"
+    }
+  },
+  "comment": {
+    "title": "批准评论",
+    "description": "审核并批准您认为对最终用户安全且不误导的评论。",
+    "adminTable": {
+      "approveButton": "批准选定项",
+      "deleteButton": "删除选定项",
+      "date": "日期",
+      "commentator": "评论者",
+      "message": "消息",
+      "place": "地点",
+      "allow": "允许",
+      "delete": "删除",
+      "showing": "显示",
+      "results": "结果"
+    }
+  },
+  "savedPlacesLocal": {
+    "title": "已保存地点",
+    "description": "查看、审核和管理您保存的地点。"
+  },
+  "savePlaceNotification": {
+    "message": "现在已保存在您的地点列表中。",
+    "messageDelete": "现在已从您的地点列表中删除。",
+    "action": "打开"
+  },
+  "authLocal": {
+    "home": "返回",
+    "title": "登录到您的帐户"
+  }
+}

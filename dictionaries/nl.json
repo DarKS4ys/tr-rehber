@@ -1,0 +1,205 @@
+{
+  "metadataLocal": {
+    "explore": "Verkennen",
+    "admin": "Beheerdersdashboard",
+    "comments": "Reacties Beheren",
+    "createPlace": "Plaats Maken",
+    "savedPlaces": "Opgeslagen Plaatsen"
+  },
+  "page": {
+    "header": {
+      "welcome": "Welkom bij",
+      "city": "Trabzon!",
+      "description": "Ontdek plaatsen om te verkennen en dingen te doen met onze op AI gebaseerde tool",
+
+      "ai": "Vraag me alles"
+    },
+    "navbar": {
+      "switcher": {
+        "dark": "Donker",
+        "light": "Licht",
+        "system": "Systeem"
+      },
+
+      "langswitcher": {
+        "turkish": "Turks",
+        "english": "Engels"
+      },
+
+      "options": {
+        "explore": "Verkennen",
+        "contact": "Contact",
+        "homepage": "Homepage"
+      },
+
+      "userMenu": {
+        "settings": "Instellingen",
+        "saved": "Opgeslagen Plaatsen",
+        "admin": "Beheerdersdashboard",
+        "logout": "Uitloggen"
+      },
+
+      "login": "Aanmelden"
+    },
+    "middle": {
+      "explore": {
+        "title": "Verken nu plaatsen!",
+        "buttonLabel": "Verkennen",
+        "description": "beschrijving"
+      }
+    },
+    "contact": {
+      "title": "Neem contact op",
+      "descriptionpart1": "Neem rechtstreeks contact met ons op op",
+      "descriptionpart2": "of via dit formulier",
+
+      "inputplaceholder": "Typ uw e-mailadres...",
+      "textareaplaceholder": "Typ hier uw bericht...",
+      "buttonLabel": "Verzenden",
+
+      "succesfullySent": "E-mail succesvol verzonden!"
+    },
+    "footer": {
+      "title": "SANAL REHBERIM",
+      "legal": "2024 © Sanal Rehberim, Alle rechten voorbehouden.",
+      "navigation": {
+        "title": "Navigatie",
+        "options": {
+          "homepage": "Homepage",
+          "explore": "Verkennen",
+          "contact": "Contact"
+        }
+      },
+      "socials": {
+        "title": "Socials",
+        "options": {
+          "instagram": "Instagram",
+          "youtube": "YouTube",
+          "tiktok": "TikTok"
+        }
+      }
+    },
+    "marqueeLocal": {
+      "title": "Ontdek Trabzon",
+
+      "marquee": {
+        "shopping": "Winkelen",
+        "history": "Geschiedenis",
+        "entertainment": "Entertainment",
+        "beaches": "Stranden",
+        "foodanddrink": "Eten & Drinken",
+        "art": "Kunst",
+        "nature": "Natuur"
+      }
+    },
+    "tiltCards": {
+      "card1": {
+        "title": "Alles in één",
+        "description": "Ontdek verschillende plaatsen in Trabzon in één toepassing. Uw uitgebreide gids voor een naadloze reiservaring."
+      },
+      "card2": {
+        "title": "AI Geïntegreerd",
+        "description": "Gebruik kunstmatige intelligentie om uw ervaring te verrijken met gepersonaliseerde aanbevelingen, stadsinformatie en meer."
+      },
+      "card3": {
+        "title": "Gebruiksvriendelijk",
+        "description": "Geniet van de voordelen van een doordacht ontworpen naadloze stads-gids applicatie. Soepele interacties voor eenvoudige navigatie, een intuïtieve interface en een heerlijke Trabzon-ervaring ontworpen met u in gedachten."
+      }
+    },
+    "feedback": {
+      "greeting": "Hallo",
+      "title": "Feedback verzenden",
+      "message": "Dien hier eventuele feedback in die u heeft over de app:",
+      "appreciation": "Bedankt voor uw feedback.",
+      "placeholder": "Typ feedback..."
+    }
+  },
+  "explore": {
+    "main": {
+      "title": "Verkennen",
+      "search": "Plaatsen zoeken",
+      "notFound": "Niet gevonden"
+    }
+  },
+  "placeLocal": {
+    "ai": {
+      "placeholder": "Stel me vragen over",
+      "button": "Verzenden"
+    },
+    "tts": "Tekst spreken",
+    "ttsStop": "Stoppen",
+    "comments": {
+      "title": "Reacties",
+      "placeholder": "Schrijf uw reactie...",
+      "userError": "U moet inloggen om een reactie achter te laten.",
+      "send": "Verzenden",
+      "delete": "Verwijderen",
+      "today": "Vandaag om",
+
+      "errorDelete": "Kan de reactie niet verwijderen",
+      "successDelete": "Reactie verwijderd",
+
+      "success": "Uw reactie is ingediend ter beoordeling en zal openbaar worden gemaakt zodra deze is goedgekeurd.",
+      "error": "Kan de reactie niet verzenden"
+    }
+  },
+  "admin": {
+    "welcome": "Welkom terug",
+    "uploadedFiles": "Geüploade Bestanden",
+    "cards": {
+      "placeCard": {
+        "title": "Maak een nieuwe plaats",
+        "description": "Voeg moeiteloos een nieuwe plaats toe met de intuïtieve UI."
+      },
+      "fileCard": {
+        "title": "Upload een nieuw bestand",
+        "description": "Verplaats een nieuw bestand naar edgestore met behulp van de invoer hieronder."
+      },
+      "commentCard": {
+        "title": "Beheer Reacties",
+        "description": "Beheer en keur binnenkomende reacties goed/af."
+      }
+    },
+    "adminCard": {
+      "link": "Breng me daarheen"
+    },
+    "fileCard": {
+      "warn": "Weet u zeker dat u dit bestand wilt verwijderen?",
+      "cancel": "Annuleren",
+      "view": "Bekijken",
+      "preview": "Voorbeeld",
+      "download": "Downloaden",
+      "copyLink": "Link kopiëren",
+      "videoError": "Uw browser ondersteunt de videotag niet."
+    }
+  },
+  "comment": {
+    "title": "Reacties Goedkeuren",
+    "description": "Beoordeel en keur de reacties goed die u veilig en niet misleidend vindt voor de eindgebruiker.",
+    "adminTable": {
+      "approveButton": "Geselecteerde goedkeuren",
+      "deleteButton": "Geselecteerde verwijderen",
+      "date": "Datum",
+      "commentator": "Commentator",
+      "message": "Bericht",
+      "place": "Plaats",
+      "allow": "Toestaan",
+      "delete": "Verwijderen",
+      "showing": "Weergeven",
+      "results": "resultaten"
+    }
+  },
+  "savedPlacesLocal": {
+    "title": "Opgeslagen Plaatsen",
+    "description": "Bekijk, beoordeel en beheer de plaatsen die u heeft opgeslagen."
+  },
+  "savePlaceNotification": {
+    "message": "staat nu in uw lijst met plaatsen.",
+    "messageDelete": "is nu verwijderd uit uw lijst met plaatsen.",
+    "action": "Openen"
+  },
+  "authLocal": {
+    "home": "Terug gaan",
+    "title": "Log in op uw account"
+  }
+}
