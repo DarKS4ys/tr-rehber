@@ -1,0 +1,205 @@
+{
+  "metadataLocal": {
+    "explore": "Utforsk",
+    "admin": "Admin Dashboard",
+    "comments": "Administrer kommentarer",
+    "createPlace": "Opprett sted",
+    "savedPlaces": "Lagrede steder"
+  },
+  "page": {
+    "header": {
+      "welcome": "Velkommen til",
+      "city": "Trabzon!",
+      "description": "Oppdag steder å utforske og ting å gjøre med vårt AI-drevne verktøy",
+
+      "ai": "Spør meg hva som helst"
+    },
+    "navbar": {
+      "switcher": {
+        "dark": "Mørk",
+        "light": "Lys",
+        "system": "System"
+      },
+
+      "langswitcher": {
+        "turkish": "Tyrkisk",
+        "english": "Engelsk"
+      },
+
+      "options": {
+        "explore": "Utforsk",
+        "contact": "Kontakt",
+        "homepage": "Hjemmeside"
+      },
+
+      "userMenu": {
+        "settings": "Innstillinger",
+        "saved": "Lagrede steder",
+        "admin": "Admin Dashboard",
+        "logout": "Logg ut"
+      },
+
+      "login": "Logg inn"
+    },
+    "middle": {
+      "explore": {
+        "title": "Utforsk steder nå!",
+        "buttonLabel": "Utforsk",
+        "description": "beskrivelse"
+      }
+    },
+    "contact": {
+      "title": "Kontakt Oss",
+      "descriptionpart1": "Vennligst kontakt oss direkte på",
+      "descriptionpart2": "eller gjennom dette skjemaet",
+
+      "inputplaceholder": "Skriv din e-postadresse...",
+      "textareaplaceholder": "Skriv meldingen din her...",
+      "buttonLabel": "Send",
+
+      "succesfullySent": "E-post sendt vellykket!"
+    },
+    "footer": {
+      "title": "SANAL REHBERIM",
+      "legal": "2024 © Sanal Rehberim, Alle rettigheter reservert.",
+      "navigation": {
+        "title": "Navigasjon",
+        "options": {
+          "homepage": "Hjemmeside",
+          "explore": "Utforsk",
+          "contact": "Kontakt"
+        }
+      },
+      "socials": {
+        "title": "Sosiale Medier",
+        "options": {
+          "instagram": "Instagram",
+          "youtube": "YouTube",
+          "tiktok": "TikTok"
+        }
+      }
+    },
+    "marqueeLocal": {
+      "title": "Oppdag Trabzon",
+
+      "marquee": {
+        "shopping": "Shopping",
+        "history": "Historie",
+        "entertainment": "Underholdning",
+        "beaches": "Strender",
+        "foodanddrink": "Mat og Drikke",
+        "art": "Kunst",
+        "nature": "Natur"
+      }
+    },
+    "tiltCards": {
+      "card1": {
+        "title": "Alt i ett",
+        "description": "Oppdag ulike steder i Trabzon i en enkelt applikasjon. Din omfattende guide for en sømløs reiseopplevelse."
+      },
+      "card2": {
+        "title": "AI-integrert",
+        "description": "Bruk kunstig intelligens for å berike din opplevelse med personlige anbefalinger, byinformasjon og mer."
+      },
+      "card3": {
+        "title": "Brukervennlig",
+        "description": "Nyt fordelene med en gjennomtenkt utformet sømløs byguideapplikasjon. Sømløs interaksjon for enkel navigering, et intuitivt grensesnitt og en herlig Trabzon-opplevelse designet med deg i tankene."
+      }
+    },
+    "feedback": {
+      "greeting": "Hei",
+      "title": "Send tilbakemelding",
+      "message": "Send inn eventuelle tilbakemeldinger du har om appen her:",
+      "appreciation": "Takk for tilbakemeldingen din.",
+      "placeholder": "Skriv tilbakemelding..."
+    }
+  },
+  "explore": {
+    "main": {
+      "title": "Utforsk",
+      "search": "Søk steder",
+      "notFound": "Ikke funnet"
+    }
+  },
+  "placeLocal": {
+    "ai": {
+      "placeholder": "Still meg spørsmål om",
+      "button": "Send"
+    },
+    "tts": "Les Tekst",
+    "ttsStop": "Stopp",
+    "comments": {
+      "title": "Kommentarer",
+      "placeholder": "Skriv din kommentar...",
+      "userError": "Du må logge inn for å legge igjen en kommentar.",
+      "send": "Send",
+      "delete": "Slett",
+      "today": "I dag kl.",
+
+      "errorDelete": "Kunne ikke slette kommentaren",
+      "successDelete": "Kommentaren er slettet",
+
+      "success": "Din kommentar er sendt inn for gjennomgang og vil bli gjort offentlig når den er godkjent.",
+      "error": "Kunne ikke sende kommentaren"
+    }
+  },
+  "admin": {
+    "welcome": "Velkommen tilbake",
+    "uploadedFiles": "Opplastede filer",
+    "cards": {
+      "placeCard": {
+        "title": "Opprett et nytt sted",
+        "description": "Legg til et nytt sted enkelt med den intuitive UI-en."
+      },
+      "fileCard": {
+        "title": "Last opp en ny fil",
+        "description": "Overfør en ny fil til edgestore ved hjelp av inngangen nedenfor."
+      },
+      "commentCard": {
+        "title": "Administrer kommentarer",
+        "description": "Administrer og godkjenn/avvis innkommende kommentarer."
+      }
+    },
+    "adminCard": {
+      "link": "Ta meg dit"
+    },
+    "fileCard": {
+      "warn": "Er du sikker på at du vil slette denne filen?",
+      "cancel": "Avbryt",
+      "view": "Vis",
+      "preview": "Forhåndsvisning",
+      "download": "Last ned",
+      "copyLink": "Kopier lenke",
+      "videoError": "Nettleseren din støtter ikke video-taggen."
+    }
+  },
+  "comment": {
+    "title": "Godkjenn Kommentarer",
+    "description": "Gjennomgå og godkjenn kommentarer som du mener er trygge og ikke villedende for sluttbrukeren.",
+    "adminTable": {
+      "approveButton": "Godkjenn valgte",
+      "deleteButton": "Slett valgte",
+      "date": "Dato",
+      "commentator": "Kommentator",
+      "message": "Melding",
+      "place": "Sted",
+      "allow": "Tillat",
+      "delete": "Slett",
+      "showing": "Viser",
+      "results": "resultater"
+    }
+  },
+  "savedPlacesLocal": {
+    "title": "Lagrede Steder",
+    "description": "Se, gjennomgå og administrer stedene du har lagret."
+  },
+  "savePlaceNotification": {
+    "message": "er nå lagret i listen over stedene dine.",
+    "messageDelete": "er nå slettet fra listen over stedene dine.",
+    "action": "Åpne"
+  },
+  "authLocal": {
+    "home": "Gå tilbake",
+    "title": "Logg inn på kontoen din"
+  }
+}
