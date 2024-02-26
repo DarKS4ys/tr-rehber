@@ -92,7 +92,6 @@ export default function Feedback({
       setNotification(false);
     }, 6000);
   };
-  
 
   return (
     <div className="z-[999] bottom-10 right-10 fixed flex flex-col gap-2 items-end ">
@@ -138,12 +137,29 @@ export default function Feedback({
                   <>
                     {user ? (
                       <>
-                        <p className="line-clamp-1">{feedbackLocal.greeting}, {user.name}!</p>
+                        <p className="line-clamp-1">
+                          {feedbackLocal.greeting}, {user.name}!
+                        </p>
                         <p>{feedbackLocal.message}</p>
-                        <Link className='underline text-blue-500 break-all' href='https://forms.gle/sxWAJfub77B39edz8' target='_blank'>https://forms.gle/sxWAJfub77B39edz8</Link>
+                        <Link
+                          className="underline text-blue-500 break-all"
+                          href="https://forms.gle/sxWAJfub77B39edz8"
+                          target="_blank"
+                        >
+                          https://forms.gle/sxWAJfub77B39edz8
+                        </Link>
                       </>
                     ) : (
-                      <p>{feedbackLocal.message}</p>
+                      <>
+                        <p>{feedbackLocal.message}</p>
+                        <Link
+                          className="underline text-blue-500 break-all"
+                          href="https://forms.gle/sxWAJfub77B39edz8"
+                          target="_blank"
+                        >
+                          https://forms.gle/sxWAJfub77B39edz8
+                        </Link>
+                      </>
                     )}
                   </>
                 )}
@@ -178,7 +194,7 @@ export default function Feedback({
                     onKeyUp={handleKeyPress}
                     className="disabled:cursor-not-allowed bg-transparent resize-none transition outline-none w-full"
                     rows={1}
-                    disabled={true}/* {loading || isPending} */
+                    disabled={true} /* {loading || isPending} */
                     placeholder={feedbackLocal.placeholder}
                   />
                 </div>
@@ -189,7 +205,9 @@ export default function Feedback({
                       handleSubmit();
                     });
                   }}
-                  disabled={true}/* {loading || inputText.length == 0 || isPending} */
+                  disabled={
+                    true
+                  } /* {loading || inputText.length == 0 || isPending} */
                   className="group transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-primary/80 p-2 w-11 h-11 flex items-center justify-center text-primary-foreground aspect-square bg-primary rounded-lg"
                 >
                   <Send size={20} />
