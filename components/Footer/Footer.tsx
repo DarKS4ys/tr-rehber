@@ -42,7 +42,7 @@ export default function Footer({footer}: {footer:any}) {
             <h1 className='tracking-wide md:text-3xl font-semibold flex flex-col gap-4'>
               <p>{footer.title}</p>
 
-              <p className='text-xs md:text-sm font-light text-muted-foreground'>{footer.legal}</p>
+              <p className='text-xs md:text-sm font-light text-muted-foreground md:w-full w-3/4 min-w-[100px]'>{footer.legal}</p>
             </h1>
         </motion.div>
         <FooterList footer={footer}/>

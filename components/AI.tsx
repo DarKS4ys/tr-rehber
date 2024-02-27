@@ -6,6 +6,7 @@ import { BsStars } from 'react-icons/bs'
 import { IoSendSharp } from "react-icons/io5";
 import clsx from 'clsx'
 import type { Locale } from "@/i18n.config";
+import { BiMicrophone } from "react-icons/bi";
 
 const endpoint = "https://www.stack-inference.com/run_deployed_flow?flow_id=65358cc0d838608f2b331e42&org=d6673818-2528-4c51-97d7-4d9557f9ecb1";
 const apiKey = "39eada58-2eb8-4f0a-a4a9-2f099cf36d16";
@@ -13,10 +14,10 @@ const apiKey = "39eada58-2eb8-4f0a-a4a9-2f099cf36d16";
 export default function AI({ai, lang}: {lang: Locale, ai: string}) {
   const [inputText, setInputText] = useState("");
   const [apiResponse, setApiResponse] = useState("");
-  const [citations, setCitations] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [inputFocus, setInputFocus] = useState(false);
-  
+  const [isSupported, setIsSupported] = useState(true);
+  const [isListening, setIsListening] = useState(false);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputText(event.target.value);
@@ -50,15 +51,73 @@ export default function AI({ai, lang}: {lang: Locale, ai: string}) {
     }
   };
 
+  const handleSubmitCustom = async (inputText: string) => {
+    if (inputText.trim() === "") return;
+
+    const headers = {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+    };
+
+    const data = {
+      "in-0": inputText,
+      'in-2': lang,
+    };
+
+    setIsLoading(true);
+
+    try {
+      const response = await axios.post(endpoint, data, { headers });
+      const fullApiResponse = response.data["out-0"];
+      const cleanApiResponse = fullApiResponse.replace(/<\/?citations>/g, '');
+      setApiResponse(cleanApiResponse);
+
+    } catch (error) {
+      console.error("stack-error:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter" && !event.shiftKey) {
       handleSubmit();
     }
   };
+
+  const startListening = () => {
+    try {
+      setIsListening(false);
+
+      if (!('webkitSpeechRecognition' in window) || !isSupported) {
+        return;
+      }
+
+      const recognition = new (window as any).webkitSpeechRecognition();
+      recognition.lang = `${lang}-${lang.toUpperCase()}`;
+      // ! maybe delete?
+      recognition.onresult = (event: any) => {
+        const transcript = event.results[0][0].transcript;
+        setInputText(transcript);
+        handleSubmitCustom(transcript);
+      };
+      recognition.start();
+
+      recognition.onstart = () => {
+        setIsListening(true);
+      };
+      recognition.onend = () => {
+        setIsListening(false);
+      };
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="flex flex-col justify-center gap-4 items-center">
-      <div className={clsx("transition backdrop-blur-lg border border-border drop-shadow-xl flex justify-center items-center w-full py-4 px-6 rounded-full gap-2", inputFocus ? 'border-primary bg-background' : 'bg-background/90')}>
-          <BsStars className={clsx('transition duration-200' ,!inputFocus && 'opacity-50')} />
+      <div className={clsx("transition backdrop-blur-lg border shadow-[0_0px_30px_rgba(5,_5,_5,_0.3)] shadow-white/40 dark:shadow-primary/10 border-border drop-shadow-xl flex justify-center items-center w-full py-4 px-6 rounded-full gap-2", inputFocus ? 'border-primary bg-background' : 'bg-background/90')}>
+          <BsStars className={clsx('transition duration-200' , !inputFocus && 'opacity-50')} />
             <input
               placeholder={ai}
               className={clsx("text-primary bg-transparent transition outline-none w-full", inputFocus && 'placeholder:text-muted-foreground')}
@@ -69,6 +128,22 @@ export default function AI({ai, lang}: {lang: Locale, ai: string}) {
               onKeyUp={handleKeyPress}
               />
             <button onClick={handleSubmit}>
+                          
+{/*         {isSupported && (
+          <button
+            onClick={startListening}
+            disabled={!isSupported || isListening}
+          >
+            <BiMicrophone
+              className={clsx(
+                'text-primary hover:scale-125 transition disabled:opcity-50 disabled:cursor-not-allowed',
+                !inputFocus && 'opacity-50 hover:opacity-80',
+              isListening && '!opacity-100 animate-mic'
+              )}
+              size={24}
+            />
+          </button>
+        )} */}
             <IoSendSharp className={clsx("text-primary hover:scale-125 transition duration-200", !inputFocus && 'opacity-50' )} />
             </button>
         </div>

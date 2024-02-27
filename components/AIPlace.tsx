@@ -101,8 +101,6 @@ export default function AIPlace({
     }
   };
 
-  console.log(lang);
-
   const startListening = () => {
     try {
       setIsListening(false);
@@ -145,8 +143,9 @@ export default function AIPlace({
             'transition duration-200',
             !inputFocus && 'opacity-50'
           )}
-          size={20}
+        size={20}
         />
+
         <input
           placeholder={`${ai.placeholder} ${
             (place?.name as { [key in Locale]: string })[lang]
@@ -169,8 +168,9 @@ export default function AIPlace({
           >
             <BiMicrophone
               className={clsx(
-                'text-primary hover:scale-125 transition duration-200 disabled:opcity-50 disabled:cursor-not-allowed',
-                !inputFocus && 'opacity-50'
+                'text-primary hover:scale-125 transition disabled:opcity-50 disabled:cursor-not-allowed',
+                !inputFocus && 'opacity-50 hover:opacity-80',
+              isListening && '!opacity-100 animate-mic'
               )}
               size={24}
             />
@@ -182,7 +182,7 @@ export default function AIPlace({
             disabled={isLoading}
             className={clsx(
               'text-primary hover:scale-125 transition duration-200 disabled:cursor-not-allowed disabled:opacity-50',
-              !inputFocus && 'opacity-50'
+              !inputFocus && 'opacity-50 hover:opacity-80'
             )}
             size={20}
           />

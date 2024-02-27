@@ -79,11 +79,21 @@ module.exports = {
             transform: 'scaleY(1)',
           },
         },
+        "mic": {
+          '0%': {
+            transform: 'scale(0.85)'
+          },
+          '100%': {
+            transform: 'scale(1.15)'
+          }
+        }
+
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "pop": 'pop 0.15s forwards ease',
+        "mic": 'mic 0.5s ease-in-out infinite alternate-reverse'
       },
     },
   },
