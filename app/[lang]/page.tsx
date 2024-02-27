@@ -20,7 +20,7 @@ export default async function Home({
   return (
     <main>
       {/* <Header allPlaces={allPlaces} aleo={aleo} lang={lang}/> */}
-      <Header header={page.header}/>
+      <Header lang={lang} header={page.header}/>
       <Features featuresLocalization={page.tiltCards}/>
       <Middle middle={page.middle}/>
       <Contact contact={page.contact}/>

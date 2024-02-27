@@ -28,6 +28,7 @@ export default function Footer({footer}: {footer:any}) {
     <motion.section className='p-6 py-8 md:p-12 h-52 flex justify-center items-center border-t border-border'
     initial={{y: 75}}
     whileInView={{y: 0}}
+    viewport={{once:true}}
     >
       <div className='w-[min(100%,1200px)] flex justify-between h-full'>
         <motion.div className="flex flex-col justify-between h-full"

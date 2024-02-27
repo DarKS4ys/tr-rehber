@@ -10,8 +10,9 @@ import ParallaxBottomImg from '../public/parallax-bottom.webp';
 import ParallaxBottomNightImg from '../public/parallax-bottom-night.webp';
 import DefaultBlur from './static/DefaultBlur';
 import AI from './AI';
+import type { Locale } from '@/i18n.config';
 
-export default function Header({ header }: { header: any }) {
+export default function Header({ header, lang }: { lang:Locale, header: any }) {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -85,7 +86,7 @@ export default function Header({ header }: { header: any }) {
         }}
       >
         <div className="justify-center flex items-center absolute inset-0 top-[50%] z-[90]">
-          <AI ai={header.ai}/>
+          <AI lang={lang} ai={header.ai}/>
         </div>
         {/* Use next/image for background */}
         <Image
@@ -124,7 +125,7 @@ export default function Header({ header }: { header: any }) {
           }}
         >
           <div className="justify-center flex items-center absolute inset-0 top-[50%] z-[90]">
-            <AI ai={header.ai}/>
+            <AI lang={lang} ai={header.ai}/>
           </div>
           {/* Use next/image for background */}
           <Image

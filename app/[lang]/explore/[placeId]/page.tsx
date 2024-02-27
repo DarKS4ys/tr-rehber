@@ -39,7 +39,7 @@ export default async function page({
     },
   });
 
-  console.log(place)
+ /*  console.log(place) */
 
   metadata.title = (place?.name as { [key in Locale]: string })[lang] + ' | Sanal Rehberim' || 'Sanal Rehberim';
   metadata.description = (place?.description as { [key in Locale]: string })[lang] || 'Sanal Rehberim';

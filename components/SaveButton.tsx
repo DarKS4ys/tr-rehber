@@ -48,7 +48,7 @@ export default function SaveButton({
 
   return (
     <Button
-      className="shadow-xl opacity-90 hover:opacity-100 w-12 h-12 p-0 transition disabled:cursor-not-allowed"
+      className="shadow-xl opacity-80 hover:opacity-100 text-primary w-12 h-12 p-0 transition disabled:cursor-not-allowed"
       onClick={handleButtonClick}
       disabled={isPending}
       variant="outline"
