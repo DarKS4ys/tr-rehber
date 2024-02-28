@@ -110,7 +110,7 @@ export default async function page({
                 allowFullScreen
               ></iframe>
             )} */}
-            <iframe className="object-cover w-[50%] rounded-lg mx-auto" width="100%" height="400" src={(place?.videoUrl as { [key in Locale]: string })[lang]} title="AI video player" allow="encrypted-media; fullscreen;" ></iframe>
+            <iframe className="object-cover md:w-[70%] lg:w-[50%] rounded-lg mx-auto" width="100%" height="400" src={(place?.videoUrl as { [key in Locale]: string })[lang]} title="AI video player" allow="encrypted-media; fullscreen;" ></iframe>
 
             <ListenButton audioLink={(place?.audioUrl as { [key in Locale]: string })[lang]} localListen={placeLocal.tts}/>
 {/*             <TextToSpeechButton
