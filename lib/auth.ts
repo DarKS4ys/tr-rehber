@@ -25,7 +25,7 @@ export const authOptions: NextAuthOptions = {
 
             session.user!.status = "User";
 
-            const isAdmin = true/* env.ADMIN_EMAILS.includes(user.email) */;
+            const isAdmin = env.ADMIN_EMAILS.includes(user.email)
 
             if (isAdmin) {
                 session.user!.status = "Admin";
