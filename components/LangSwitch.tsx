@@ -60,11 +60,10 @@ export default function LangSwitch({ lang }: { lang: Locale }) {
         </Button>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent>
-
-      {i18n.locales.map(locale => (
+      <DropdownMenuContent className="grid grid-cols-2 2xl:grid-cols-1">
+        {i18n.locales.map(locale => (
           <DropdownMenuItem key={locale} onClick={() => handleLanguageChange(locale)}>
-            <p className='flex gap-2 items-center'>{languageNames[lang][locale]} {lang === locale && <FaCheck/>}</p>
+            <p className='flex gap-2 items-center'>{languageNames[lang][locale]} {lang === locale && <FaCheck />}</p>
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

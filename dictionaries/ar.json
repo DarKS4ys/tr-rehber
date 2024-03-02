@@ -1,205 +1,206 @@
 {
   "metadataLocal": {
-    "explore": "Explorar",
-    "admin": "Panel de Administración",
-    "comments": "Gestionar Comentarios",
-    "createPlace": "Crear Lugar",
-    "savedPlaces": "Lugares Guardados"
+    "explore": "استكشاف",
+    "admin": "لوحة الإدارة",
+    "comments": "إدارة التعليقات",
+    "createPlace": "إنشاء مكان",
+    "savedPlaces": "الأماكن المحفوظة"
   },
   "page": {
     "header": {
-      "welcome": "Bienvenido a",
-      "city": "¡Trabzon!",
-      "description": "Descubre lugares para explorar y cosas para hacer con nuestra herramienta impulsada por IA",
+      "welcome": "مرحبًا بك في",
+      "city": "طرابزون!",
+      "description": "اكتشف الأماكن للاستكشاف والأشياء للقيام بها مع أداةنا المدعومة بالذكاء الاصطناعي",
 
-      "ai": "Pregúntame cualquier cosa"
+      "ai": "اسألني أي شيء"
     },
     "navbar": {
       "switcher": {
-        "dark": "Oscuro",
-        "light": "Claro",
-        "system": "Sistema"
+        "dark": "داكن",
+        "light": "فاتح",
+        "system": "النظام"
       },
 
       "langswitcher": {
-        "turkish": "Turco",
-        "english": "Inglés"
+        "turkish": "التركية",
+        "english": "الإنجليزية"
       },
 
       "options": {
-        "explore": "Explorar",
-        "contact": "Contacto",
-        "homepage": "Página Principal"
+        "explore": "استكشاف",
+        "contact": "اتصل",
+        "homepage": "الصفحة الرئيسية"
       },
 
       "userMenu": {
-        "settings": "Configuración",
-        "saved": "Lugares Guardados",
-        "admin": "Panel de Administración",
-        "logout": "Cerrar Sesión"
+        "settings": "الإعدادات",
+        "saved": "الأماكن المحفوظة",
+        "admin": "لوحة الإدارة",
+        "logout": "تسجيل الخروج"
       },
 
-      "login": "Iniciar sesión"
+      "login": "تسجيل الدخول"
     },
     "middle": {
       "explore": {
-        "title": "¡Explora lugares ahora!",
-        "buttonLabel": "Explorar",
-        "description": "descripción"
+        "title": "اكتشف الأماكن الآن!",
+        "buttonLabel": "استكشاف",
+        "description": "الوصف"
       }
     },
     "contact": {
-      "title": "Contáctanos",
-      "descriptionpart1": "Por favor, contáctenos directamente en",
-      "descriptionpart2": "o a través de este formulario",
+      "title": "اتصل بنا",
+      "descriptionpart1": "يرجى الاتصال بنا مباشرة على",
+      "descriptionpart2": "أو من خلال هذا النموذج",
 
-      "inputplaceholder": "Escribe tu correo electrónico...",
-      "textareaplaceholder": "Escribe tu mensaje aquí...",
-      "buttonLabel": "Enviar",
+      "inputplaceholder": "اكتب بريدك الإلكتروني...",
+      "textareaplaceholder": "اكتب رسالتك هنا...",
+      "buttonLabel": "إرسال",
 
-      "succesfullySent": "¡Correo electrónico enviado exitosamente!"
+      "succesfullySent": "تم إرسال البريد الإلكتروني بنجاح!"
     },
     "footer": {
-      "title": "SANAL REHBERIM",
-      "legal": "2024 © Sanal Rehberim, Todos los derechos reservados.",
+      "title": "سانال ريبريم",
+      "legal": "2024 © سانال ريبريم ، جميع الحقوق محفوظة.",
       "navigation": {
-        "title": "Navegación",
+        "title": "الملاحة",
         "options": {
-          "homepage": "Página Principal",
-          "explore": "Explorar",
-          "contact": "Contacto"
+          "homepage": "الصفحة الرئيسية",
+          "explore": "استكشاف",
+          "contact": "اتصل"
         }
       },
       "socials": {
-        "title": "Redes Sociales",
+        "title": "وسائل التواصل الاجتماعي",
         "options": {
-          "instagram": "Instagram",
-          "youtube": "YouTube",
-          "tiktok": "TikTok"
+          "instagram": "إنستجرام",
+          "youtube": "يوتيوب",
+          "tiktok": "تيك توك"
         }
       }
     },
     "marqueeLocal": {
-      "title": "Descubre Trabzon",
+      "title": "اكتشف طرابزون",
 
       "marquee": {
-        "shopping": "Compras",
-        "history": "Historia",
-        "entertainment": "Entretenimiento",
-        "beaches": "Playas",
-        "foodanddrink": "Comida y Bebida",
-        "art": "Arte",
-        "nature": "Naturaleza"
+        "shopping": "التسوق",
+        "history": "التاريخ",
+        "entertainment": "الترفيه",
+        "beaches": "الشواطئ",
+        "foodanddrink": "الطعام والشراب",
+        "art": "الفن",
+        "nature": "الطبيعة"
       }
     },
     "tiltCards": {
       "card1": {
-        "title": "Todo en Uno",
-        "description": "Descubre varios lugares de Trabzon en una sola aplicación. Tu guía completa para una experiencia de viaje sin problemas."
+        "title": "كل شيء في واحد",
+        "description": "اكتشف أماكن متعددة في طرابزون في تطبيق واحد. دليلك الكامل لتجربة سفر خالية من المتاعب."
       },
       "card2": {
-        "title": "Integrado con IA",
-        "description": "Utiliza inteligencia artificial para enriquecer tu experiencia con recomendaciones personalizadas, información de la ciudad y más."
+        "title": "متكامل مع الذكاء الاصطناعي",
+        "description": "استخدم الذكاء الاصطناعي لتثرية تجربتك مع توصيات مخصصة ومعلومات عن المدينة وأكثر من ذلك."
       },
       "card3": {
-        "title": "Fácil de Usar",
-        "description": "Disfruta de los beneficios de una aplicación de guía de ciudad cuidadosamente diseñada. Interacciones fluidas para una navegación fácil, una interfaz intuitiva y una experiencia encantadora en Trabzon diseñada pensando en ti."
+        "title": "سهل الاستخدام",
+        "description": "استمتع بفوائد تطبيق دليل المدينة المصمم بعناية. تفاعلات سلسة لتصفح سهل، وواجهة مستخدم بديهية، وتجربة ساحرة في طرابزون مصممة خصيصًا لك."
       }
     },
     "feedback": {
-      "greeting": "Hola",
-      "title": "Enviar Comentarios",
-      "message": "Envía cualquier comentario que tengas sobre la aplicación aquí:",
-      "appreciation": "Gracias por tus comentarios.",
-      "placeholder": "Escribe tus comentarios aquí..."
+      "greeting": "مرحبًا",
+      "title": "إرسال تعليقات",
+      "message": "أرسل أي تعليق لديك حول التطبيق هنا:",
+      "appreciation": "شكرا لتعليقاتك.",
+      "placeholder": "اكتب تعليقاتك هنا..."
     }
   },
   "explore": {
     "main": {
-      "title": "Explorar",
-      "search": "Buscar lugares",
-      "notFound": "No encontrado"
+      "title": "استكشاف",
+      "search": "البحث عن الأماكن",
+      "notFound": "لم يتم العثور"
     }
   },
   "placeLocal": {
     "ai": {
-      "placeholder": "Hazme preguntas sobre",
-      "button": "Enviar"
+      "placeholder": "اسألني عن",
+      "button": "إرسال"
     },
-    "tts": "Hablar Texto",
-    "ttsStop": "Detener",
+    "tts": "نطق النص",
+    "ttsStop": "إيقاف",
     "comments": {
-      "title": "Comentarios",
-      "placeholder": "Escribe tu comentario...",
-      "userError": "Debes iniciar sesión para dejar un comentario.",
-      "send": "Enviar",
-      "delete": "Eliminar",
-      "today": "Hoy a",
+      "title": "التعليقات",
+      "placeholder": "اكتب تعليقك...",
 
-      "errorDelete": "No se pudo eliminar el comentario",
-      "successDelete": "Comentario eliminado",
+      "userError": "يجب تسجيل الدخول لترك تعليق.",
+      "send": "إرسال",
+      "delete": "حذف",
+      "today": "اليوم في",
 
-      "success": "Tu comentario ha sido enviado para su revisión y se hará público una vez aprobado.",
-      "error": "No se pudo enviar el comentario"
+      "errorDelete": "تعذر حذف التعليق",
+      "successDelete": "تم حذف التعليق",
+
+      "success": "تم إرسال تعليقك للمراجعة وسيتم نشره بعد الموافقة عليه.",
+      "error": "تعذر إرسال التعليق"
     }
   },
   "admin": {
-    "welcome": "Bienvenido de vuelta",
-    "uploadedFiles": "Archivos Cargados",
+    "welcome": "مرحبًا مرة أخرى",
+    "uploadedFiles": "الملفات المحملة",
     "cards": {
       "placeCard": {
-        "title": "Crear un nuevo lugar",
-        "description": "Agrega un nuevo lugar fácilmente utilizando la interfaz intuitiva."
+        "title": "إنشاء مكان جديد",
+        "description": "أضف مكانًا جديدًا بسهولة باستخدام واجهة المستخدم البديهية."
       },
       "fileCard": {
-        "title": "Subir un nuevo archivo",
-        "description": "Transfiere un nuevo archivo a edgestore utilizando la entrada a continuación."
+        "title": "تحميل ملف جديد",
+        "description": "نقل ملف جديد إلى edgestore باستخدام الإدخال أدناه."
       },
       "commentCard": {
-        "title": "Gestionar Comentarios",
-        "description": "Administra y aprueba/desaprueba los comentarios entrantes."
+        "title": "إدارة التعليقات",
+        "description": "إدارة والموافقة على / رفض التعليقات الواردة."
       }
     },
     "adminCard": {
-      "link": "Llévame allí"
+      "link": "خذني هناك"
     },
     "fileCard": {
-      "warn": "¿Estás seguro de que quieres eliminar este archivo?",
-      "cancel": "Cancelar",
-      "view": "Ver",
-      "preview": "Vista previa",
-      "download": "Descargar",
-      "copyLink": "Copiar enlace",
-      "videoError": "Tu navegador no soporta la etiqueta de video."
+      "warn": "هل أنت متأكد أنك تريد حذف هذا الملف؟",
+      "cancel": "إلغاء",
+      "view": "عرض",
+      "preview": "معاينة",
+      "download": "تحميل",
+      "copyLink": "نسخ الرابط",
+      "videoError": "متصفحك لا يدعم علامة الفيديو."
     }
   },
   "comment": {
-    "title": "Aprobar Comentarios",
-    "description": "Revisa y aprueba los comentarios que consideres seguros y no engañosos para el usuario final.",
+    "title": "الموافقة على التعليقات",
+    "description": "مراجعة والموافقة على التعليقات التي تعتبرها آمنة وغير مضللة للمستخدم النهائي.",
     "adminTable": {
-      "approveButton": "Aprobar Seleccionados",
-      "deleteButton": "Eliminar Seleccionados",
-      "date": "Fecha",
-      "commentator": "Comentarista",
-      "message": "Mensaje",
-      "place": "Lugar",
-      "allow": "Permitir",
-      "delete": "Eliminar",
-      "showing": "Mostrando",
-      "results": "resultados"
+      "approveButton": "الموافقة على المحدد",
+      "deleteButton": "حذف المحدد",
+      "date": "تاريخ",
+      "commentator": "المعلق",
+      "message": "رسالة",
+      "place": "مكان",
+      "allow": "السماح",
+      "delete": "حذف",
+      "showing": "عرض",
+      "results": "نتائج"
     }
   },
   "savedPlacesLocal": {
-    "title": "Lugares Guardados",
-    "description": "Ver, revisar y administrar los lugares que has guardado."
+    "title": "الأماكن المحفوظة",
+    "description": "عرض ومراجعة وإدارة الأماكن التي قمت بحفظها."
   },
   "savePlaceNotification": {
-    "message": "ahora está guardado en tu lista de lugares.",
-    "messageDelete": "ahora está eliminado de tu lista de lugares.",
-    "action": "Abrir"
+    "message": "الآن تم حفظها في قائمة الأماكن الخاصة بك.",
+    "messageDelete": "الآن تم حذفه من قائمة الأماكن الخاصة بك.",
+    "action": "افتح"
   },
   "authLocal": {
-    "home": "Volver",
-    "title": "Inicia sesión en tu cuenta"
+    "home": "العودة",
+    "title": "تسجيل الدخول إلى حسابك"
   }
 }
