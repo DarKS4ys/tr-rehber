@@ -56,10 +56,10 @@ export default function SaveButton({
       {isPending ?
       <>
       <div className='flex dark:hidden items-center justify-center'>
-        <MoonLoader size={20} color="#fff" loading={isPending}/>
+        <MoonLoader size={20} color="#000" loading={isPending}/>
       </div>
       <div className='hidden dark:flex items-center justify-center'>
-        <MoonLoader size={20} color="#000" loading={isPending}/>
+        <MoonLoader size={20} color="#fff" loading={isPending}/>
       </div>
       </>
       : <Save />}
