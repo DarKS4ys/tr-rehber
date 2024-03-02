@@ -27,7 +27,7 @@ function getLocale(request: NextRequest): string | undefined {
 
 const protectedRoutes = ["/admin"];
 
-export async function middleware(request: NextRequest) {
+export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname
 
   // // `/_next/` and `/api/` are ignored by the watcher, but we need to ignore files in `public` manually.
@@ -42,13 +42,13 @@ export async function middleware(request: NextRequest) {
   //   return
 
   // Check if there is any supported locale in the pathname
-
+/* 
   const userIsAuthenticated = await isAuthenticated();
 
   if (!userIsAuthenticated && protectedRoutes.includes(request.nextUrl.pathname)) {
     const absoluteURL = new URL("/", request.nextUrl.origin);
     return NextResponse.redirect(absoluteURL.toString());
-  } 
+  }  */
 
   const ignoreLanguagePrefixRoutes = ['/sign-in'];
   if (ignoreLanguagePrefixRoutes.some(route => pathname.startsWith(route))) {
