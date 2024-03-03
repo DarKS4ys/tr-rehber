@@ -9,7 +9,6 @@ import { MoonLoader } from 'react-spinners';
 import { toast } from 'sonner';
 import type { Locale } from '@/i18n.config';
 import { useRouter } from 'next/navigation';
-
 export default function SaveButton({
   user,
   place,
