@@ -48,7 +48,7 @@ export default function PlaceCard({
       </div>
       <Link
         href={`explore/${place.id}`}
-        className="group relative bg-gray-100 dark:bg-transparent flex flex-col gap-4 h-[32rem] items-center text-center border border-border hover:border-primary/80 rounded-xl transition duration-200 overflow-hidden"
+        className="group active:scale-90 hover:scale-105 relative bg-gray-100 dark:bg-transparent flex flex-col gap-4 h-[32rem] items-center text-center border border-border hover:border-primary/80 rounded-xl transition duration-300 overflow-hidden"
       >
         {place.images ? (
           <div
