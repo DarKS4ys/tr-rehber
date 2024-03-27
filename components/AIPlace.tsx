@@ -9,9 +9,8 @@ import { IoSendSharp } from 'react-icons/io5';
 import clsx from 'clsx';
 import { BiMicrophone } from 'react-icons/bi';
 
-const endpoint =
-  'https://www.stack-inference.com/run_deployed_flow?flow_id=65358cc0d838608f2b331e42&org=d6673818-2528-4c51-97d7-4d9557f9ecb1';
-const apiKey = '39eada58-2eb8-4f0a-a4a9-2f099cf36d16';
+const endpoint = 'https://www.stack-inference.com/inference/v0/run/676de3fe-f93f-4864-ba95-da9ada41ffae/66042c64e6d05ff0b99c3fa4';
+const apiKey = 'd0b91d28-b288-4aee-b8a7-43238e349828';
 
 export default function AIPlace({
   ai,
@@ -57,11 +56,12 @@ export default function AIPlace({
 
     try {
       const response = await axios.post(endpoint, data, { headers });
-      const fullApiResponse = response.data['out-0'];
+      const fullApiResponse = response.data.outputs['out-0'];
+      
       const cleanApiResponse = fullApiResponse.replace(/<\/?citations>/g, '');
       setApiResponse(cleanApiResponse);
     } catch (error) {
-      console.error('stack-error:', error);
+      console.error('stack-error:', JSON.stringify(error));
     } finally {
       setIsLoading(false);
     }

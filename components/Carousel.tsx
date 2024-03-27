@@ -23,7 +23,7 @@ export default function CarouselComponent({
   return (
     <Carousel
       plugins={[plugin.current]}
-      onMouseEnter={plugin.current.stop}
+      onMouseEnter={plugin.current.stop} 
       onMouseLeave={plugin.current.reset}
       className="w-[80%] md:w-[95%] p-4 mx-auto"
     >
