@@ -2,6 +2,7 @@ import Contact from '@/components/Contact/Contact'
 import Features from '@/components/Features'
 import Middle from '@/components/Middle/Middle'
 import Header from '@/components/OldHeader'
+import TemporaryPlayer from '@/components/temporary-player'
 import { Locale } from '@/i18n.config'
 import { prisma } from '@/lib/db/prisma'
 import { getDictionary } from '@/lib/dictionary'
@@ -24,6 +25,9 @@ export default async function Home({
       <Features featuresLocalization={page.tiltCards}/>
       <Middle middle={page.middle}/>
       <Contact contact={page.contact}/>
+
+
+      <TemporaryPlayer/>
     </main>
   )
 }
