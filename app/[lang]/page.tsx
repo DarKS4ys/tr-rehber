@@ -3,6 +3,7 @@ import Contact from '@/components/Contact/Contact'
 import Features from '@/components/Features'
 import Middle from '@/components/Middle/Middle'
 import Header from '@/components/OldHeader'
+import TemporaryPlayer from '@/components/temporary-player'
 import { Locale } from '@/i18n.config'
 import { getDictionary } from '@/lib/dictionary'
 export default async function Home({
@@ -20,6 +21,9 @@ export default async function Home({
       <Middle middle={page.middle}/>
       <BackgroundBeamsDemo lang={lang}/>
       <Contact contact={page.contact}/>
+
+
+      <TemporaryPlayer/>
     </main>
   )
 }
