@@ -7,6 +7,8 @@
     --highlight: #384AFE;
     --highlighthover: #2c3ad7;
 
+    --main: #1B1725;
+
     --background: 0 0% 100%;
     --foreground: 224 71.4% 4.1%;
 
@@ -41,6 +43,8 @@
   .dark {
     --highlight: #3ab7f5;
     --highlighthover: rgb(60, 128, 218);
+
+    --main: #1B1725;
 
     --background: 224 36% 7.0%;
     --foreground: 210 20% 98%;

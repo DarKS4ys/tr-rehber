@@ -29,7 +29,9 @@
       "options": {
         "explore": "Explore",
         "contact": "Contact",
-        "homepage": "Homepage"
+        "homepage": "Homepage",
+        "assistant": "Assistant",
+        "planner": "Planner"
       },
 
       "userMenu": {

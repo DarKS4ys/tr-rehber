@@ -30,7 +30,9 @@
       "options": {
         "explore": "Keşfet",
         "contact": "İletişim",
-        "homepage": "Anasayfa"
+        "homepage": "Anasayfa",
+        "assistant": "Asistan",
+        "planner": "Planlayıcı"
       },
 
       "userMenu": {
