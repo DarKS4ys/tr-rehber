@@ -100,7 +100,7 @@ export function Option({
           className="bg-sky-500 dark:bg-sky-600 dark:group-hover:bg-sky-700 group-hover:bg-sky-600 transition-colors rounded-full absolute inset-0 -z-10"
           layoutId="activeSection"
           transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-        ></motion.span>
+        />
       )}
     </button>
   );

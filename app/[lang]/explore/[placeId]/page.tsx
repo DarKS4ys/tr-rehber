@@ -63,7 +63,7 @@ export default async function page({
   return (
     <div>
       {place?.imageUrl && (
-        <div className="w-full relative h-96 flex items-center group">
+        <div className="w-full relative h-[25.5rem] flex items-center group">
           <div className="w-full h-full bg-black absolute top-0 left-0 z-10 opacity-40" />
           <Image
             src={place.imageUrl}
@@ -73,9 +73,9 @@ export default async function page({
           />
           <div className="py-10 px-4 md:p-12 w-full">
             <div className="max-w-7xl mx-auto z-20 relative w-full text-white items-center flex">
-              <div className="absolute left-0 -top-12 text-7xl font-semibold flex flex-col gap-4">
+              <div className="absolute left-0 -top-24 md:-top-16 text-5xl md:text-7xl font-semibold flex flex-col gap-4">
                 <h1>{(place?.name as { [key in Locale]: string })[lang]}</h1>
-                <h1 className="font-medium text-lg">
+                <h1 className="font-medium text-sm md:text-lg">
                   {(place?.description as { [key in Locale]: string })[lang]}
                 </h1>
                 {place?.tags && (
