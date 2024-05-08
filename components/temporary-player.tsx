@@ -1,44 +1,63 @@
-"use client";
-import { cn } from "@/lib/utils";
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { HiSparkles } from "react-icons/hi";
+'use client';
+import { cn } from '@/lib/utils';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { HiSparkles } from 'react-icons/hi';
 
-export default function TemporaryPlayer() {
-  const [selectedOption, setSelectedOption] = useState("");
+export default function TemporaryPlayer({
+  source,
+  altSource,
+  altTitle,
+}: {
+  source: string;
+  altSource?: string | false | 0 | null | undefined;
+  altTitle?: string;
+}) {
+  let options;
+
+  if (altSource && altTitle) {
+    options = [
+      {
+        title: 'Varsayılan',
+        link: source,
+      },
+      {
+        title: altTitle,
+        link: altSource,
+      },
+    ];
+  } else {
+    options = [
+      {
+        title: 'Varsayılan',
+        link: source,
+      },
+      {
+        title: 'Mevcut değil',
+        link: '',
+      },
+    ];
+  }
+
+  const [selectedOption, setSelectedOption] = useState(options[0].title);
 
   const handleChange = (newOption: string) => {
     setSelectedOption(newOption);
   };
 
-  const options = [
-    {
-      title: "seçenek 1",
-      link: "https://www.youtube.com/embed/S9cmoZFJTD4?si=xFddpHJenK15maj2",
-    },
-    {
-      title: "seçenek 2",
-      link: "https://www.youtube.com/embed/Vtj05m9wpNo?si=0Pcz7YCtW-EwPnn2",
-    },
-    
-  ];
-
-  const selectedOptionLink = options.find(
-    (option) => option.title === selectedOption
-  )?.link;
-
   return (
     <div className="items-center flex flex-col gap-y-3  ">
       <div className="p-2 flex gap-x-3 bg-sky-200/50 relative w-fit rounded-full">
-        <div className="absolute rotate-[20deg] items-center shadow-lg gap-x-1 flex -top-5 -right-6 px-3 py-2 text-sm bg-highlight text-white font-medium border rounded-xl">
-            <HiSparkles/>
-            <h3>Beta</h3>
+        <div className="absolute rotate-[20deg] items-center shadow-lg gap-x-1 flex -top-4 -right-5 px-3 py-2 text-xs bg-highlight text-white font-medium rounded-xl">
+          <HiSparkles />
+          <h3>Beta</h3>
         </div>
         {options.map((option, i) => (
           <Option
+            altOptionsAvailable={!!(altTitle && altSource)}
             handleChange={handleChange}
             title={option.title}
-            selectedOption={selectedOption}
+            selectedOption={selectedOption || ''}
             key={i}
           />
         ))}
@@ -47,7 +66,7 @@ export default function TemporaryPlayer() {
         className="object-cover md:w-[70%] lg:w-[50%] rounded-lg mx-auto"
         width="100%"
         height="400"
-        src={selectedOptionLink}
+        src={source}
         title="AI video player"
         allow="encrypted-media; fullscreen;"
       ></iframe>
@@ -59,25 +78,28 @@ export function Option({
   title,
   handleChange,
   selectedOption,
+  altOptionsAvailable,
 }: {
   selectedOption: string;
   handleChange: (newOption: string) => void;
   title: string;
+  altOptionsAvailable: boolean;
 }) {
   return (
     <button
+      disabled={title != selectedOption && !altOptionsAvailable}
       onClick={() => handleChange(title)}
       className={cn(
-        "font-medium transition hover:text-primary text-primary/80 relative rounded-full px-4 py-1",
-        title === selectedOption && "text-primary"
+        'disabled:cursor-not-allowed group disabled:opacity-50 font-medium transition hover:text-primary text-primary/80 relative rounded-full px-4 py-1',
+        title === selectedOption && 'text-primary'
       )}
     >
       {title}
       {title === selectedOption && (
         <motion.span
-          className="bg-sky-500/50 rounded-full absolute inset-0 -z-10"
+          className="bg-sky-500 dark:bg-sky-600 dark:group-hover:bg-sky-700 group-hover:bg-sky-600 transition-colors rounded-full absolute inset-0 -z-10"
           layoutId="activeSection"
-          transition={{ type: "spring", stiffness: 380, damping: 30 }}
+          transition={{ type: 'spring', stiffness: 380, damping: 30 }}
         ></motion.span>
       )}
     </button>

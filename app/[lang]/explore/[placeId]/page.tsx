@@ -13,6 +13,8 @@ import { Toaster } from 'sonner';
 import ListenButton from '../../../../components/ListenButton';
 import SaveButton from '../../../../components/SaveButton';
 import VideoPlayer from './VideoPlayer';
+import TemporaryPlayer from '@/components/temporary-player';
+import { getLanguageEmoji } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: 'Sanal Rehberim',
@@ -117,9 +119,22 @@ export default async function page({
                 allowFullScreen
               ></iframe>
             )} */}
-            <iframe className="object-cover md:w-[70%] lg:w-[50%] rounded-lg mx-auto" width="100%" height="400" src={(place?.videoUrl as { [key in Locale]: string })[lang]} title="AI video player" allow="encrypted-media; fullscreen;" ></iframe>
-{/*              <VideoPlayer lang={lang} place={place}/>
- */}            <ListenButton
+            <TemporaryPlayer 
+              altTitle={getLanguageEmoji(lang)} 
+              altSource={place?.altVideoUrl && (place?.altVideoUrl as { [key in Locale]: string })[lang]}
+              source={(place?.videoUrl as { [key in Locale]: string })[lang]}
+            />
+{/*             <iframe
+              className="object-cover md:w-[70%] lg:w-[50%] rounded-lg mx-auto"
+              width="100%"
+              height="400"
+              src={(place?.videoUrl as { [key in Locale]: string })[lang]}
+              title="AI video player"
+              allow="encrypted-media; fullscreen;"
+            ></iframe> */}
+            {/*              <VideoPlayer lang={lang} place={place}/>
+             */}{' '}
+            <ListenButton
               audioLink={(place?.audioUrl as { [key in Locale]: string })[lang]}
               localListen={placeLocal.tts}
             />

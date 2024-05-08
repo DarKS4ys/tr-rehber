@@ -21,9 +21,6 @@ export default async function Home({
       <Middle middle={page.middle}/>
       <BackgroundBeamsDemo lang={lang}/>
       <Contact contact={page.contact}/>
-
-
-      <TemporaryPlayer/>
     </main>
   )
 }

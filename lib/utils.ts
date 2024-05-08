@@ -1,6 +1,7 @@
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 import type { Message } from "ai";
+import type { Locale } from "@/i18n.config";
  
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -82,4 +83,31 @@ export function formattedText(inputText: string) {
 
 export function delay(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+const languageEmojis = {
+  "en": "🇺🇸",
+  "tr": "🇹🇷",
+  "es": "🇪🇸",
+  "fr": "🇫🇷",
+  "de": "🇩🇪",
+  "it": "🇮🇹",
+  "pt": "🇵🇹",
+  "ru": "🇷🇺",
+  "zh": "🇨🇳",
+  "ja": "🇯🇵",
+  "ar": "🇸🇦",
+  "ko": "🇰🇷",
+  "hi": "🇮🇳",
+  "fa": "🇮🇷",
+  "nl": "🇳🇱",
+  "sv": "🇸🇪",
+  "no": "🇳🇴",
+  "da": "🇩🇰",
+  "fi": "🇫🇮",
+  "el": "🇬🇷"
+};
+
+export function getLanguageEmoji(code: Locale) {
+  return languageEmojis[code] || "❓"; // Return question mark if emoji is not found
 }

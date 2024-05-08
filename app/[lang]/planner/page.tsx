@@ -24,8 +24,9 @@ export default async function page({
   metadata.title = metadataLocal.explore + ' | Sanal Rehberim'
 
   return (
-    <div className="py-10 px-4 md:p-12">
-        Planner
+    <div className="py-10 flex items-center justify-center md:p-12 mx-auto max-w-7xl">
+      <h1 className="text-3xl font-semibold">Yapay Zeka Seyehat Planlayıcı</h1>
+      <p>Çok yakında geliyor...</p>
     </div>
   )
 }

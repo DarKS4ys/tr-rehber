@@ -135,7 +135,7 @@ export default function AIPlace({
       <div
         className={clsx(
           'transition shadow-[0_0px_30px_rgba(5,_5,_5,_0.3)] shadow-highlight/10 dark:shadow-primary/10 bg-background border border-border flex justify-center items-center w-full py-4 px-6 rounded-full gap-2',
-          inputFocus && 'border-primary'
+          inputFocus && 'border-primary shadow-[0_0px_50px_rgba(5,_5,_5,_0.5)]'
         )}
       >
         <BsStars

@@ -53,7 +53,7 @@ export default function LangSwitch({ lang }: { lang: Locale }) {
         <Button className='bg-highlight hover:bg-highlighthover duration-200 flex gap-2 group'>
           {lang &&
           <>
-            <p>{languageNames[lang][lang]}</p>
+            <p className="font-medium">{languageNames[lang][lang]}</p>
             <BsChevronDown className={clsx('group-hover:rotate-45 transition duration-200', dropdownOpen ? 'rotate-0' : 'rotate-180')}/>
           </>
           }
