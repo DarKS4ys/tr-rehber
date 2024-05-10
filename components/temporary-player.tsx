@@ -40,9 +40,11 @@ export default function TemporaryPlayer({
   }
 
   const [selectedOption, setSelectedOption] = useState(options[0].title);
+  const [selectedOptionSRC, setSelectedOptionSRC] = useState(options[0].link);
 
-  const handleChange = (newOption: string) => {
+  const handleChange = (newOption: string, newOptionSrc: string) => {
     setSelectedOption(newOption);
+    setSelectedOptionSRC(newOptionSrc)
   };
 
   return (
@@ -57,6 +59,7 @@ export default function TemporaryPlayer({
             altOptionsAvailable={!!(altTitle && altSource)}
             handleChange={handleChange}
             title={option.title}
+            src={option.link}
             selectedOption={selectedOption || ''}
             key={i}
           />
@@ -66,7 +69,7 @@ export default function TemporaryPlayer({
         className="object-cover md:w-[70%] lg:w-[50%] rounded-lg mx-auto"
         width="100%"
         height="400"
-        src={source}
+        src={selectedOptionSRC}
         title="AI video player"
         allow="encrypted-media; fullscreen;"
       ></iframe>
@@ -76,19 +79,21 @@ export default function TemporaryPlayer({
 
 export function Option({
   title,
+  src,
   handleChange,
   selectedOption,
   altOptionsAvailable,
 }: {
   selectedOption: string;
-  handleChange: (newOption: string) => void;
+  src: string
+  handleChange: (newOption: string, newOptionSrc: string) => void;
   title: string;
   altOptionsAvailable: boolean;
 }) {
   return (
     <button
       disabled={title != selectedOption && !altOptionsAvailable}
-      onClick={() => handleChange(title)}
+      onClick={() => handleChange(title, src)}
       className={cn(
         'disabled:cursor-not-allowed group disabled:opacity-50 font-medium transition hover:text-primary text-primary/80 relative rounded-full px-4 py-1',
         title === selectedOption && 'text-primary'
