@@ -21,7 +21,7 @@ export default function ListenButton({ localListen, audioLink }: { localListen: 
   };
 
   return (
-      <Button className={clsx("gap-1", isPlaying && 'animate-pulse')} onClick={togglePlayback}>
+      <Button className={clsx("font-semibold gap-1", isPlaying && 'animate-pulse')} onClick={togglePlayback}>
         {!isPlaying && <Mic />}
         {isPlaying ? <StopCircle/> : localListen}
         <audio ref={audioRef} src={audioLink} />
