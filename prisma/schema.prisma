@@ -57,6 +57,7 @@ model User {
   File          File[]
   Comment       Comment[]
   SavedPlace    SavedPlace[]
+  TravelPlan    TravelPlan[]
 
   @@map("users")
 }
@@ -142,4 +143,31 @@ model SavedPlace {
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("saved-places")
+}
+
+model TravelPlan {
+  id        String      @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  userId    String      @db.ObjectId
+  name      String
+  imageUrl  String?
+  user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  PlanPlace PlanPlace[]
+
+  @@map("travel-plans")
+}
+
+model PlanPlace {
+  id           String     @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  coordiantes  Json
+  name         String
+  description  String
+  imageUrl     String
+  travelPlanId String     @db.ObjectId
+  travelPlan   TravelPlan @relation(fields: [travelPlanId], references: [id], onDelete: Cascade)
+
+  @@map("plan-places")
 }
