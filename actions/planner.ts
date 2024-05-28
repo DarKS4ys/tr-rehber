@@ -2,6 +2,7 @@
 
 import { Coordinates } from '@/components/destination';
 import { prisma } from '@/lib/db/prisma';
+import { TravelPlan } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 
@@ -20,6 +21,23 @@ export const serverCreateNewTravelPlan = async (
 
   redirect(`planner/${newPlan.id}`);
   /* revalidatePath(pathname); */
+};
+
+export const serverUpdateTravelPlan = async (
+  planId: string,
+  updateProps: Partial<TravelPlan>,
+  pathname: string
+) => {
+  await prisma.travelPlan.update({
+    where: {
+      id: planId,
+    },
+    data: {
+      ...updateProps,
+    },
+  });
+
+  revalidatePath(pathname);
 };
 
 export const serverDeleteNewTravelPlan = async (
@@ -41,15 +59,19 @@ export const serverCreateTravelPlace = async (
   description: string,
   pathname: string,
   imageUrl: string,
-  coordinates: Coordinates
+  coordinates: Coordinates,
+  tags: string[],
 ) => {
   await prisma.planPlace.create({
     data: {
-      name: name,
-      description: description,
+      name,
+      description,
       travelPlanId: planId,
-      coordiantes: coordinates,
-      imageUrl: imageUrl,
+      coordinates,
+      tags,
+      imageUrl,
     },
   });
+
+  revalidatePath(pathname)
 };

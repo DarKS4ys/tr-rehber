@@ -4,10 +4,12 @@ import { createAI, getMutableAIState, streamUI } from 'ai/rsc';
 import { openai } from '@ai-sdk/openai';
 import { z } from 'zod';
 import { generateObject, nanoid } from 'ai';
-import { destinationSchema, hotelSchema } from '@/schemas/ai';
+import { destinationSchema, edibleSchema } from '@/schemas/ai';
 import Destination from '@/components/destination';
 import axios from 'axios';
 import Hotel from '@/components/hotel';
+import { getLanguageName } from '@/lib/utils';
+import type { Locale } from '@/i18n.config';
 
 export interface ServerMessage {
   role: 'user' | 'assistant';
@@ -21,7 +23,9 @@ export interface ClientMessage {
 }
 
 export async function continueConversation(
-  input: string
+  input: string,
+  planId: string,
+  lang: Locale
 ): Promise<ClientMessage> {
   'use server';
 
@@ -30,22 +34,24 @@ export async function continueConversation(
   const result = await streamUI({
     model: openai('gpt-4o'),
     // combine history along with user's last message
-    messages: [...history.get(), { role: 'user', content: input }],
+    messages: [
+      ...history.get(),
+      { role: 'user', content: input },
+      { role: 'system', content: `always respond to user in ${getLanguageName(lang)} language` },
+    ],
     text: ({ content, done }) => {
       if (done) {
         history.done((messages: ServerMessage[]) => [
           ...messages,
           { role: 'assistant', content },
         ]);
-
-        console.log(history)
       }
 
       return <div>{content}</div>;
     },
     tools: {
       findADestination: {
-        description: 'Find a destination for user travel plan',
+        description: 'Find a touristic destination for the user travel plan',
         parameters: z.object({
           description: z
             .string()
@@ -77,17 +83,87 @@ export async function continueConversation(
           description /*tags,  activities, travelPreferences  */,
         }) {
           yield <div>loading...</div>;
-          
+
           const destination = await generateObject({
             model: openai('gpt-4o'),
             schema: destinationSchema,
-            prompt: `Select a destination within the Turkish city of Trabzon based on the user's given tags and preferences. Ensure the destination aligns with their specified activities, tags, preferred season and travel preferences to include in the final travel plan. Description of the desired place:  ${description}`,
+            // ! change and add lang
+            //             prompt: `Select a destination within the Turkish city of Trabzon based on the user's given tags and preferences. Ensure the destination aligns with their specified activities, tags, preferred season and travel preferences to include in the final travel plan. Description of the desired place:  ${description}`,
+            prompt: `Select a destination within the Turkish city of Trabzon that aligns with the description: ${description}. Always respond to user in ${getLanguageName(lang)} language.`,
           });
 
-          const coordinates = await getCoordinates(`${destination.object.name}, Trabzon`);
+          const coordinates = await getCoordinates(
+            `${destination.object.name}, Trabzon`
+          );
           const imageUrl = await getImageUrl(destination.object.name);
 
-          return <Destination image={imageUrl} coordinates={coordinates} destination={destination.object} />;
+          return (
+            <Destination
+              image={imageUrl}
+              planId={planId}
+              coordinates={coordinates}
+              destination={destination.object}
+            />
+          );
+        },
+      },
+
+      findAEdible: {
+        description:
+          'Find a traditional food or drink for the user travel plan',
+        parameters: z.object({
+          description: z
+            .string()
+            .describe('Short description of the wanted food/drink'),
+          /*          tags: z
+            .array(z.string())
+            .describe(
+              'A list of keywords provided by the user that characterize the desired destination (e.g., beach, historical, nightlife)'
+            ),
+           activities: z
+            .array(z.string())
+            .describe(
+              'A list of activities or attractions that the destination should offer (e.g., hiking, museums, shopping)'
+            ),
+          travelPreferences: z
+            .array(z.string())
+            .optional()
+            .describe(
+              'Additional travel preferences (e.g., family-friendly, solo travel, adventure, relaxation)'
+            ),
+          season: z
+            .string()
+            .optional()
+            .describe(
+              'Preferred season or time of year for the trip (e.g., summer, winter)'
+            ), */
+        }),
+        generate: async function* ({
+          description /*tags,  activities, travelPreferences  */,
+        }) {
+          yield <div>loading...</div>;
+
+          const destination = await generateObject({
+            model: openai('gpt-4o'),
+            schema: edibleSchema,
+            // ! change and add lang
+            //             prompt: `Select a destination within the Turkish city of Trabzon based on the user's given tags and preferences. Ensure the destination aligns with their specified activities, tags, preferred season and travel preferences to include in the final travel plan. Description of the desired place:  ${description}`,
+            prompt: `Select a food that is special to the Turkish and Trabzon cuisine which aligns with the description: ${description}. Always respond to user in ${getLanguageName(lang)} language.`,
+          });
+
+          const coordinates = await getCoordinates(
+            `${destination.object.name}, Trabzon`
+          );
+          const imageUrl = await getImageUrl(destination.object.name);
+
+          return (
+            <Destination
+              image={imageUrl}
+              planId={planId}
+              coordinates={coordinates}
+              destination={destination.object}
+            />
+          );
         },
       },
     },
@@ -108,8 +184,10 @@ export const AI = createAI<ServerMessage[], ClientMessage[]>({
   initialUIState: [],
 });
 
-async function getCoordinates(placeName: string): Promise<{ lat: number; lng: number } | null> {
-  const apiKey = process.env.GOOGLE_MAPS_API_KEY
+async function getCoordinates(
+  placeName: string
+): Promise<{ lat: number; lng: number } | null> {
+  const apiKey = process.env.GOOGLE_MAPS_API_KEY;
   const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
     placeName
   )}&key=${apiKey}`;
@@ -132,7 +210,7 @@ async function getImageUrl(placeName: string): Promise<string | null> {
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_CUSTOM_SEARCH_API_KEY;
   const cx = process.env.NEXT_PUBLIC_GOOGLE_CUSTOM_SEARCH_CX;
   const url = `https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(
-    placeName
+    `Trabzon ${placeName}`
   )}&cx=${cx}&searchType=image&key=${apiKey}`;
 
   try {

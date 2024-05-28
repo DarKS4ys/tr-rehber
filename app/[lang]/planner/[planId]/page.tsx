@@ -7,6 +7,17 @@ import Image from 'next/image';
 import React from 'react';
 import { Toaster } from 'sonner';
 import Search from './search';
+import PlaceItem from './place-item';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel';
+import PlanRenameButton from './plan-rename-button';
+import { BsPlus } from 'react-icons/bs';
+import { AiOutlineSearch } from 'react-icons/ai';
 
 export const metadata: Metadata = {
   title: 'Sanal Rehberim',
@@ -24,25 +35,49 @@ export default async function page({
   });
 
   return (
-    <div className="max-w-7xl h-[85svh] mx-auto py-4 flex flex-col gap-y-4">
+    <div className="max-w-7xl mx-auto pt-4 pb-8 flex flex-col gap-y-4 px-8">
       <div className="flex gap-x-3 justify-between">
-        <button className="font-semibold w-fit rounded-lg text-lg py-1 px-2 hover:bg-primary/20 transition text-start">
-          {plan?.name}
-        </button>
+        <PlanRenameButton planId={plan?.id} planName={plan?.name}/>
         <Dialog>
           <DialogTrigger asChild>
-            <Button className="font-medium">Ekle</Button>
+            <Button className="font-medium gap-x-1"><AiOutlineSearch/> Ekle</Button>
           </DialogTrigger>
-          <DialogContent className="max-w-xl">
-            <Search/>
+          <DialogContent className="w-[90%] max-w-xl">
+            <Search planId={planId} lang={lang} />
           </DialogContent>
         </Dialog>
       </div>
-      <div className="p-6 bg-primary/10 rounded-lg flex flex-col gap-y-2">
-        <h1 className="text-lg font-medium">Gidilecek yerler</h1>
-        {plan?.PlanPlace.map((place, i) => (
-          <div key={i}>{place.name}</div>
-        ))}
+      <div className="px-6 pt-3 pb-5 bg-primary/10 rounded-lg flex flex-col gap-y-2">
+        <h1 className="text-lg font-medium">Görülecek yerler</h1>
+        <div className="w-full flex gap-x-4">
+          <Carousel
+            opts={{
+              align: 'start',
+            }}
+            className="w-full"
+          >
+            <CarouselContent>
+              {plan?.PlanPlace.map((place, i) => (
+                <CarouselItem
+                  className="sm:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+                  key={i}
+                >
+                  <PlaceItem place={place} />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        </div>
+      </div>
+      <div className="flex gap-x-4">
+        <div className="px-6 pt-3 pb-5 w-full bg-primary/10 rounded-lg flex flex-col gap-y-2">
+          <h1 className="text-lg font-medium">Yöresel yemekler</h1>
+        </div>
+        <div className="px-6 pt-3 pb-5 w-full bg-primary/10 rounded-lg flex flex-col gap-y-2">
+          <h1 className="text-lg font-medium">Kalınacak oteller</h1>
+        </div>
       </div>
       <Toaster closeButton richColors />
     </div>

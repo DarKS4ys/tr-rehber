@@ -111,3 +111,30 @@ const languageEmojis = {
 export function getLanguageEmoji(code: Locale) {
   return languageEmojis[code] || "❓"; // Return question mark if emoji is not found
 }
+
+const languageNames = {
+  "en": "English",
+  "tr": "Turkish",
+  "es": "Spanish",
+  "fr": "French",
+  "de": "German",
+  "it": "Italian",
+  "pt": "Portuguese",
+  "ru": "Russian",
+  "zh": "Chinese",
+  "ja": "Japanese",
+  "ar": "Arabic",
+  "ko": "Korean",
+  "hi": "Hindi",
+  "fa": "Persian",
+  "nl": "Dutch",
+  "sv": "Swedish",
+  "no": "Norwegian",
+  "da": "Danish",
+  "fi": "Finnish",
+  "el": "Greek"
+};
+
+export function getLanguageName(code: Locale) {
+  return languageNames[code] || "Unknown"; // Return "Unknown" if long name is not found
+}

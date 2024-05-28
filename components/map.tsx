@@ -1,10 +1,12 @@
+'use client'
 import React from 'react';
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 import { Coordinates } from './destination';
 
 const containerStyle = {
   width: '100%',
-  height: '400px',
+  height: '20svh',
+  minHeight: '100px',
   borderRadius: '0.5rem'
 };
 

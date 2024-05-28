@@ -33,7 +33,7 @@ export default async function page({
   return (
       <div id="home" className="w-full relative p-3 h-[90svh] overflow-hidden">
         <div className="bg-main/40 relative backdrop-blur-xl overflow-hidden text-primary-foreground flex gap-4 justify-center items-center rounded-[2rem] w-full h-full">
-          <div className="w-full flex  flex-col items-start justify-start p-12 mt-8">
+          <div className="w-full md:flex hidden  flex-col items-start justify-start p-12 mt-8">
             <div className="z-10 pointer-events-none flex awesome text-start items-start justify-start">
               <BubbleText className="italic text-[clamp(72px,17.5vw,120px)] md:text-[7rem] lg:text-[6.6rem] xl:text-[7.5rem]  2xl:text-[10rem] leading-[1] uppercase font-black font-mono">
                 Y
@@ -59,7 +59,7 @@ export default async function page({
             </Link>
           </div>
 
-          <div className="z-10 w-full md:w-[65%] 2xl:w-[45%] overflow-hidden rounded-br-[2rem] h-full hidden lg:flex items-end relative justify-end">
+          <div className="z-10 w-full md:w-[65%] 2xl:w-[45%] overflow-hidden rounded-br-[2rem] h-full flex items-end relative justify-end">
             <div
               className="absolute right-0 top-0 w-full h-full drop-shadow-lg shadow-black"
               style={{

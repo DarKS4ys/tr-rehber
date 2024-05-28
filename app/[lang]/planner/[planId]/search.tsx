@@ -4,22 +4,28 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import { ClientMessage } from '@/actions/ai';
 import { nanoid } from 'ai';
 import { useActions, useUIState } from 'ai/rsc';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useTransition } from 'react';
 import { MdSend } from 'react-icons/md';
 import { Button } from '@/components/ui/button';
 import {
   Carousel,
+  CarouselApi,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
+import { cn } from '@/lib/utils';
+import type { Locale } from '@/i18n.config';
 
-export default function Search() {
+export default function Search({ planId, lang }: { planId: string, lang:Locale }) {
   const [input, setInput] = useState('');
+  const [isPending, startTransition] = useTransition();
   const [placeholder, setPlaceholder] = useState('');
   const [conversation, setConversation] = useUIState();
   const { continueConversation } = useActions();
+
+  const [api, setApi] = React.useState<CarouselApi>();
 
   useEffect(() => {
     const placeholders = [
@@ -59,11 +65,15 @@ export default function Search() {
       { id: nanoid(), role: 'user', display: input },
     ]);
 
-    const message = await continueConversation(input);
-    setConversation((currentConversation: ClientMessage[]) => [
-      ...currentConversation,
-      message,
-    ]);
+    startTransition(async () => {
+      const message = await continueConversation(input, planId, lang);
+      api?.scrollTo(conversation.length + 1);
+
+      setConversation((currentConversation: ClientMessage[]) => [
+        ...currentConversation,
+        message,
+      ]);
+    });
   };
 
   return (
@@ -76,6 +86,7 @@ export default function Search() {
         >
           <input
             type="text"
+            disabled={isPending}
             placeholder={placeholder}
             className="border-b bg-transparent focus:border-primary transition w-full h-full outline-none"
             value={input}
@@ -84,23 +95,23 @@ export default function Search() {
             }}
           />
 
-          <Button type="submit" className="mr-4" size="icon">
+          <Button disabled={isPending} type="submit" className="mr-4" size="icon">
             <MdSend size={20} />
           </Button>
         </form>
       </div>
       {conversation && conversation.length > 0 && (
         <div>
-          <Carousel className="w-full max-w-lg mx-auto">
+          <Carousel setApi={setApi} className="w-full max-w-lg mx-auto pt-2">
             <CarouselContent>
               {groupedMessages.map((pair, i) => (
                 <CarouselItem key={i}>
-                  <div>
+                  <div className={cn(isPending && 'opacity-50')}>
                     <div>
                       <strong>{pair[0].role}:</strong> {pair[0].display}
                     </div>
                     {pair[1] && (
-                      <div>
+                      <div className="flex flex-col gap-y-1">
                         <strong>{pair[1].role}:</strong> {pair[1].display}
                       </div>
                     )}
