@@ -7,7 +7,6 @@ import { generateObject, nanoid } from 'ai';
 import { destinationSchema, edibleSchema } from '@/schemas/ai';
 import Destination from '@/components/destination';
 import axios from 'axios';
-import Hotel from '@/components/hotel';
 import { getLanguageName } from '@/lib/utils';
 import type { Locale } from '@/i18n.config';
 
