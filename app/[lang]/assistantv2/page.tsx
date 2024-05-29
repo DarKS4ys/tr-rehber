@@ -1,5 +1,7 @@
+"use client"
+
 import BorderButton from "@/components/ui/border-button";
-import React from "react";
+import React, { useEffect } from "react";
 import StartButton from "./start-button";
 
 export default function page() {
