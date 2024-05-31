@@ -1,7 +1,7 @@
 'use client';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import Search from './search';
 import { usePathname, useRouter } from 'next/navigation';
@@ -11,7 +11,7 @@ export default function SearchButton({
   modal,
   lang,
   planId,
-  input
+  input,
 }: {
   lang: Locale;
   planId: string | undefined;
@@ -20,16 +20,38 @@ export default function SearchButton({
 }) {
   const pathname = usePathname();
   const router = useRouter();
+
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
   return (
-    <Dialog open={modal == 'true'} onOpenChange={() => modal == 'true' ? router.push(`${pathname}`) : router.push(`${pathname}?modal=true`)}>
-      <DialogTrigger asChild>
-        <Button onClick={() => router.push(`${pathname}?modal=true`)} className="font-medium gap-x-1">
-          <AiOutlineSearch /> Ekle
-        </Button>
-      </DialogTrigger>
-      <DialogContent className="w-[90%] max-w-xl">
-        {planId && <Search predefinedInput={input} planId={planId} lang={lang} />}
-      </DialogContent>
-    </Dialog>
+    <>
+      {isMounted && (
+        <Dialog
+          open={modal == 'true'}
+          onOpenChange={() =>
+            modal == 'true'
+              ? router.push(`${pathname}`)
+              : router.push(`${pathname}?modal=true`)
+          }
+        >
+          <DialogTrigger asChild>
+            <Button
+              onClick={() => router.push(`${pathname}?modal=true`)}
+              className="font-medium gap-x-1"
+            >
+              <AiOutlineSearch /> Ekle
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="w-[90%] max-w-xl">
+            {planId && (
+              <Search predefinedInput={input} planId={planId} lang={lang} />
+            )}
+          </DialogContent>
+        </Dialog>
+      )}
+    </>
   );
 }

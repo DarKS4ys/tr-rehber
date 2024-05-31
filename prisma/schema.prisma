@@ -146,14 +146,15 @@ model SavedPlace {
 }
 
 model TravelPlan {
-  id        String      @id @default(auto()) @map("_id") @db.ObjectId
-  createdAt DateTime    @default(now())
-  updatedAt DateTime    @updatedAt
-  userId    String      @db.ObjectId
-  name      String
-  imageUrl  String?
-  user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
-  PlanPlace PlanPlace[]
+  id         String       @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  userId     String       @db.ObjectId
+  name       String
+  imageUrl   String?
+  user       User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  PlanPlace  PlanPlace[]
+  PlanEdible PlanEdible[]
 
   @@map("travel-plans")
 }
@@ -171,4 +172,19 @@ model PlanPlace {
   travelPlan   TravelPlan @relation(fields: [travelPlanId], references: [id], onDelete: Cascade)
 
   @@map("plan-places")
+}
+
+model PlanEdible {
+  id           String     @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  origin       String
+  name         String
+  description  String
+  tags         String[]
+  imageUrl     String
+  travelPlanId String     @db.ObjectId
+  travelPlan   TravelPlan @relation(fields: [travelPlanId], references: [id], onDelete: Cascade)
+
+  @@map("plan-edibles")
 }

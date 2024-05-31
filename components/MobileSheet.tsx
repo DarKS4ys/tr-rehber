@@ -27,7 +27,7 @@ export default function MobileSheet({
           <Menu />
         </Button>
       </SheetTrigger>
-      <SheetContent side="top" className="p-0">
+      <SheetContent side="top" className="p-0 z-[999]">
         <div className="flex flex-col text-primary justify-center items-center m-8 tracking-widest text-lg">
           {Object.keys(options).map((key) => (
             <Link

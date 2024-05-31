@@ -53,7 +53,7 @@ export default async function page({
             <Link
               className="z-10 p-4 mt-4 rounded-xl hover:bg-main/40 duration-150 shadow-xl hover:shadow-black/35 active:scale-95 transition ring-1 ring-white hover:ring hover:ring-offset-1 bg-main/70 backdrop-blur-lg"
               target="_blank"
-              href="https://tr-rehber.vercel.app"
+              href={process.env.NEXTAUTH_URL!}
             >
               <Typewriter />
             </Link>

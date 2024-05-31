@@ -75,3 +75,27 @@ export const serverCreateTravelPlace = async (
 
   revalidatePath(pathname)
 };
+
+export const serverCreateTravelEdible = async (
+  planId: string,
+  name: string,
+  description: string,
+  pathname: string,
+  imageUrl: string,
+  origin: string,
+  tags: string[],
+) => {
+  await prisma.planEdible.create({
+    data: {
+      name,
+      description,
+      travelPlanId: planId,
+      origin,
+      tags,
+      imageUrl,
+    },
+  });
+
+  revalidatePath(pathname)
+};
+

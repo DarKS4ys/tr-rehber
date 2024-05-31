@@ -9,6 +9,7 @@ import Destination from '@/components/destination';
 import axios from 'axios';
 import { getLanguageName } from '@/lib/utils';
 import type { Locale } from '@/i18n.config';
+import Food from '@/components/food';
 
 export interface ServerMessage {
   role: 'user' | 'assistant';
@@ -161,17 +162,13 @@ export async function continueConversation(
             )} language.`,
           });
 
-          const coordinates = await getCoordinates(
-            `${destination.object.name}, Trabzon`
-          );
           const imageUrl = await getImageUrl(destination.object.name);
 
           return (
-            <Destination
+            <Food
               image={imageUrl}
               planId={planId}
-              coordinates={coordinates}
-              destination={destination.object}
+              edible={destination.object}
             />
           );
         },

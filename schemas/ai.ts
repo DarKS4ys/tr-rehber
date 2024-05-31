@@ -21,4 +21,5 @@ export const hotelSchema = z.object({
 })
 
 export type Destination = DeepPartial<typeof destinationSchema>
+export type Edible = DeepPartial<typeof edibleSchema>
 export type Hotel = DeepPartial<typeof hotelSchema>

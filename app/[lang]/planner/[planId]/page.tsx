@@ -14,10 +14,12 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import PlanRenameButton from './plan-rename-button';
-import { BsPlus } from 'react-icons/bs';
-import { AiOutlineSearch } from 'react-icons/ai';
 import SearchButton from './searchbtn';
 import ShareButton from './sharebtn';
+import PlaceAddButton from './place-addbtn';
+import FoodAddButton from './food-addbtn';
+import FoodItem from './food-item';
+import HotelAddButton from './hotel-addbtn';
 
 export const metadata: Metadata = {
   title: 'Sanal Rehberim',
@@ -29,11 +31,11 @@ export default async function page({
   searchParams: { modal, input },
 }: {
   params: { planId: string; lang: Locale };
-  searchParams: { modal: string, input: string };
+  searchParams: { modal: string; input: string };
 }) {
   const plan = await prisma.travelPlan.findFirst({
     where: { id: planId },
-    include: { user: true, PlanPlace: true },
+    include: { user: true, PlanPlace: true, PlanEdible: true },
   });
 
   return (
@@ -41,8 +43,13 @@ export default async function page({
       <div className="flex gap-x-3 justify-between">
         <PlanRenameButton planId={plan?.id} planName={plan?.name} />
         <div className="flex gap-x-2">
-        <SearchButton input={input} modal={modal} planId={plan?.id} lang={lang}/>
-        <ShareButton domain={process.env.NEXTAUTH_URL}/>
+          <SearchButton
+            input={input}
+            modal={modal}
+            planId={plan?.id}
+            lang={lang}
+          />
+          <ShareButton domain={process.env.NEXTAUTH_URL} />
         </div>
       </div>
       <div className="px-6 pt-3 pb-5 bg-primary/10 rounded-lg flex flex-col gap-y-2">
@@ -63,18 +70,80 @@ export default async function page({
                   <PlaceItem place={place} />
                 </CarouselItem>
               ))}
+
+              <CarouselItem className="sm:basis-1/2 lg:basis-1/3 xl:basis-1/4">
+                <PlaceAddButton />
+              </CarouselItem>
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            {plan?.PlanPlace && plan?.PlanPlace.length > 1 && (
+              <>
+                <CarouselPrevious />
+                <CarouselNext />
+              </>
+            )}
           </Carousel>
         </div>
       </div>
       <div className="flex gap-x-4">
-        <div className="px-6 pt-3 pb-5 w-full bg-primary/10 rounded-lg flex flex-col gap-y-2">
+        <div className="px-6 pt-3 pb-5 w-3/4 bg-primary/10 rounded-lg flex flex-col gap-y-2">
           <h1 className="text-lg font-medium">Yöresel yemekler</h1>
+          <Carousel
+            opts={{
+              align: 'start',
+            }}
+            className="w-full"
+          >
+            <CarouselContent>
+              {plan?.PlanEdible.map((edible, i) => (
+                <CarouselItem
+                  className="sm:basis-1/2"
+                  key={i}
+                >
+                  <FoodItem edible={edible} />
+                </CarouselItem>
+              ))}
+
+              <CarouselItem className="sm:basis-1/2">
+                <FoodAddButton />
+              </CarouselItem>
+            </CarouselContent>
+            {plan?.PlanEdible && plan?.PlanEdible.length > 1 && (
+              <>
+                <CarouselPrevious />
+                <CarouselNext />
+              </>
+            )}
+          </Carousel>
         </div>
-        <div className="px-6 pt-3 pb-5 w-full bg-primary/10 rounded-lg flex flex-col gap-y-2">
+        <div className="px-6 pt-3 pb-5 w-1/4 bg-primary/10 rounded-lg flex flex-col gap-y-2">
           <h1 className="text-lg font-medium">Kalınacak oteller</h1>
+          <Carousel
+            opts={{
+              align: 'start',
+            }}
+            className="w-full"
+          >
+            <CarouselContent>
+{/*               {plan?.PlanEdible.map((edible, i) => (
+                <CarouselItem
+                  className="sm:basis-1/2"
+                  key={i}
+                >
+                  <FoodItem edible={edible} />
+                </CarouselItem>
+              ))} */}
+
+              <CarouselItem className="sm:basis-1/2">
+                <HotelAddButton />
+              </CarouselItem>
+            </CarouselContent>
+{/*             {plan?.PlanEdible && plan?.PlanEdible.length > 1 && (
+              <>
+                <CarouselPrevious />
+                <CarouselNext />
+              </>
+            )} */}
+          </Carousel>
         </div>
       </div>
       <Toaster closeButton richColors />
