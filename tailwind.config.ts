@@ -158,10 +158,30 @@ module.exports = {
             transform:'scale(1)',
             rotate: '0deg'
           },
+        },
+
+        thinking2: {
+          '0%': {
+            transform:'scale(1)',
+            rotate: '0deg'
+          },
+          '35%': {
+            transform:'scale(1.3)',
+          },
+          '65%': {
+            transform:'scale(1)',
+          },
+          '80%': {
+            transform:'scale(1.3)',
+          },
+          '100%': {
+            transform:'scale(1)',
+          },
         }
       },
       animation: {
         thinking: 'thinking 2s infinite ease-in-out',
+        thinking2: 'thinking2 2s infinite ease-in-out',
         first: "moveVertical 30s ease infinite",
         second: "moveInCircle 20s reverse infinite",
         third: "moveInCircle 40s linear infinite",

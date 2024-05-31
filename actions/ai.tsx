@@ -179,6 +179,7 @@ export const AI = createAI<ServerMessage[], ClientMessage[]>({
   actions: {
     continueConversation,
   },
+  
   initialAIState: [],
   initialUIState: [],
 });
