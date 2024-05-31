@@ -1,12 +1,10 @@
 import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { Locale } from '@/i18n.config';
 import { prisma } from '@/lib/db/prisma';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import React from 'react';
 import { Toaster } from 'sonner';
-import Search from './search';
 import PlaceItem from './place-item';
 import {
   Carousel,
@@ -18,6 +16,8 @@ import {
 import PlanRenameButton from './plan-rename-button';
 import { BsPlus } from 'react-icons/bs';
 import { AiOutlineSearch } from 'react-icons/ai';
+import SearchButton from './searchbtn';
+import ShareButton from './sharebtn';
 
 export const metadata: Metadata = {
   title: 'Sanal Rehberim',
@@ -26,8 +26,10 @@ export const metadata: Metadata = {
 
 export default async function page({
   params: { lang, planId },
+  searchParams: { modal, input },
 }: {
   params: { planId: string; lang: Locale };
+  searchParams: { modal: string, input: string };
 }) {
   const plan = await prisma.travelPlan.findFirst({
     where: { id: planId },
@@ -37,15 +39,11 @@ export default async function page({
   return (
     <div className="max-w-7xl mx-auto pt-4 pb-8 flex flex-col gap-y-4 px-8">
       <div className="flex gap-x-3 justify-between">
-        <PlanRenameButton planId={plan?.id} planName={plan?.name}/>
-        <Dialog>
-          <DialogTrigger asChild>
-            <Button className="font-medium gap-x-1"><AiOutlineSearch/> Ekle</Button>
-          </DialogTrigger>
-          <DialogContent className="w-[90%] max-w-xl">
-            <Search planId={planId} lang={lang} />
-          </DialogContent>
-        </Dialog>
+        <PlanRenameButton planId={plan?.id} planName={plan?.name} />
+        <div className="flex gap-x-2">
+        <SearchButton input={input} modal={modal} planId={plan?.id} lang={lang}/>
+        <ShareButton domain={process.env.NEXTAUTH_URL}/>
+        </div>
       </div>
       <div className="px-6 pt-3 pb-5 bg-primary/10 rounded-lg flex flex-col gap-y-2">
         <h1 className="text-lg font-medium">Görülecek yerler</h1>

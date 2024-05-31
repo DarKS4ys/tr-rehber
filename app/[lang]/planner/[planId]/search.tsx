@@ -18,8 +18,8 @@ import {
 import { cn } from '@/lib/utils';
 import type { Locale } from '@/i18n.config';
 
-export default function Search({ planId, lang }: { planId: string, lang:Locale }) {
-  const [input, setInput] = useState('');
+export default function Search({ planId, lang, predefinedInput }: { planId: string, lang:Locale, predefinedInput?: string | null }) {
+  const [input, setInput] = useState(predefinedInput || '');
   const [isPending, startTransition] = useTransition();
   const [placeholder, setPlaceholder] = useState('');
   const [conversation, setConversation] = useUIState();

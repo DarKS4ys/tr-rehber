@@ -1,7 +1,7 @@
-"use client"
+'use client';
 
-import React, { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion, useAnimation } from "framer-motion";
+import React, { useEffect, useRef, useState, useTransition } from 'react';
+import { AnimatePresence, motion, useAnimation } from 'framer-motion';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,16 +9,16 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
-import { i18n, type Locale } from "@/i18n.config";
-import { cn, getLocalLanguageName } from "@/lib/utils";
-import { BsChevronDown } from "react-icons/bs";
-import { toast } from "sonner";
-import Image from "next/image";
-import AvatarImage from "@/public/Avatar.png";
-import { generate } from "@/actions/assistant";
-import { readStreamableValue } from "ai/rsc";
+} from '@/components/ui/dropdown-menu';
+import { Button } from '@/components/ui/button';
+import { i18n, type Locale } from '@/i18n.config';
+import { cn, getLocalLanguageName } from '@/lib/utils';
+import { BsChevronDown } from 'react-icons/bs';
+import { toast } from 'sonner';
+import Image from 'next/image';
+import AvatarImage from '@/public/Avatar.png';
+import { readStreamableValue } from 'ai/rsc';
+import { Message, continueChat } from '@/actions/assistant';
 
 declare global {
   interface Window {
@@ -29,16 +29,20 @@ declare global {
 
 export default function StartButton({ lang }: { lang: Locale }) {
   const [isRecording, setIsRecording] = useState(false);
-  const [selectedMicrophone, setSelectedMicrophone] = useState("");
-  const [transcript, setTranscript] = useState("");
+  const [transcript, setTranscript] = useState('');
   const [audioData, setAudioData] = useState<number[]>(
     Array.from({ length: 5 }, () => 0)
   );
   const [selectedLanguage, setSelectedLanguage] = useState(lang);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isButtonHovered, setIsButtonHovered] = useState(false);
-  const [recordedSpeech, setRecordedSpeech] = useState<string>("");
-  const [response, setResponse] = useState<string>("");
+  const [recordedSpeech, setRecordedSpeech] = useState<string>('');
+  const [conversation, setConversation] = useState<Message[]>([]);
+  const [audio, setAudio] = useState('');
+  const [isPending, startTransition] = useTransition();
+  const [isAudioPlaying, setIsAudioPlaying] = useState(false); // New state
+
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const recognitionRef = useRef<any>();
   const audioContextRef = useRef<any>();
@@ -53,12 +57,21 @@ export default function StartButton({ lang }: { lang: Locale }) {
   }, [isRecording]);
 
   useEffect(() => {
-    if (selectedMicrophone) {
-      // Setup audio again with the selected microphone
-      teardownAudio();
-      setupAudio();
+    if (audioRef.current) {
+      const handlePlay = () => setIsAudioPlaying(true);
+      const handlePause = () => setIsAudioPlaying(false);
+
+      audioRef.current.addEventListener('play', handlePlay);
+      audioRef.current.addEventListener('pause', handlePause);
+      audioRef.current.addEventListener('ended', handlePause);
+
+      return () => {
+        audioRef.current?.removeEventListener('play', handlePlay);
+        audioRef.current?.removeEventListener('pause', handlePause);
+        audioRef.current?.removeEventListener('ended', handlePause);
+      };
     }
-  }, [selectedMicrophone]);
+  }, [audioRef]);
 
   const convertToSystematicalLang = (lang: Locale) => {
     return `${lang.toLowerCase()}-${lang.toUpperCase()}`;
@@ -86,9 +99,9 @@ export default function StartButton({ lang }: { lang: Locale }) {
         processAudio();
       })
       .catch((error) => {
-        console.error("Error accessing microphone:", error);
+        console.error('Error accessing microphone:', error);
         toast.error(
-          "Mikrofona erişmeye çalışırken hata oluştu: " + error.message
+          'Mikrofona erişmeye çalışırken hata oluştu: ' + error.message
         );
         setIsRecording(false);
       });
@@ -102,8 +115,8 @@ export default function StartButton({ lang }: { lang: Locale }) {
 
   const startRecording = () => {
     setIsRecording(true);
-    setTranscript("");
-    setRecordedSpeech("");
+    setTranscript('');
+    setRecordedSpeech('');
 
     recognitionRef.current = new window.webkitSpeechRecognition();
     recognitionRef.current.continuous = true;
@@ -131,9 +144,11 @@ export default function StartButton({ lang }: { lang: Locale }) {
     recognitionRef.current.start();
   };
 
-  const stopAndSaveRecording = (predefinedTranscript?: string) => {
+  const stopAndSaveRecording = async (predefinedTranscript?: string) => {
     setRecordedSpeech(predefinedTranscript || transcript);
-    handleRespond(predefinedTranscript || transcript)
+    startTransition(async () => {
+      await handleRespond(predefinedTranscript || transcript);
+    });
     stopRecording();
   };
 
@@ -183,11 +198,46 @@ export default function StartButton({ lang }: { lang: Locale }) {
   const startButtonHoverAnimate = useAnimation();
 
   const handleRespond = async (input: string) => {
-    const { output } = await generate(input);
+    // Fetch history once, then use state and also don't fetch it again each time
 
-    for await (const delta of readStreamableValue(output)) {
-      setResponse((currentGeneration) => `${currentGeneration}${delta}`);
+    const userMessage: Message = { role: 'user', content: input };
+
+    const { messages, newMessage, fullStream, streamDonePromise } =
+      await continueChat([...conversation, userMessage]);
+
+    let textContent = '';
+
+    for await (const delta of readStreamableValue(newMessage)) {
+      textContent = `${textContent}${delta}`;
+
+      setConversation([
+        ...messages,
+        userMessage,
+        { role: 'assistant', content: textContent },
+      ]);
     }
+
+    // Wait for the stream to be done
+    await streamDonePromise;
+
+    console.log('Streaming is done');
+
+    const audioResponse = await fetch('/api/elevenlabs', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ textInput: textContent }),
+    });
+
+    const arrayBuffer = await audioResponse.arrayBuffer();
+    const blob = new Blob([arrayBuffer], { type: 'audio/mpeg' });
+    const blobUrl = URL.createObjectURL(blob);
+    setAudio(blobUrl);
+
+    /* const audioResponse = await fetch('/api/openai-speech', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ textInput: 'evet sana yardım edebilir yeni yerler keşfetmende destek olabilirim!' }),
+    }); */
   };
 
   useEffect(() => {
@@ -195,7 +245,7 @@ export default function StartButton({ lang }: { lang: Locale }) {
       startButtonHoverAnimate.start({
         y: 20, // Adjust this value according to your needs
         transition: {
-          type: "spring",
+          type: 'spring',
           damping: 12,
           stiffness: 150,
           duration: 1,
@@ -205,7 +255,7 @@ export default function StartButton({ lang }: { lang: Locale }) {
       startButtonHoverAnimate.start({
         y: 0,
         transition: {
-          type: "spring",
+          type: 'spring',
           damping: 12,
           stiffness: 150,
           duration: 1,
@@ -214,36 +264,43 @@ export default function StartButton({ lang }: { lang: Locale }) {
     }
   }, [isButtonHovered, startButtonHoverAnimate]);
 
+  const lastAssistantMessage = conversation
+    .filter((message) => message.role === 'assistant')
+    .pop();
+
   return (
     <>
       <div className="h-44 flex items-center justify-center">
         <AnimatePresence>
-          {!recordedSpeech && !isRecording && (
+          {!isRecording && (
             <motion.button
               exit={{ scaleX: 2, scaleY: 0.4, opacity: 0 }}
               initial={{ scaleY: 1 }}
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.9 }}
               transition={{
-                type: "spring",
+                type: 'spring',
                 damping: 12,
                 stiffness: 150,
                 duration: 1,
               }}
               onClick={handleToggleRecording}
-              className="absolute bg-primary 
-              hover:bg-primary/80 transition-color flex items-center font-bold text-3xl justify-center 
-              rounded-full w-48 overflow-hidden text-primary-foreground  aspect-square"
+              className={cn(
+                'absolute bg-primary hover:bg-primary/80 transition-color flex items-center font-bold text-3xl justify-center rounded-full w-48 overflow-hidden text-primary-foreground aspect-square',
+                isPending && 'animate-thinking2'
+              )}
               onHoverStart={() => setIsButtonHovered(true)}
               onHoverEnd={() => setIsButtonHovered(false)}
               onTap={() => setIsButtonHovered(false)}
             >
-              <Image
-                alt="Avatar"
-                placeholder="blur"
-                className="drop-shadow-lg "
-                src={AvatarImage}
-              />
+              {!isPending && (
+                <Image
+                  alt="Avatar"
+                  placeholder="blur"
+                  className="drop-shadow-lg "
+                  src={AvatarImage}
+                />
+              )}
             </motion.button>
           )}
         </AnimatePresence>
@@ -264,7 +321,7 @@ export default function StartButton({ lang }: { lang: Locale }) {
                       once: true,
                     }}
                     style={{
-                      minHeight: "100px",
+                      minHeight: '100px',
                       height: `${Math.max(db * 3.5, 0)}px`, // Ensure height is not negative
                     }}
                     className="bg-primary h-28 w-24 rounded-full"
@@ -275,23 +332,30 @@ export default function StartButton({ lang }: { lang: Locale }) {
         </AnimatePresence>
       </div>
 
-      {!recordedSpeech && isRecording && transcript && (
+      {transcript && (
         <div className="border text-primary rounded-md p-2 mt-4">
           <p className="mb-0">{transcript}</p>
         </div>
       )}
 
-      <p>{response}</p>
+      <audio ref={audioRef} autoPlay src={`${audio}`} className="w-full" />
 
-      <AnimatePresence>
-        {recordedSpeech && !isRecording && (
+        <p>{isAudioPlaying.toString()}</p>
+      <p>
+        {lastAssistantMessage
+          ? lastAssistantMessage.content
+          : 'No assistant messages available'}
+      </p>
+
+      {/*       <AnimatePresence>
+        {isPending && (
           <motion.button
             exit={{ scaleX: 2, scaleY: 0.4, opacity: 0 }}
             initial={{ scaleY: 1 }}
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.9 }}
             transition={{
-              type: "spring",
+              type: 'spring',
               damping: 12,
               stiffness: 150,
               duration: 1,
@@ -303,9 +367,10 @@ export default function StartButton({ lang }: { lang: Locale }) {
             onHoverStart={() => setIsButtonHovered(true)}
             onHoverEnd={() => setIsButtonHovered(false)}
             onTap={() => setIsButtonHovered(false)}
-          ></motion.button>
+          >
+          </motion.button>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
 
       <button onClick={() => stopAndSaveRecording()}>debug</button>
 
@@ -313,11 +378,11 @@ export default function StartButton({ lang }: { lang: Locale }) {
         <DropdownMenu onOpenChange={() => setDropdownOpen(!dropdownOpen)}>
           <DropdownMenuTrigger className="mt-4" asChild>
             <Button disabled={isRecording} className="group gap-x-2">
-              {getLocalLanguageName(selectedLanguage, lang)}{" "}
+              {getLocalLanguageName(selectedLanguage, lang)}{' '}
               <BsChevronDown
                 className={cn(
-                  "group-hover:rotate-45 transition duration-200",
-                  dropdownOpen ? "rotate-0" : "rotate-180"
+                  'group-hover:rotate-45 transition duration-200',
+                  dropdownOpen ? 'rotate-0' : 'rotate-180'
                 )}
               />
             </Button>
@@ -328,8 +393,9 @@ export default function StartButton({ lang }: { lang: Locale }) {
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <div className="grid grid-cols-2 3xl:grid-cols-1">
-              {i18n.locales.map((locale) => (
+              {i18n.locales.map((locale, i) => (
                 <DropdownMenuItem
+                  key={i}
                   onSelect={() => handleLanguageSelect(locale)}
                   className="group"
                 >

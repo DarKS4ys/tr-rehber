@@ -36,7 +36,10 @@ export async function continueConversation(
     messages: [
       ...history.get(),
       { role: 'user', content: input },
-      { role: 'system', content: `always respond to user in ${getLanguageName(lang)} language` },
+      {
+        role: 'system',
+        content: `always respond to user in ${getLanguageName(lang)} language`,
+      },
     ],
     text: ({ content, done }) => {
       if (done) {
@@ -81,14 +84,18 @@ export async function continueConversation(
         generate: async function* ({
           description /*tags,  activities, travelPreferences  */,
         }) {
-          yield <div>loading...</div>;
+          yield (
+            <div className="animate-pulse bg-primary/20 w-full h-72 rounded-lg"/>
+          );
 
           const destination = await generateObject({
             model: openai('gpt-4o'),
             schema: destinationSchema,
             // ! change and add lang
             //             prompt: `Select a destination within the Turkish city of Trabzon based on the user's given tags and preferences. Ensure the destination aligns with their specified activities, tags, preferred season and travel preferences to include in the final travel plan. Description of the desired place:  ${description}`,
-            prompt: `Select a destination within the Turkish city of Trabzon that aligns with the description: ${description}. Always respond to user in ${getLanguageName(lang)} language.`,
+            prompt: `Select a destination within the Turkish city of Trabzon that aligns with the description: ${description}. Always respond to user in ${getLanguageName(
+              lang
+            )} language.`,
           });
 
           const coordinates = await getCoordinates(
@@ -140,14 +147,18 @@ export async function continueConversation(
         generate: async function* ({
           description /*tags,  activities, travelPreferences  */,
         }) {
-          yield <div>loading...</div>;
+          yield (
+            <div className="animate-pulse bg-primary/20 w-full h-72 rounded-lg"/>
+          );
 
           const destination = await generateObject({
             model: openai('gpt-4o'),
             schema: edibleSchema,
             // ! change and add lang
             //             prompt: `Select a destination within the Turkish city of Trabzon based on the user's given tags and preferences. Ensure the destination aligns with their specified activities, tags, preferred season and travel preferences to include in the final travel plan. Description of the desired place:  ${description}`,
-            prompt: `Select a food that is special to the Turkish and Trabzon cuisine which aligns with the description: ${description}. Always respond to user in ${getLanguageName(lang)} language.`,
+            prompt: `Select a food that is special to the Turkish and Trabzon cuisine which aligns with the description: ${description}. Always respond to user in ${getLanguageName(
+              lang
+            )} language.`,
           });
 
           const coordinates = await getCoordinates(
@@ -179,7 +190,7 @@ export const AI = createAI<ServerMessage[], ClientMessage[]>({
   actions: {
     continueConversation,
   },
-  
+
   initialAIState: [],
   initialUIState: [],
 });
