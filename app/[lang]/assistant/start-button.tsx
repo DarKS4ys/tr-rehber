@@ -284,23 +284,23 @@ export default function StartButton({ lang }: { lang: Locale }) {
                 stiffness: 150,
                 duration: 1,
               }}
+              disabled={isPending}
               onClick={handleToggleRecording}
               className={cn(
-                'absolute bg-primary hover:bg-primary/80 transition-color flex items-center font-bold text-3xl justify-center rounded-full w-48 overflow-hidden text-primary-foreground aspect-square',
-                isPending && 'animate-thinking2'
+                'disabled:cursor-not-allowed disabled:opacity-50 absolute bg-primary hover:bg-primary/80 transition- flex items-center font-bold text-3xl justify-center rounded-full w-48 overflow-hidden text-primary-foreground aspect-square',
+                isPending && 'animate-thinking2',
+                isAudioPlaying && 'animate-analyser'
               )}
               onHoverStart={() => setIsButtonHovered(true)}
               onHoverEnd={() => setIsButtonHovered(false)}
               onTap={() => setIsButtonHovered(false)}
             >
-              {!isPending && (
-                <Image
-                  alt="Avatar"
-                  placeholder="blur"
-                  className="drop-shadow-lg "
-                  src={AvatarImage}
-                />
-              )}
+              <Image
+                alt="Avatar"
+                placeholder="blur"
+                className="drop-shadow-lg "
+                src={AvatarImage}
+              />
             </motion.button>
           )}
         </AnimatePresence>
@@ -332,20 +332,21 @@ export default function StartButton({ lang }: { lang: Locale }) {
         </AnimatePresence>
       </div>
 
-      {transcript && (
+      {isRecording && transcript && (
         <div className="border text-primary rounded-md p-2 mt-4">
           <p className="mb-0">{transcript}</p>
         </div>
       )}
 
       <audio ref={audioRef} autoPlay src={`${audio}`} className="w-full" />
-
-        <p>{isAudioPlaying.toString()}</p>
-      <p>
-        {lastAssistantMessage
-          ? lastAssistantMessage.content
-          : 'No assistant messages available'}
-      </p>
+      {!isRecording && lastAssistantMessage && (
+        <motion.p
+          className="border text-primary rounded-md p-2 mt-4 text-center w-1/2"
+          animate={startButtonHoverAnimate}
+        >
+          {lastAssistantMessage.content}
+        </motion.p>
+      )}
 
       {/*       <AnimatePresence>
         {isPending && (
@@ -371,8 +372,6 @@ export default function StartButton({ lang }: { lang: Locale }) {
           </motion.button>
         )}
       </AnimatePresence> */}
-
-      <button onClick={() => stopAndSaveRecording()}>debug</button>
 
       <motion.div animate={startButtonHoverAnimate}>
         <DropdownMenu onOpenChange={() => setDropdownOpen(!dropdownOpen)}>

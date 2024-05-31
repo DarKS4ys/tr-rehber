@@ -177,10 +177,44 @@ module.exports = {
           '100%': {
             transform:'scale(1)',
           },
-        }
+        },
+        analyser: {
+          '0%': {
+            transform:'scale(1)',
+            rotate: '0deg'
+          },
+          '15%': {
+            transform:'scale(1.25)',
+          },
+          '25%': {
+            transform:'scale(1.1)',
+          },
+          '30%': {
+            transform:'scale(1.2)',
+          },
+          '40%': {
+            transform:'scale(1.4)',
+          },
+          '50%': {
+            transform:'scale(.9)',
+          },
+          '60%': {
+            transform:'scale(1.15)',
+          },
+          '70%': {
+            transform:'scale(1)',
+          },
+          '80%': {
+            transform:'scale(1.25)',
+          },
+          '100%': {
+            transform:'scale(1)',
+          },
+      }
       },
       animation: {
         thinking: 'thinking 2s infinite ease-in-out',
+        analyser: 'analyser 1s infinite ease-in-out',
         thinking2: 'thinking2 2s infinite ease-in-out',
         first: "moveVertical 30s ease infinite",
         second: "moveInCircle 20s reverse infinite",

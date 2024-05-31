@@ -52,7 +52,7 @@ export default async function page({
           <ShareButton domain={process.env.NEXTAUTH_URL} />
         </div>
       </div>
-      <div className="px-6 pt-3 pb-5 bg-primary/10 rounded-lg flex flex-col gap-y-2">
+      <div className="px-6 pt-3 pb-5 bg-primary/10 rounded-lg w-full flex flex-col gap-y-2">
         <h1 className="text-lg font-medium">Görülecek yerler</h1>
         <div className="w-full flex gap-x-4">
           <Carousel
@@ -84,8 +84,8 @@ export default async function page({
           </Carousel>
         </div>
       </div>
-      <div className="flex gap-x-4">
-        <div className="px-6 pt-3 pb-5 w-3/4 bg-primary/10 rounded-lg flex flex-col gap-y-2">
+      <div className="flex md:flex-row flex-col gap-4 w-full">
+        <div className="px-6 pt-3 pb-5  w-full md:w-[70%] bg-primary/10 rounded-lg flex flex-col gap-y-2">
           <h1 className="text-lg font-medium">Yöresel yemekler</h1>
           <Carousel
             opts={{
@@ -115,7 +115,7 @@ export default async function page({
             )}
           </Carousel>
         </div>
-        <div className="px-6 pt-3 pb-5 w-1/4 bg-primary/10 rounded-lg flex flex-col gap-y-2">
+        <div className="px-6 pt-3 pb-5 w-full md:w-1/2 bg-primary/10 rounded-lg flex flex-col gap-y-2">
           <h1 className="text-lg font-medium">Kalınacak oteller</h1>
           <Carousel
             opts={{
@@ -133,7 +133,7 @@ export default async function page({
                 </CarouselItem>
               ))} */}
 
-              <CarouselItem className="sm:basis-1/2">
+              <CarouselItem>
                 <HotelAddButton />
               </CarouselItem>
             </CarouselContent>
