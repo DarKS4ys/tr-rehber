@@ -17,15 +17,16 @@ import {
 } from '@/components/ui/carousel';
 import { cn } from '@/lib/utils';
 import type { Locale } from '@/i18n.config';
+import { unstable_noStore } from 'next/cache';
 
 export default function Search({ planId, lang, predefinedInput }: { planId: string, lang:Locale, predefinedInput?: string | null }) {
+  unstable_noStore()
   const [input, setInput] = useState(predefinedInput && decodeURI(predefinedInput) || '');
   const [isPending, startTransition] = useTransition();
   const [placeholder, setPlaceholder] = useState('');
   const [conversation, setConversation] = useUIState();
   const { continueConversation } = useActions();
-
-
+  
   const [api, setApi] = React.useState<CarouselApi>();
 
   useEffect(() => {

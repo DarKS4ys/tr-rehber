@@ -288,7 +288,7 @@ export default function StartButton({ lang }: { lang: Locale }) {
               onClick={handleToggleRecording}
               className={cn(
                 'disabled:cursor-not-allowed disabled:opacity-50 absolute bg-primary hover:bg-primary/80 transition- flex items-center font-bold text-3xl justify-center rounded-full w-48 overflow-hidden text-primary-foreground aspect-square',
-                isPending && 'animate-thinking2',
+                isPending && 'animate-thinking2 ',
                 isAudioPlaying && 'animate-analyser'
               )}
               onHoverStart={() => setIsButtonHovered(true)}
@@ -298,7 +298,7 @@ export default function StartButton({ lang }: { lang: Locale }) {
               <Image
                 alt="Avatar"
                 placeholder="blur"
-                className="drop-shadow-lg "
+                className="drop-shadow-lg"
                 src={AvatarImage}
               />
             </motion.button>
@@ -332,14 +332,14 @@ export default function StartButton({ lang }: { lang: Locale }) {
         </AnimatePresence>
       </div>
 
-      {isRecording && transcript && (
+      {(isRecording && transcript) && (
         <div className="border text-primary rounded-md p-2 mt-4">
           <p className="mb-0">{transcript}</p>
         </div>
       )}
 
       <audio ref={audioRef} autoPlay src={`${audio}`} className="w-full" />
-      {!isRecording && lastAssistantMessage && (
+      {(!isRecording && lastAssistantMessage && lastAssistantMessage.content) && (
         <motion.p
           className="border text-primary rounded-md p-2 mt-4 text-center w-1/2"
           animate={startButtonHoverAnimate}
