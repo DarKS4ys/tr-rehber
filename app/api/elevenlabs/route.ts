@@ -3,10 +3,14 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(request: NextRequest, res: NextResponse) {
     const body = await request.json();
     let { textInput } = body;
-    let voice_id = 'UgDlNKm5a9LnJWpOiPWm';
+    let voice_id = 'g6h6BNxMmVFjkauYRAf5';
     // Th8LQHbIXmksfr3mTo9v
     // q6w6KZK7mGEZ1Rx02UzL
     // I6zCmbDokuE7EmkTMaKU
+
+    // ! g6h6BNxMmVFjkauYRAf5 YENİ
+
+    // 236e9be05973f6cc8e53011844f60f007
   
     const url = `https://api.elevenlabs.io/v1/text-to-speech/${voice_id}`;
     const headers: Record<string, string> = {
